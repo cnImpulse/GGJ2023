@@ -1,0 +1,8 @@
+#test,,,
+#test,,,
+#test,,,
+!,int,string,int
+!,ID,path,root
+LoginForm,1000,UI/UIForm/LoginForm,1
+MainForm,1001,UI/UIForm/MainForm,1
+TestForm,1001,UI/UIForm/TestForm,1
