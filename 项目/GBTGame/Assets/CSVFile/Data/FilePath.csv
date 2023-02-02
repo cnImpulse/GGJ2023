@@ -1,0 +1,15 @@
+#test,
+#test,
+#test,
+@,string
+@,Path
+JsonSavePath,Assets/File
+CsvPathWithJson,Assets/CSVFile/Json
+CsDataSavePath,Assets/Scripts/Data
+CsvPathWithCs,Assets/CSVFile/Data
+AutoUIFormCS,Assets/Scripts/UI/UIForm
+AutoBindUIFormCS,Assets/Scripts/UI/UIFormBind
+Event,Assets/Scripts/Event
+AutoUIItemCS,Assets/Scripts/UI/UIItem
+AutoBindUIItemCS,Assets/Scripts/UI/UIItemBind
+AutoBindUIFormXLUA,Assets/Scripts/UI/UIFormXlua

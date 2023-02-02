@@ -17,10 +17,6 @@ namespace MyGameFrameWork
             Debug.Log("GameMainStart");
 
             StateInit();//×´Ì¬³õÊ¼»¯
-
-            //sceneStateC.SetState(Data_StateName.StartState_name);
-
-            //sceneStateC.SetState(Data_StateName.TestState_name);
         }
 
         // Update is called once per frame

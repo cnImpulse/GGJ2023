@@ -1,0 +1,14 @@
+#test,,,
+#test,,,
+#test,,,
+!,int,string,int
+!,ID,path,root
+StartGameForm,1000,ZKW/StartGameForm,1
+MainForm,1001,ZKW/MainForm,1
+DeveloperForm,1002,ZKW/DeveloperForm,1
+MenuForm,1003,ZKW/MenuForm,1
+GameOverForm,1004,ZKW/GameOverForm,1
+SkillForm,1005,ZKW/SkillTreeForm,1
+HelperForm,1006,ZKW/HelperForm,1
+AllGameStartForm,1007,ZKW/AllGameStartForm,1
+AllGameOverForm,1008,ZKW/AllGameOverForm,1

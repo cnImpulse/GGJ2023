@@ -1,0 +1,15 @@
+#test,,
+#test,,
+#test,,
+!,int,string
+!,ID,path
+FireBullet,1000,ZKW/Enity/FireBullet
+HPBar,1001,ZKW/HPBar
+EnemyA,1002,ZKW/Enity/EnemyA
+Player,1003,ZKW/Enity/Player
+Spawn1,1004,ZKW/Enity/Spawn1
+Tower,1005,ZKW/Enity/Tower
+Wall,1006,ZKW/Enity/Wall
+EnemyAObj,1007,ZKW/Enity/EnemyAObj
+EnemyB,1008,ZKW/Enity/EnemyB
+EnemyC,1009,ZKW/Enity/EnemyC
