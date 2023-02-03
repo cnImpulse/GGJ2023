@@ -7,7 +7,7 @@ namespace MyGameFrameWork
 {
     public partial class GameMain : MonoBehaviour
     {
-        public GameObject Enity1;
+        /*public GameObject Enity1;
         public GameObject Player;
 
         public GameObject Spawn1;
@@ -23,7 +23,7 @@ namespace MyGameFrameWork
         public GameObject Tower4;
         public GameObject Tower5;
 
-        public GameObject HPBarCanvas;
+        public GameObject HPBarCanvas;*/
         private void Awake()
         {
             GameObject.DontDestroyOnLoad(this.gameObject);
@@ -34,7 +34,7 @@ namespace MyGameFrameWork
             Debug.Log("GameMainStart");
 
             StateInit();//状态初始化
-            sceneStateC.SetData("Enity1", Enity1);
+            /*sceneStateC.SetData("Enity1", Enity1);
             sceneStateC.SetData("Player", Player);
             sceneStateC.SetData("Spawn1", Spawn1);
             sceneStateC.SetData("Spawn2", Spawn2);
@@ -48,7 +48,7 @@ namespace MyGameFrameWork
             sceneStateC.SetData("Tower2", Tower2);
             sceneStateC.SetData("Tower3", Tower3);
             sceneStateC.SetData("Tower4", Tower4);
-            sceneStateC.SetData("Tower5", Tower5);
+            sceneStateC.SetData("Tower5", Tower5);*/
         }
 
         // Update is called once per frame
