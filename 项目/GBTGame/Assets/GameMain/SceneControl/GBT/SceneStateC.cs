@@ -62,6 +62,7 @@ namespace MyGameFrameWork
         /// <param name="obj"></param>
         public void SetData(string str, System.Object obj)
         {
+            Debug.Log(str);
             if (control_data.ContainsKey(str))
             {
                 control_data[str] = obj;

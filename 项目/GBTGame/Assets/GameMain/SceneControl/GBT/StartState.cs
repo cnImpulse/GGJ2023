@@ -18,7 +18,7 @@ namespace MyGameFrameWork
 
         public override void StateBegin(System.Object obj)
         {
-            //开始时
+            /*//开始时
             if (!isFisrtStart)
             {
                 SoundSystem.Instance.PlayMusic(Data_AudioID.key_GameBgm);//播放音乐
@@ -28,7 +28,7 @@ namespace MyGameFrameWork
                 EventManagerSystem.Instance.Add2(Data_EventName.StartGame_str, OnStartGame);
                 EventManagerSystem.Instance.Add2(Data_EventName.ExitGame_str, OnExitGame);
                 EventManagerSystem.Instance.Add2(Data_EventName.Developer_str, OnDevelopers);
-            }
+            }*/
 
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_StartGameForm);//打开UI
             
