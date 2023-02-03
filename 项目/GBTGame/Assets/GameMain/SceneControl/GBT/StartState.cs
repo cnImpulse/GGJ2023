@@ -18,7 +18,7 @@ namespace MyGameFrameWork
 
         public override void StateBegin(System.Object obj)
         {
-            /*//开始时
+            //开始时
             if (!isFisrtStart)
             {
                 SoundSystem.Instance.PlayMusic(Data_AudioID.key_GameBgm);//播放音乐
@@ -28,7 +28,7 @@ namespace MyGameFrameWork
                 EventManagerSystem.Instance.Add2(Data_EventName.StartGame_str, OnStartGame);
                 EventManagerSystem.Instance.Add2(Data_EventName.ExitGame_str, OnExitGame);
                 EventManagerSystem.Instance.Add2(Data_EventName.Developer_str, OnDevelopers);
-            }*/
+            }
 
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_StartGameForm);//打开UI
             
@@ -42,20 +42,22 @@ namespace MyGameFrameWork
         public override void StateEnd()
         {
             //结束时
-            //SoundSystem.Instance.StopMusic(Data_AudioID.key_GameBgm);//结束音乐
-            //EventManagerSystem.Instance.Delete2(Data_EventName.StartGame_str, OnStartGame);
-            //EventManagerSystem.Instance.Delete2(Data_EventName.ExitGame_str, OnExitGame);
-            //EventManagerSystem.Instance.Delete2(Data_EventName.Developer_str, OnDevelopers);
+            SoundSystem.Instance.StopMusic(Data_AudioID.key_GameBgm);//结束音乐
+            EventManagerSystem.Instance.Delete2(Data_EventName.StartGame_str, OnStartGame);
+            EventManagerSystem.Instance.Delete2(Data_EventName.ExitGame_str, OnExitGame);
+            EventManagerSystem.Instance.Delete2(Data_EventName.Developer_str, OnDevelopers);
         }
 
         private void OnStartGame(IEventArgs eventArgs)//游戏开始
         {
+            Debug.Log("asdas");
             m_Contorller.SetState("MenuState", null);
 
         }
 
         private void OnDevelopers(IEventArgs eventArgs)//开发者界面
         {
+            Debug.Log("asdasasdasd");
             m_Contorller.SetState("EndGameState", null);
         }
 

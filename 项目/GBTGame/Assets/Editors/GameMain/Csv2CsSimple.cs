@@ -12,7 +12,7 @@ public class Csv2CsSimple
     /// <summary>
     /// 用于数据文件转换到CS文件
     /// </summary>
-    [MenuItem("Tool/Data/CSV2CSSimple")]
+    [MenuItem("Tool/Data/CSV2CSSimple &/")]
     static void CSVToCS()
     {
         if (Directory.Exists(datacsvpath))

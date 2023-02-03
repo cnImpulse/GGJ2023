@@ -39,8 +39,10 @@ namespace MyGameFrameWork
             Enity1?.SetActive(true);*/
 
             //HpBarCanvas = m_Contorller.GetData("HpBarCanvas") as GameObject;
-            
-            CreateMainUI();
+
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm);
+
+            //CreateMainUI();
         }
 
         public override void StateUpdate()
@@ -61,6 +63,7 @@ namespace MyGameFrameWork
 
         void CreateMainUI()
         {
+            Debug.Log("asdas");
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_MenuForm);
         }
 
