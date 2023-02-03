@@ -114,9 +114,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95, y: -28.400024}
+  m_AnchoredPosition: {x: 97, y: 43.599976}
   m_SizeDelta: {x: 60, y: 60}
-  m_Pivot: {x: 0.5, y: 2}
+  m_Pivot: {x: 0.5, y: 3.2}
 --- !u!222 &6191148695257917584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -403,6 +403,9 @@ MonoBehaviour:
   - name: m_rect_arrow
     typename: RectTransform
     obj: {fileID: 2884137191278452997}
+  - name: m_rect_qianzi
+    typename: RectTransform
+    obj: {fileID: 8767263335454132666}
 --- !u!114 &14137926600199683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +421,8 @@ MonoBehaviour:
   AngleOffset: -90
   HandleAngleArea: 180
   HandleMoveSpeed: 100
+  HookMoveSpeed: 100
+  HookReturnSpeed: 100
 --- !u!1 &8767263335454132666
 GameObject:
   m_ObjectHideFlags: 0

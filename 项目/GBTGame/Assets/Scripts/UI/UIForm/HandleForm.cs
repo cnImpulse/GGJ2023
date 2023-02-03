@@ -10,11 +10,14 @@ public partial class HandleForm : UIForm
 	public float AngleOffset = 0;
 	public float HandleAngleArea = 180;
 	public float HandleMoveSpeed = 100;
+	public float HookMoveSpeed = 100;
+	public float HookReturnSpeed = 100;
 	public float CurRealAngle => m_CurAngle + AngleOffset;
 
 	private float m_CurAngle = 0;
 	private bool m_IsRight = true;
 	private bool m_IsHandleMoving = false;
+	private bool m_IsHookReturn = false;
 
 	public override void Awake()
 	{
@@ -32,20 +35,32 @@ public partial class HandleForm : UIForm
     {
         base.Update();
 
-		if (m_IsHandleMoving)
-        {
+		if (Input.GetKeyDown(KeyCode.S))
+		{
+			m_IsHandleMoving = !m_IsHandleMoving;
+		}
 
-        }
+        m_rect_qianzi.gameObject.SetActive(m_IsHandleMoving);
+        m_rect_arrow.gameObject.SetActive(!m_IsHandleMoving);
+        if (m_IsHandleMoving)
+        {
+			m_rect_qianzi.localEulerAngles = new Vector3(0, 0, CurRealAngle);
+
+			var length = m_rect_qianzi.localScale.y;
+			if (m_IsHookReturn)
+            {
+				length -= Time.deltaTime * HookReturnSpeed;
+			}
+            else
+            {
+				length += Time.deltaTime * HookMoveSpeed;
+			}
+
+			m_rect_qianzi.localScale = new Vector3(1, length, 1);
+		}
         else
         {
-			if (Input.GetKeyDown(KeyCode.S))
-			{
-				m_IsHandleMoving = true;
-			}
-			else
-			{
-				UpdateHandleAngle();
-			}
+			UpdateHandleAngle();
 		}
 	}
 
