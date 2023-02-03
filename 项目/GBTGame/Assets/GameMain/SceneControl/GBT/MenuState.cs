@@ -41,6 +41,8 @@ namespace MyGameFrameWork
             //HpBarCanvas = m_Contorller.GetData("HpBarCanvas") as GameObject;
 
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm);
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm);
+
 
             //CreateMainUI();
         }

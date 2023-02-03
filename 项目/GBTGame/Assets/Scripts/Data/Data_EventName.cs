@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//CreateTime：2023/2/3 19:46:50
+//CreateTime：2023/2/3 22:14:50
 namespace DataCs
 {
 	public static class Data_EventName
@@ -39,6 +39,8 @@ namespace DataCs
 		public static string SaveSkill_str = "SaveSkill";
 
 		public static string OpenSkill_str = "OpenSkill";
+
+		public static string DestoryTool_str = "DestoryTool";
 
 	}
 }

@@ -19,6 +19,7 @@ namespace MyGameFrameWork
         {"float",3},
         {"double",4},
         {"bool",5},
+        {"GameObject",6},
     };
 
 

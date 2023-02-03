@@ -29,9 +29,7 @@ namespace MyGameFrameWork
                 EventManagerSystem.Instance.Add2(Data_EventName.ExitGame_str, OnExitGame);
                 EventManagerSystem.Instance.Add2(Data_EventName.Developer_str, OnDevelopers);
             }
-
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_StartGameForm);//打开UI
-            
         }
 
         public override void StateUpdate()
@@ -50,14 +48,12 @@ namespace MyGameFrameWork
 
         private void OnStartGame(IEventArgs eventArgs)//游戏开始
         {
-            Debug.Log("asdas");
             m_Contorller.SetState("MenuState", null);
 
         }
 
         private void OnDevelopers(IEventArgs eventArgs)//开发者界面
         {
-            Debug.Log("asdasasdasd");
             m_Contorller.SetState("EndGameState", null);
         }
 

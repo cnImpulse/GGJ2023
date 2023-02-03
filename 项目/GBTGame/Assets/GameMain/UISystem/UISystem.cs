@@ -72,8 +72,9 @@ namespace MyGameFrameWork
             else
             {
                 GameObject temp = GameObject.Instantiate((GameObject)Resources.Load(path));
-                temp.GetComponent<UIItem>().OnOpen(obj);
                 temp.GetComponent<UIItem>().SetParent(Parent);
+                temp.GetComponent<UIItem>().OnOpen(obj);
+                
                 return temp.GetComponent<UIItem>();
             }
             return null;
