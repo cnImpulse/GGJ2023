@@ -42,6 +42,7 @@ namespace MyGameFrameWork
 
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm);
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm);
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
 
 
             //CreateMainUI();
