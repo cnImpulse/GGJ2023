@@ -20,7 +20,6 @@ namespace MyGameFrameWork
         public void StateInit()
         {
             sceneStateC = new SceneStateC();
-
             StartState = new StartState(sceneStateC);
             EndGameState = new EndGameState(sceneStateC);
             MainState = new MainState(sceneStateC);
@@ -38,7 +37,6 @@ namespace MyGameFrameWork
             sceneStateC.AddState(SkillState.StateName, SkillState);
             sceneStateC.AddState(AllGameOverState.StateName, AllGameOverState);
             sceneStateC.AddState(AllGameStartState.StateName, AllGameStartState);
-
             sceneStateC.SetState(StartState.StateName);
             //sceneStateC.AddState(Data_StateName.MainState_name, MainState);
             //sceneStateC.AddState(Data_StateName.TestState_name, TestState);
