@@ -143,13 +143,11 @@ public partial class ToolItem : UIItem
 		if(toolItemType==EToolItemType.Function)
 		{
 			toolFuncitonType = parent.functionItemDic[toolSetting.mainId];
-			GGJDataManager.Instance.functionType = toolFuncitonType;
         }
     }
 
 	private void FuncToolItemVal()
 	{
-		Debug.Log(toolItemType);
 		if(toolItemType!=EToolItemType.Function)
 		{
             GGJDataManager.Instance.ToolItemValMap[toolItemType] += toolItemVal;
