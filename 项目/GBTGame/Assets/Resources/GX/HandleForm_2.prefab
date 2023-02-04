@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6213923565114244246}
   - component: {fileID: 1197171166785893152}
   m_Layer: 5
-  m_Name: bg
+  m_Name: m_imgbg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,12 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList:
-  - name: m_rect_arrow
-    typename: RectTransform
-    obj: {fileID: 2884137191278452997}
-  - name: m_rect_qianzi
-    typename: RectTransform
-    obj: {fileID: 8767263335454132666}
+  - name: m_imgbg
+    typename: Image
+    obj: {fileID: 3492858381503745680}
 --- !u!114 &14137926600199683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,8 +219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.6743, y: 0}
-  m_SizeDelta: {x: 1349.2299, y: 1080}
+  m_AnchoredPosition: {x: 3.6743, y: -89.5}
+  m_SizeDelta: {x: 1349.2299, y: 901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &3558352580880958702
 PrefabInstance:
@@ -322,19 +319,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
---- !u!1 &2884137191278452997 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1830517189185381867, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
-  m_PrefabInstance: {fileID: 3558352580880958702}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8072266176079794876 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4712943893671450194, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
-  m_PrefabInstance: {fileID: 3558352580880958702}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8767263335454132666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5245107368882982228, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
   m_PrefabInstance: {fileID: 3558352580880958702}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5650273822407694286

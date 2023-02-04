@@ -39,7 +39,7 @@ public partial class ToolItem : UIItem
 		base.OnOpen(obj);
 		RegisterEvent();
 		parent = uiForm as ToolForm;
-        this.GetComponent<RectTransform>().SetParent(parent.m_rectPanel);
+        this.GetComponent<RectTransform>().SetParent(GGJDataManager.Instance.Rect);
         rectTransform = GetComponent<RectTransform>();
 		speed = 80;
         forward = new Vector3(0, 0, 0);

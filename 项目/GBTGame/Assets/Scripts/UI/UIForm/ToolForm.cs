@@ -32,7 +32,10 @@ public partial class ToolForm : UIForm
 	{
 		base.OnOpen(obj);
 		RegisterEvent();
-		posList = new List<Vector3>();
+		/*GGJDataManager.Instance.Rect.localPosition = GGJDataManager.Instance.Rect.localPosition;
+		GGJDataManager.Instance.Rect.sizeDelta = GGJDataManager.Instance.Rect.sizeDelta;*/
+
+        posList = new List<Vector3>();
 		itemLists = new List<float>();
 
 		itemLists.Add(1f);
@@ -83,8 +86,8 @@ public partial class ToolForm : UIForm
 
 	void CreateToolItem()
 	{
-		float x = m_rectPanel.sizeDelta.x;
-        float y = m_rectPanel.sizeDelta.y;
+		float x = GGJDataManager.Instance.Rect.sizeDelta.x;
+        float y = GGJDataManager.Instance.Rect.sizeDelta.y;
         float width = 100;
 
         var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this) as ToolItem;
@@ -113,8 +116,8 @@ public partial class ToolForm : UIForm
 
 	void CreateMoveItem()
 	{
-        float x = m_rectPanel.sizeDelta.x;
-        float y = m_rectPanel.sizeDelta.y;
+        float x = GGJDataManager.Instance.Rect.sizeDelta.x;
+        float y = GGJDataManager.Instance.Rect.sizeDelta.y;
         float width = 100;
 
         var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this) as ToolItem;

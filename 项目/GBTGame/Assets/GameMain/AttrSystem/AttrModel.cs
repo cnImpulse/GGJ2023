@@ -547,86 +547,99 @@ namespace MyGameFrameWork
                 Debug.Log(a + "主键重复");
             }
         }
-
-        /*public class AttrModelList
-        {
-            public List<List<string>> AttrModels;
-            public string table_name;
-            Dictionary<string, int> main_id_index_dic;//主键索引
-            StringBuilder sb = new StringBuilder(AttrSystemModel.attr_model_str_length);//字符串输出
-
-            public AttrModelList(string name)
-            {
-                table_name = name;
-                list1 = new List<T1>(AttrSystemModel.list_init_length);
-                list2 = new List<T2>(AttrSystemModel.list_init_length);
-                list3 = new List<T3>(AttrSystemModel.list_init_length);
-                list4 = new List<T4>(AttrSystemModel.list_init_length);
-                list5 = new List<T5>(AttrSystemModel.list_init_length);
-                list6 = new List<T6>(AttrSystemModel.list_init_length);
-                main_id_index_dic = new Dictionary<T1, int>(AttrSystemModel.list_init_length);
-            }
-            /// <summary>
-            /// 查找第一个值所对的
-            /// </summary>
-            /// <param name="main_id"></param>
-            /// <returns></returns>
-            public Attr6<T1, T2, T3, T4, T5, T6> FindMain(T1 main_id)
-            {
-                if (main_id_index_dic.ContainsKey(main_id))
-                {
-                    return new Attr6<T1, T2, T3, T4, T5, T6>(list1[main_id_index_dic[main_id]], list2[main_id_index_dic[main_id]], list3[main_id_index_dic[main_id]],
-                        list4[main_id_index_dic[main_id]], list5[main_id_index_dic[main_id]], list6[main_id_index_dic[main_id]]);
-                }
-                return null;
-            }
-            /// <summary>
-            /// 添加值
-            /// </summary>
-            /// <param name="a"></param>
-            /// <param name="b"></param>
-            /// <param name="c"></param>
-            /// <param name="d"></param>
-            /// <param name="e"></param>
-            /// <param name="f"></param>
-            public void Add(T1 a, T2 b, T3 c, T4 d, T5 e, T6 f)
-            {
-                if (!main_id_index_dic.ContainsKey(a))
-                {
-                    main_id_index_dic.Add(a, list1.Count);
-                    list1.Add(a);
-                    list2.Add(b);
-                    list3.Add(c);
-                    list4.Add(d);
-                    list5.Add(e);
-                    list6.Add(f);
-
-                    sb.Append(a.ToString());
-                    sb.Append("\t\t");
-                    sb.Append(b.ToString());
-                    sb.Append("\t\t");
-                    sb.Append(c.ToString());
-                    sb.Append("\t\t");
-                    sb.Append(d.ToString());
-                    sb.Append("\t\t");
-                    sb.Append(e.ToString());
-                    sb.Append("\t\t");
-                    sb.Append(f.ToString());
-                    sb.Append("\n");
-                }
-                else
-                {
-                    Debug.Log(a + "主键重复");
-                }
-            }*/
-
             /// <summary>
             /// 获取列数
             /// </summary>
             /// <returns></returns>
-            public int GetColNum()
+        public int GetColNum()
         {
             return list1.Count;
+        }
+        public override string ToString()
+        {
+            return sb.ToString();
+        }
+    }
+
+    public class AttrModelList
+    {
+        public List<List<string>> AttrModels;
+        public string table_name;
+        Dictionary<string, int> main_id_index_dic;//主键索引
+        StringBuilder sb = new StringBuilder(AttrSystemModel.attr_model_str_length);//字符串输出
+
+        public AttrModelList(string name,int listNum)
+        {
+            table_name = name;
+            for(int i=0;i< listNum;i++)
+            {
+               var temp = new List<string>(AttrSystemModel.list_init_length);
+                AttrModels.Add(temp);
+            }
+            main_id_index_dic = new Dictionary<string, int>(AttrSystemModel.list_init_length);
+        }
+        /// <summary>
+        /// 查找第一个值所对的
+        /// </summary>
+        /// <param name="main_id"></param>
+        /// <returns></returns>
+        public AttrList FindMain(string main_id)
+        {
+            if (main_id_index_dic.ContainsKey(main_id))
+            {
+                var temp = new AttrList();
+                for(int i=0;i< AttrModels.Count;i++)
+                {
+                    temp.Attrs.Add(AttrModels[i][main_id_index_dic[main_id]]);
+                }
+                return temp;
+            }
+            return null;
+        }
+        /// <summary>
+        /// 添加值
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        /// <param name="f"></param>
+        public void Add(List<string> list)
+        {
+            if (list.Count==0)
+            {
+                return;
+            }
+            if (!main_id_index_dic.ContainsKey(list[0]))
+            {
+                main_id_index_dic.Add(list[0], list.Count);
+                for(int i=0;i< AttrModels.Count;i++)
+                {
+                    for(int j=0;j< list.Count;j++)
+                    {
+                        AttrModels[i].Add(list[j]);
+                    }
+                }
+                for (int j = 0; j < list.Count; j++)
+                {
+                    sb.Append(list[j]);
+                    sb.Append("\t\t");
+                }
+                sb.Append("\n");
+            }
+            else
+            {
+                Debug.Log(list[0] + "主键重复");
+            }
+        }
+        /// <summary>
+        /// 获取列数
+        /// </summary>
+        /// <returns></returns>
+        public int GetColNum()
+        {
+            return AttrModels.Count;
         }
         public override string ToString()
         {
