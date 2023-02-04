@@ -35,18 +35,17 @@ public partial class HandleForm : UIForm
     {
         base.Update();
 
-		if (Input.GetKeyDown(KeyCode.S))
-		{
-			m_IsHandleMoving = !m_IsHandleMoving;
-		}
-
-        m_rect_qianzi.gameObject.SetActive(m_IsHandleMoving);
+		m_rect_qianzi.gameObject.SetActive(m_IsHandleMoving);
         m_rect_arrow.gameObject.SetActive(!m_IsHandleMoving);
         if (m_IsHandleMoving)
         {
-			m_rect_qianzi.localEulerAngles = new Vector3(0, 0, CurRealAngle);
+			if (Input.GetKeyDown(KeyCode.S))
+			{
+				m_IsHookReturn = true;
+			}
 
-			var length = m_rect_qianzi.localScale.y;
+			m_rect_qianzi.localEulerAngles = new Vector3(0, 0, CurRealAngle);
+			var length = m_rect_qianzi.rect.height;
 			if (m_IsHookReturn)
             {
 				length -= Time.deltaTime * HookReturnSpeed;
@@ -56,10 +55,22 @@ public partial class HandleForm : UIForm
 				length += Time.deltaTime * HookMoveSpeed;
 			}
 
-			m_rect_qianzi.localScale = new Vector3(1, length, 1);
+			if (length < 0)
+            {
+				length = 0;
+				m_IsHandleMoving = false;
+            }
+
+			m_rect_qianzi.sizeDelta = new Vector2(m_rect_qianzi.rect.width, length);
 		}
         else
         {
+			if (Input.GetKeyDown(KeyCode.S))
+			{
+				m_IsHandleMoving = true;
+				m_IsHookReturn = false;
+			}
+
 			UpdateHandleAngle();
 		}
 	}

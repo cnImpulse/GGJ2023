@@ -421,8 +421,8 @@ MonoBehaviour:
   AngleOffset: -90
   HandleAngleArea: 180
   HandleMoveSpeed: 100
-  HookMoveSpeed: 100
-  HookReturnSpeed: 100
+  HookMoveSpeed: 300
+  HookReturnSpeed: 500
 --- !u!1 &8767263335454132666
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +459,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 97, y: 50}
-  m_SizeDelta: {x: 74, y: 200}
+  m_SizeDelta: {x: 74, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8189731177586398090
 CanvasRenderer:
