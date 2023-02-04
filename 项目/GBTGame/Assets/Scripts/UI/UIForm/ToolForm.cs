@@ -72,6 +72,7 @@ public partial class ToolForm : UIForm
 
         toolItemDic = new Dictionary<int, EToolItemType>();
         functionItemDic = new Dictionary<int, EFunctionType>();
+        toolItemTypeDic = new Dictionary<EToolItemType, int>();
 
         toolItemTypeDic.Add(EToolItemType.Oxygen,1);
         toolItemTypeDic.Add(EToolItemType.Water,1);
@@ -199,62 +200,10 @@ public partial class ToolForm : UIForm
 
 	void CreateToolItems()
 	{
-
-
 ;       for (int i = 0; i < 20; i++)
         {
             CreateItemByTable();
-			//CreateToolItem();
         }
-
-        /*for (int i = 0; i < 3; i++)
-        {
-            CreateMoveItem();
-        }*/
-    }
-
-	void CreateToolItem()
-	{
-		float x = GGJDataManager.Instance.Rect.sizeDelta.x;
-        float y = GGJDataManager.Instance.Rect.sizeDelta.y;
-        float width = iconwidth;
-
-        var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this) as ToolItem;
-		Vector3 temp2 = Vector3.zero;// new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
-        
-		for(int i=0;i<10;i++)
-		{
-			bool isrepeat = false;
-            temp2 = new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
-            for (int j = 0; j < posList.Count; ++j)
-            {
-                if (isArea(width*2, temp2, posList[j]))
-                {
-					isrepeat = true;
-                    break;
-                }
-            }
-			if(!isrepeat)
-			{
-				break;
-			}
-        }
-        temp.SetLocation(temp2);
-		posList.Add(temp2);
-    }
-
-	void CreateMoveItem()
-	{
-        float x = GGJDataManager.Instance.Rect.sizeDelta.x;
-        float y = GGJDataManager.Instance.Rect.sizeDelta.y;
-        float width = iconwidth;
-
-        var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this) as ToolItem;
-        var temp2 = new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
-
-        temp.SetLocation(temp2);
-        posList.Add(temp2);
-        temp.Move(-(x - width) / 2, (x - width) / 2,200);
     }
 
     private void OnDestoryItem(IEventArgs eventArgs)//删除item;
@@ -298,24 +247,29 @@ public partial class ToolForm : UIForm
         int index = 0;
         bool isOk = false;
         ToolSetting settings = ToolSettings1[0];
-        
-        
+
+        Debug.Log(goodsMax1);
+        Debug.Log(goodsMax1);
+        Debug.Log(goodsMax1);
         if (currgoods1<goodsMax1)
         {
+            Debug.Log("goodsMax1");
             for (int i = 0; i < ToolSettings1.Count; i++)
             {
                 sum += ToolSettings1[i].weight;
             }
         }
-        else if(currgoods2 >= goodsMax2)
+        if(currgoods2 < goodsMax2)
         {
+            Debug.Log("goodsMax2");
             for (int i = 0; i < ToolSettings2.Count; i++)
             {
                 sum += ToolSettings2[i].weight;
             }
         }
-        else if(currgoods3 >= goodsMax3)
+        if(currgoods3 < goodsMax3)
         {
+            Debug.Log("goodsMax3");
             for (int i = 0; i < ToolSettings3.Count; i++)
             {
                 sum += ToolSettings3[i].weight;
@@ -329,6 +283,7 @@ public partial class ToolForm : UIForm
 
         float random = Random.Range(0, sum);
 
+
         if (currgoods1 < goodsMax1)
         {
             for (int i = 0; i < ToolSettings1.Count; i++)
@@ -340,13 +295,14 @@ public partial class ToolForm : UIForm
                 }
                 else
                 {
+                    currgoods1++;
                     settings = ToolSettings1[i];
                     isOk = true;
                     break;
                 }
             }
         }
-        else if (!isOk&&currgoods2 >= goodsMax2)
+        if (!isOk&&currgoods2 < goodsMax2)
         {
             for (int i = 0; i < ToolSettings2.Count; i++)
             {
@@ -357,13 +313,14 @@ public partial class ToolForm : UIForm
                 }
                 else
                 {
+                    currgoods2++;
                     settings = ToolSettings2[i];
                     isOk = true;
                     break;
                 }
             }
         }
-        else if (!isOk && currgoods3 >= goodsMax3)
+        if (!isOk && currgoods3 < goodsMax3)
         {
             for (int i = 0; i < ToolSettings3.Count; i++)
             {
@@ -374,6 +331,7 @@ public partial class ToolForm : UIForm
                 }
                 else
                 {
+                    currgoods3++;
                     settings = ToolSettings3[i];
                     isOk = true;
                     break;
@@ -409,18 +367,7 @@ public partial class ToolForm : UIForm
         posList.Add(temp2);
         temp.SetToolItemSetting(settings);
 
-        if (toolItemTypeDic[temp.toolItemType] == 1)
-        {
-            currgoods1++;
-        }
-        else if(toolItemTypeDic[temp.toolItemType] == 2)
-        {
-            currgoods2++;
-        }
-        else if (toolItemTypeDic[temp.toolItemType] == 3)
-        {
-            currgoods3++;
-        }
+  
     }
 }
 
