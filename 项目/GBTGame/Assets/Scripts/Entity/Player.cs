@@ -70,7 +70,13 @@ namespace MyGameFrameWork
                 var length = m_rect_qianzi.rect.height;
                 if (m_IsHookReturn)
                 {
-                    length -= Time.deltaTime * (HookReturnSpeed + m_AddSpped);
+                    var speed = HookReturnSpeed;
+                    if (m_CurTool != null)
+                    {
+                        //m_CurTool.GetComponent<ToolItem>().
+                    }
+                    
+                    length -= Time.deltaTime * (speed + m_AddSpped);
                 }
                 else
                 {

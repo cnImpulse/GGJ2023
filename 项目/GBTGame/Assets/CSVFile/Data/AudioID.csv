@@ -20,3 +20,7 @@ TurrDestroyed,1013,Audio/Effect/TurrDestroyed
 PlayerInjured,1014,Audio/Effect/PlayerInjured
 PlayerDie,1015,Audio/Effect/PlayerDie
 Monster2Bomb,1016,Audio/Effect/Monster2Bomb
+Level1,1017,Audio/BGM/Level1
+Level2,1018,Audio/BGM/Level2
+Level3,1019,Audio/BGM/Level3
+Main,1020,Audio/BGM/Main

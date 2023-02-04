@@ -7,7 +7,7 @@ using UnityEngine.UI;
 //CreateTime：2023/2/3 19:39:36
 public partial class HandleForm : UIForm
 {
-
+	public AudioClip audioClip;
 
 	public override void Awake()
 	{
