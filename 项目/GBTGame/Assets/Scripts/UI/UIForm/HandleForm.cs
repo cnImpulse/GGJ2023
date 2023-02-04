@@ -18,6 +18,7 @@ public partial class HandleForm : UIForm
 		base.OnOpen(obj);
 
 		GGJDataManager.Instance.Rect = transform.Find("rect") as RectTransform;
+		GGJDataManager.Instance.Rect2 = transform.Find("rect2") as RectTransform;
 
 		RegisterEvent();
 	}

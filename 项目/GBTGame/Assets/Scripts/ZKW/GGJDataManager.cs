@@ -75,6 +75,7 @@ namespace MyGameFrameWork
 
         public EFunctionType functionType;
         public UnityEngine.RectTransform Rect;
+        public UnityEngine.RectTransform Rect2;
 
         public float currTime;
         public int level;
