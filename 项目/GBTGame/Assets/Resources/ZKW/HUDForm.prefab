@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 8292327079894873798}
   - component: {fileID: 4963764340625586838}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: m_imgWaterLim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -620,7 +620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95, y: 0}
+  m_AnchoredPosition: {x: 121.6, y: 0}
   m_SizeDelta: {x: 2, y: 26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8292327079894873798
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 488404157282922151}
   - component: {fileID: 5565749870033656536}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: m_imgOxyLim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1185,7 +1185,7 @@ GameObject:
   - component: {fileID: 8671944592501035962}
   - component: {fileID: 7886276398426711852}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: m_imgFerLim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2441,12 +2441,21 @@ MonoBehaviour:
   - name: m_scrollbarFertilizer
     typename: Scrollbar
     obj: {fileID: 1383435499254347628}
+  - name: m_imgFerLim
+    typename: Image
+    obj: {fileID: 3668780570958177500}
   - name: m_scrollbarOxygen
     typename: Scrollbar
     obj: {fileID: 1181895734240898640}
+  - name: m_imgOxyLim
+    typename: Image
+    obj: {fileID: 1951449073711390375}
   - name: m_scrollbarWater
     typename: Scrollbar
     obj: {fileID: 5359424259549231393}
+  - name: m_imgWaterLim
+    typename: Image
+    obj: {fileID: 1712774616504471145}
   - name: m_rectTipDes
     typename: RectTransform
     obj: {fileID: 2116679929149077150}

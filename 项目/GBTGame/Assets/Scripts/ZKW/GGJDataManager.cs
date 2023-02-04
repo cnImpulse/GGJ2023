@@ -13,7 +13,8 @@ namespace MyGameFrameWork
         Boomer,
         AddSpeed,
         Stop,
-        Pause
+        Pause,
+        Refresh
     }
 
     public enum ESucceedType
@@ -32,30 +33,34 @@ namespace MyGameFrameWork
 
         public void Init()
         {
-            Oxygen = 50;
-            Fertilizer = 25;
-            Water = 30;
-            Diamonds = 0;
-            Bird = 0;
-            DiamondsPig = 0;
+            ToolItemValMap = new Dictionary<EToolItemType, int>();
+            for (int i = (int)EToolItemType.Oxygen; i < 11; i++)
+            {
+                ToolItemValMap.Add((EToolItemType)i, 0);
+            }
+
+            ToolItemValMap[EToolItemType.Oxygen] = 50;
+            ToolItemValMap[EToolItemType.Fertilizer] = 25;
+            ToolItemValMap[EToolItemType.Water] = 30;
             functionType = 0;
             currTime = 60;
             level = 1;
+            
         }
         public bool TestSucceed()
         {
             
-            if(Oxygen<=0 && Oxygen>=100)
+            if(ToolItemValMap[EToolItemType.Oxygen] <= 0 && ToolItemValMap[EToolItemType.Oxygen] >= 100)
             {
                 return false;
             }
 
-            if (Fertilizer <= 0 && Fertilizer >= 100)
+            if (ToolItemValMap[EToolItemType.Fertilizer] <= 0 && ToolItemValMap[EToolItemType.Fertilizer] >= 100)
             {
                 return false;
             }
 
-            if (Water <= 0 && Water >= 100)
+            if (ToolItemValMap[EToolItemType.Water] <= 0 && ToolItemValMap[EToolItemType.Water] >= 100)
             {
                 return false;
             }
@@ -68,16 +73,12 @@ namespace MyGameFrameWork
             currTime = 60f;
         }
 
-        public int Oxygen;
-        public int Fertilizer;
-        public int Water;
-        public int Diamonds;
-        public int Bird;
-        public int DiamondsPig;
         public EFunctionType functionType;
         public UnityEngine.RectTransform Rect;
 
         public float currTime;
         public int level;
+
+        public Dictionary<EToolItemType,int> ToolItemValMap;
     }
 }

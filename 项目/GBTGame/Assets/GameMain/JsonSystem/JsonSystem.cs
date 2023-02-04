@@ -65,7 +65,6 @@ namespace MyGameFrameWork
                         string default_table = data["default"].ToString();
                         int attr_num = int.Parse(data["default"][0].ToString());//属性个数,行数
                         int row_num = int.Parse(data[data["default"][1].ToString()][0].ToString());//第一个属性的行数
-                        Debug.Log(attr_num);
                         if(attr_num>6)
                         {
                             AttrModelList list = new AttrModelList(file_name, attr_num);

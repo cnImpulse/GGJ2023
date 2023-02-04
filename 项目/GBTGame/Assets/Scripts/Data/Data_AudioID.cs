@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//CreateTime：2023/2/4 15:31:24
+//CreateTime：2023/2/4 18:22:13
 namespace DataCs
 {
 	public struct Data_AudioID_Struct
@@ -39,6 +39,10 @@ namespace DataCs
 			{"PlayerInjured",new Data_AudioID_Struct("PlayerInjured",1014,"Audio/Effect/PlayerInjured")},
 			{"PlayerDie",new Data_AudioID_Struct("PlayerDie",1015,"Audio/Effect/PlayerDie")},
 			{"Monster2Bomb",new Data_AudioID_Struct("Monster2Bomb",1016,"Audio/Effect/Monster2Bomb")},
+			{"Level1",new Data_AudioID_Struct("Level1",1017,"Audio/BGM/Level1")},
+			{"Level2",new Data_AudioID_Struct("Level2",1018,"Audio/BGM/Level2")},
+			{"Level3",new Data_AudioID_Struct("Level3",1019,"Audio/BGM/Level3")},
+			{"Main",new Data_AudioID_Struct("Main",1020,"Audio/BGM/Main")},
 		};
 		public static string key_Bright_Beginning = "Bright_Beginning";
 		public static string key_Dark_Journey = "Dark_Journey";
@@ -57,6 +61,10 @@ namespace DataCs
 		public static string key_PlayerInjured = "PlayerInjured";
 		public static string key_PlayerDie = "PlayerDie";
 		public static string key_Monster2Bomb = "Monster2Bomb";
+		public static string key_Level1 = "Level1";
+		public static string key_Level2 = "Level2";
+		public static string key_Level3 = "Level3";
+		public static string key_Main = "Main";
 	}
 }
 

@@ -35,14 +35,7 @@ namespace MyGameFrameWork
             //Attr4<string, string, string, string> temp =  AttrSystem.Instance.GetData("JsonExample","0") as Attr4<string, string, string, string>;
             //Attr4<string, string, string, string> temp2 = AttrSystem.Instance.GetData("JsonExample", "1") as Attr4<string, string, string, string>;
 
-            AttrList temp = AttrSystem.Instance.GetData("ToolTable", "3002") as AttrList;
-            Debug.Log(temp);
-
-            AttrList temp2 = AttrSystem.Instance.GetData("ToolTable", "1") as AttrList;
-            Debug.Log(temp2);
-
-            AttrList temp3 = AttrSystem.Instance.GetData("ToolTable", "3005") as AttrList;
-            Debug.Log(temp3);
+            
             //Debug.Log(temp2);
 
 

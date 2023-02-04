@@ -1,0 +1,7 @@
+﻿id,thresholdOxygen,thresholdMoisture,thresholdNutrient,totalResources,trigger,goodsMax1,goodsMax2,goodsMax3,status
+ID,氧气阈值,水分阈值,养料阈值,总资源数(第二关为单层资源数,触发补充数,1类道具同屏最大数量,2类道具同屏最大数量,3类道具同屏最大数量,状态
+int,int,int,int,int,int,int,int,int,int
+1,1,1,1,1,1,1,1,1,1
+10001,90,70,80,23,10,23,3,1,1
+10002,90,70,80,12,5,12,2,2,1
+10003,90,70,80,23,15,23,3,3,1

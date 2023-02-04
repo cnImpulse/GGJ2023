@@ -519,7 +519,7 @@ namespace MyGameFrameWork
         /// <param name="f"></param>
         public void Add(T1 a, T2 b, T3 c, T4 d, T5 e, T6 f)
         {
-            if (!main_id_index_dic.ContainsKey(a))
+            if (a.ToString()!=""&&!main_id_index_dic.ContainsKey(a))
             {
                 main_id_index_dic.Add(a, list1.Count);
                 list1.Add(a);
@@ -542,7 +542,7 @@ namespace MyGameFrameWork
                 sb.Append(f.ToString());
                 sb.Append("\n");
             }
-            else
+            else if(a.ToString() != "" )
             {
                 Debug.Log(a + "Ö÷¼üÖØ¸´");
             }
