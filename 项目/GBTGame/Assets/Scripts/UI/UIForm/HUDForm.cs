@@ -38,6 +38,7 @@ public partial class HUDForm : UIForm
 		m_scrollbarOxygen.size = GGJDataManager.Instance.Oxygen/ MaxOxygen;
 		m_scrollbarFertilizer.size = GGJDataManager.Instance.Fertilizer / MaxFertilizer;
 		m_scrollbarWater.size = GGJDataManager.Instance.Water / MaxWater;
+        m_rectLevelDes.GetComponent<TMPro.TextMeshProUGUI>().text = GGJDataManager.Instance.level.ToString();
         FuncFunctionType();
         FunctionTime();
     }
