@@ -30,3 +30,9 @@ Warning,1023,Audio/Effect/Warning
 Oxygen,1024,Audio/Effect/Oxygen
 Water,1025,Audio/Effect/Water
 Fertilizer,1026,Audio/Effect/Fertilizer
+ReleaseSkill,1027,Audio/Effect/ReleaseSkill
+CatchBad,1028,Audio/Effect/CatchBad
+CatchGood,1029,Audio/Effect/CatchGood
+Boom,1030,Audio/Effect/Boom
+LevelFail,1031,Audio/Effect/LevelFail
+LevelSuccess,1032,Audio/Effect/LevelSuccess
