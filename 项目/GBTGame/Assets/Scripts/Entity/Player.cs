@@ -171,6 +171,11 @@ namespace MyGameFrameWork
 
         public void OnHookTool(GameObject go)
         {
+            if (go.GetComponent<ToolItem>() == null)
+            {
+                return;
+            }
+
             if (m_CurTool == null)
             {
                 EventManagerSystem.Instance.Invoke2(Data_EventName.CrashTool_str, new CrashToolEventArgs(go));
