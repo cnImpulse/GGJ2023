@@ -142,32 +142,36 @@ public partial class ToolItem : UIItem
 	public void SetToolItemSetting(ToolSetting _toolSetting)
 	{
 		toolSetting = _toolSetting;
-		if(toolSetting.speed!=0)
+		if (toolSetting.speed != 0)
 		{
 			Move(rectTransform.localPosition.x - toolSetting.area / 2, rectTransform.localPosition.x + toolSetting.area / 2, toolSetting.speed);
-        }
-        SetToolItemType((EToolItemType)toolSetting.effectType, toolSetting.effectNum);
-        toolItemType = parent.toolItemDic[toolSetting.mainId];
+		}
+		SetToolItemType((EToolItemType)toolSetting.effectType, toolSetting.effectNum);
+		toolItemType = parent.toolItemDic[toolSetting.mainId];
 		m_txtDes.text = toolSetting.mainId.ToString();
 
-		
-		this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/"+toolSetting.iconPath);
+
+		this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/" + toolSetting.iconPath);
 		this.gameObject.GetComponent<Image>().SetNativeSize();
-        if (toolSetting.mainId == 1001 || toolSetting.mainId == 1003 || toolSetting.mainId == 1005)
-        {
-            this.gameObject.GetComponent<CircleCollider2D>().radius = 30;
-        }
-        else
-        {
-            this.gameObject.GetComponent<CircleCollider2D>().radius = 18;
-        }
+		if (toolSetting.mainId == 1001 || toolSetting.mainId == 1003 || toolSetting.mainId == 1005)
+		{
+			this.gameObject.GetComponent<CircleCollider2D>().radius = 30;
+		}
+		else
+		{
+			this.gameObject.GetComponent<CircleCollider2D>().radius = 18;
+		}
 
 
 
-        if (toolItemType==EToolItemType.Function)
+		if (toolItemType == EToolItemType.Function)
 		{
 			toolFuncitonType = parent.functionItemDic[toolSetting.mainId];
-        }
+		}
+		if (parent.toolItemTypeDic[toolItemType] == 2)
+		{
+			GGJDataManager.Instance.specialNum++;
+		}
     }
 
 	private void FuncToolItemVal()
