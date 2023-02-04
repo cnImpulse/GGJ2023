@@ -112,13 +112,16 @@ namespace MyGameFrameWork
                 UpdateHandleAngle();
             }
 
-            if (Input.GetKeyDown(SkillCode) && !Stop)
+            if (Input.GetKeyDown(SkillCode) && !Stop && GGJDataManager.Instance.functionType != EFunctionType.Null)
             {
+                SoundSystem.Instance.PlayEffect("ReleaseSkill");
+
                 if (GGJDataManager.Instance.functionType == EFunctionType.Boomer)
                 {
                     if (m_CurTool)
                     {
                         Destroy(m_CurTool);
+                        SoundSystem.Instance.PlayEffect("Boom");
                     }
 
                     m_CurTool = null;
@@ -175,6 +178,8 @@ namespace MyGameFrameWork
                 go.transform.SetParent(m_hook.transform);
 
                 m_IsHookReturn = true;
+
+                SoundSystem.Instance.PlayEffect("CatchGood");
             }
         }
     }
