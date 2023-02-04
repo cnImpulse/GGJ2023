@@ -404,6 +404,14 @@ PrefabInstance:
       propertyPath: SkillCode
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
+      propertyPath: HookMoveSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
+      propertyPath: HookReturnSpeed
+      value: 700
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
 --- !u!114 &6869696082945114410 stripped
@@ -532,6 +540,14 @@ PrefabInstance:
     - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: SkillCode
       value: 271
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
+      propertyPath: HookMoveSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
+      propertyPath: HookReturnSpeed
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
