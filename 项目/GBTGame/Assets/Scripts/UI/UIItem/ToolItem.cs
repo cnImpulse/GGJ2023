@@ -24,6 +24,9 @@ public partial class ToolItem : UIItem
 	float speed;
 
 	RectTransform rectTransform;
+
+	EToolItemType toolItemType;
+	int toolItemVal;
     public override void Awake()
 	{
 		base.Awake();
@@ -110,7 +113,49 @@ public partial class ToolItem : UIItem
         maxX = _maxX;
 		speed = _speed;
         isMove = true;
-
     }
+
+	public void SetToolItemType(EToolItemType _toolItemType,int _toolItemVal)
+	{
+		toolItemType = _toolItemType;
+		toolItemVal = _toolItemVal;
+    }
+
+	private void FuncToolItemVal()
+	{
+		switch(toolItemType)
+		{
+			case EToolItemType.Oxygen:
+				{
+					GGJDataManager.Instance.Oxygen += toolItemVal;
+                    break;
+				}
+            case EToolItemType.Fertilizer:
+                {
+                    GGJDataManager.Instance.Fertilizer += toolItemVal;
+                    break;
+                }
+            case EToolItemType.Water:
+                {
+                    GGJDataManager.Instance.Water += toolItemVal;
+                    break;
+                }
+            case EToolItemType.Diamonds:
+                {
+                    GGJDataManager.Instance.Diamonds += toolItemVal;
+                    break;
+                }
+            case EToolItemType.DiamondsPig:
+                {
+                    GGJDataManager.Instance.DiamondsPig += toolItemVal;
+                    break;
+                }
+            case EToolItemType.Bird:
+                {
+                    GGJDataManager.Instance.Bird += toolItemVal;
+                    break;
+                }
+        }
+	}
 }
 

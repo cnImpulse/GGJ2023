@@ -5,6 +5,15 @@ using MyGameFrameWork;
 using UnityEngine.UI;
 using DataCs;
 
+public enum EToolItemType
+{
+	Oxygen,
+    Fertilizer,
+	Water,
+    Diamonds,
+    Bird,
+    DiamondsPig
+}
 //CreateTime：2023/2/3 20:58:45
 public partial class ToolForm : UIForm
 {

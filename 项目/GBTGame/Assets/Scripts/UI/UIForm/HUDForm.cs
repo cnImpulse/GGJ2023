@@ -25,6 +25,15 @@ public partial class HUDForm : UIForm
 		ReleaseEvent(); 
 	}
 
+	public override void Update()
+	{
+		base.Update();
+		/*m_scrollbarOxygen.size = GGJDataManager.Instance.Oxygen;
+		m_scrollbarFertilizer.size = GGJDataManager.Instance.Fertilizer;
+		m_scrollbarWater.size = GGJDataManager.Instance.Water;*/
+
+    }
+
 	private void RegisterEvent()
 	{
 		m_btnFunc.onClick.AddListener(OnBtnFunc);

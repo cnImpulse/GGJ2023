@@ -221,7 +221,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!1 &519420028
 GameObject:
@@ -350,6 +350,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2111404109873812152, guid: a97b6f6d31a0130448b17c32825b5070, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657619432784074730, guid: a97b6f6d31a0130448b17c32825b5070, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5043872693653097472, guid: a97b6f6d31a0130448b17c32825b5070, type: 3}
       propertyPath: Enity1
       value: 
@@ -449,6 +457,10 @@ PrefabInstance:
     - target: {fileID: 6714160178152710630, guid: a97b6f6d31a0130448b17c32825b5070, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326237596346897325, guid: a97b6f6d31a0130448b17c32825b5070, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8609166648875947727, guid: a97b6f6d31a0130448b17c32825b5070, type: 3}
       propertyPath: m_Name
