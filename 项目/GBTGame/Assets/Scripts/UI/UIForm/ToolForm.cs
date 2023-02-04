@@ -49,11 +49,13 @@ public partial class ToolForm : UIForm
 	private void RegisterEvent()
 	{
 		EventManagerSystem.Instance.Add2(Data_EventName.DestoryTool_str, OnDestoryItem);
+		EventManagerSystem.Instance.Add2(Data_EventName.CrashTool_str, OnCrashItem);
 	}
 
 	private void ReleaseEvent()
 	{
-        
+        EventManagerSystem.Instance.Delete2(Data_EventName.DestoryTool_str, OnDestoryItem);
+        EventManagerSystem.Instance.Add2(Data_EventName.CrashTool_str, OnCrashItem);
     }
 
 	void CreateToolItems()
@@ -131,7 +133,14 @@ public partial class ToolForm : UIForm
 		UISystem.Instance.CloseUIItem(DataCs.Data_UIItemID.key_ToolItem, toolItem);
     }
 
-	bool isArea(float width,Vector3 a,Vector3 b)
+    private void OnCrashItem(IEventArgs eventArgs)//删除item;
+    {
+        CrashToolEventArgs crashToolEventArgs = eventArgs as CrashToolEventArgs;
+		var temp = crashToolEventArgs.obj.GetComponent<ToolItem>();
+        temp.isMove = false;
+    }
+
+    bool isArea(float width,Vector3 a,Vector3 b)
 	{
 		if(Mathf.Abs(a.x - b.x)< width&& Mathf.Abs(a.y - b.y) < width)
 		{

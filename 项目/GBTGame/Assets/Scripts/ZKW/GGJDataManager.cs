@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyGameFrameWork
 {
+    public enum EFunctionType
+    {
+        Null,
+        Boomer,
+    }
     public class GGJDataManager
     {
         private GGJDataManager() { }
@@ -16,14 +21,15 @@ namespace MyGameFrameWork
             get { return instance; }
         }
 
-        void Init()
+        public void Init()
         {
-            Oxygen = 0;
-            Fertilizer = 0;
-            Water = 0;
+            Oxygen = 50;
+            Fertilizer = 25;
+            Water = 30;
             Diamonds = 0;
             Bird = 0;
             DiamondsPig = 0;
+            functionType = 0;
         }
 
         public int Oxygen;
@@ -32,5 +38,6 @@ namespace MyGameFrameWork
         public int Diamonds;
         public int Bird;
         public int DiamondsPig;
+        public EFunctionType functionType;
     }
 }

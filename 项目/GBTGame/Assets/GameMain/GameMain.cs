@@ -40,6 +40,8 @@ namespace MyGameFrameWork
 
             Debug.Log("GameMainStart");
 
+            GGJDataManager.Instance.Init();
+
             StateInit();//状态初始化
             /*sceneStateC.SetData("Enity1", Enity1);
             sceneStateC.SetData("Player", Player);

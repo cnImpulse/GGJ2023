@@ -12,7 +12,7 @@ public partial class ToolItem : UIItem
 
 	float minX;
 	float maxX;
-	bool isMove = false;
+	public bool isMove = false;
 
 	bool isLeft = false;
 
@@ -49,7 +49,9 @@ public partial class ToolItem : UIItem
 		base.OnClose();
 		ReleaseEvent();
 		this.gameObject.SetActive(false);
-	}
+		FuncToolItemVal();
+
+    }
 
 	public override void Update()
 	{

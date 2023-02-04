@@ -7,7 +7,11 @@ using UnityEngine.UI;
 //CreateTime：2023/2/4 0:00:46
 public partial class HUDForm : UIForm
 {
-	public override void Awake()
+	float MaxOxygen;
+    float MaxFertilizer;
+    float MaxWater;
+
+    public override void Awake()
 	{
 		base.Awake();
 		InitComponent(); 
@@ -16,8 +20,11 @@ public partial class HUDForm : UIForm
 	public override void OnOpen(System.Object obj)
 	{
 		base.OnOpen(obj);
-		RegisterEvent(); 
-	}
+		RegisterEvent();
+		MaxOxygen = 100;
+		MaxFertilizer = 100;
+		MaxWater = 100;
+    }
 
 	public override void OnClose()
 	{
@@ -28,9 +35,9 @@ public partial class HUDForm : UIForm
 	public override void Update()
 	{
 		base.Update();
-		/*m_scrollbarOxygen.size = GGJDataManager.Instance.Oxygen;
-		m_scrollbarFertilizer.size = GGJDataManager.Instance.Fertilizer;
-		m_scrollbarWater.size = GGJDataManager.Instance.Water;*/
+		m_scrollbarOxygen.size = GGJDataManager.Instance.Oxygen/ MaxOxygen;
+		m_scrollbarFertilizer.size = GGJDataManager.Instance.Fertilizer / MaxFertilizer;
+		m_scrollbarWater.size = GGJDataManager.Instance.Water / MaxWater;
 
     }
 
