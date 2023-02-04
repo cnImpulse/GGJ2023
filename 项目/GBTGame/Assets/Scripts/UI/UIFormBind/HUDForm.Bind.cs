@@ -4,7 +4,7 @@ using UnityEngine;
 using MyGameFrameWork;
 using UnityEngine.UI;
 
-//CreateTime：2023/2/4 0:00:46
+//CreateTime：2023/2/4 11:39:37
 public partial class HUDForm
 {
 	private AutoBind autoBind;
@@ -14,8 +14,12 @@ public partial class HUDForm
 	private Scrollbar m_scrollbarWater;
 	private RectTransform m_rectTipDes;
 	private Button m_btnFunc;
-	private Image m_imgFuncimg;
 	private Text m_txtFuncDes;
+	private Image m_imgFuncimg;
+	private Image m_imgFuncBoom;
+	private Image m_imgFunciStop;
+	private Image m_imgFuncAddSpeed;
+	private Image m_imgFuncPause;
 
 	private void InitComponent()
 	{
@@ -26,8 +30,12 @@ public partial class HUDForm
 		m_scrollbarWater = autoBind.itemList[3].obj.GetComponent<Scrollbar>();
 		m_rectTipDes = autoBind.itemList[4].obj.GetComponent<RectTransform>();
 		m_btnFunc = autoBind.itemList[5].obj.GetComponent<Button>();
-		m_imgFuncimg = autoBind.itemList[6].obj.GetComponent<Image>();
-		m_txtFuncDes = autoBind.itemList[7].obj.GetComponent<Text>();
+		m_txtFuncDes = autoBind.itemList[6].obj.GetComponent<Text>();
+		m_imgFuncimg = autoBind.itemList[7].obj.GetComponent<Image>();
+		m_imgFuncBoom = autoBind.itemList[8].obj.GetComponent<Image>();
+		m_imgFunciStop = autoBind.itemList[9].obj.GetComponent<Image>();
+		m_imgFuncAddSpeed = autoBind.itemList[10].obj.GetComponent<Image>();
+		m_imgFuncPause = autoBind.itemList[11].obj.GetComponent<Image>();
 	}
 }
 

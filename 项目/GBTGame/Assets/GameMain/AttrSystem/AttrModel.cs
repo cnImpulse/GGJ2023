@@ -118,6 +118,25 @@ namespace MyGameFrameWork
         }
     }
 
+    /*public class AttrList : IAttr
+    {
+        public 
+
+        public Attr6(T1 a, T2 b, T3 c, T4 d, T5 e, T6 f)
+        {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            this.d = d;
+            this.e = e;
+            this.f = f;
+        }
+
+        public override string ToString()
+        {
+            return a + " " + b + " " + c + " " + d + " " + e + " " + f;
+        }
+    */
 
     /// <summary>
     /// ˫ֵ

@@ -10,6 +10,9 @@ namespace MyGameFrameWork
     {
         Null,
         Boomer,
+        AddSpeed,
+        Stop,
+        Pause
     }
     public class GGJDataManager
     {

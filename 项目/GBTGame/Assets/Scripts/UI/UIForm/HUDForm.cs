@@ -38,7 +38,7 @@ public partial class HUDForm : UIForm
 		m_scrollbarOxygen.size = GGJDataManager.Instance.Oxygen/ MaxOxygen;
 		m_scrollbarFertilizer.size = GGJDataManager.Instance.Fertilizer / MaxFertilizer;
 		m_scrollbarWater.size = GGJDataManager.Instance.Water / MaxWater;
-
+        FuncFunctionType();
     }
 
 	private void RegisterEvent()
@@ -56,5 +56,61 @@ public partial class HUDForm : UIForm
 		
 	}
 
+	public void FuncFunctionType()
+	{
+		switch(GGJDataManager.Instance.functionType)
+		{
+			case EFunctionType.Null:
+				{
+					m_imgFuncAddSpeed.gameObject.SetActive(false) ;
+                    m_imgFuncBoom.gameObject.SetActive(false);
+                    m_imgFuncimg.gameObject.SetActive(true);
+                    m_imgFunciStop.gameObject.SetActive(false);
+                    m_imgFuncPause.gameObject.SetActive(false);
+                    m_txtFuncDes.text = "Null";
+                    break;
+				}
+            case EFunctionType.Boomer:
+                {
+                    m_imgFuncAddSpeed.gameObject.SetActive(false);
+                    m_imgFuncBoom.gameObject.SetActive(true);
+                    m_imgFuncimg.gameObject.SetActive(false);
+                    m_imgFunciStop.gameObject.SetActive(false);
+                    m_imgFuncPause.gameObject.SetActive(false);
+                    m_txtFuncDes.text = "Boomer";
+                    break;
+                }
+            case EFunctionType.Stop:
+                {
+                    m_imgFuncAddSpeed.gameObject.SetActive(false);
+                    m_imgFuncBoom.gameObject.SetActive(false);
+                    m_imgFuncimg.gameObject.SetActive(false);
+                    m_imgFunciStop.gameObject.SetActive(true);
+                    m_imgFuncPause.gameObject.SetActive(false);
+                    m_txtFuncDes.text = "Stop";
+                    break;
+                }
+            case EFunctionType.AddSpeed:
+                {
+                    m_imgFuncAddSpeed.gameObject.SetActive(true);
+                    m_imgFuncBoom.gameObject.SetActive(false);
+                    m_imgFuncimg.gameObject.SetActive(false);
+                    m_imgFunciStop.gameObject.SetActive(false);
+                    m_imgFuncPause.gameObject.SetActive(false);
+                    m_txtFuncDes.text = "AddSpeed";
+                    break;
+                }
+            case EFunctionType.Pause:
+                {
+                    m_imgFuncAddSpeed.gameObject.SetActive(false);
+                    m_imgFuncBoom.gameObject.SetActive(false);
+                    m_imgFuncimg.gameObject.SetActive(false);
+                    m_imgFunciStop.gameObject.SetActive(false);
+                    m_imgFuncPause.gameObject.SetActive(true);
+                    m_txtFuncDes.text = "Pause";
+                    break;
+                }
+        }
+	}
 }
 

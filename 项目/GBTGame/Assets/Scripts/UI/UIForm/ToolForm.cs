@@ -12,13 +12,15 @@ public enum EToolItemType
 	Water,
     Diamonds,
     Bird,
-    DiamondsPig
+    DiamondsPig,
+	Function,
 }
 //CreateTime：2023/2/3 20:58:45
 public partial class ToolForm : UIForm
 {
     List<Vector3> posList;
     bool isCreate = false;
+	List<float> itemLists;
 
 	public override void Awake()
 	{
@@ -31,6 +33,14 @@ public partial class ToolForm : UIForm
 		base.OnOpen(obj);
 		RegisterEvent();
 		posList = new List<Vector3>();
+		itemLists = new List<float>();
+
+		itemLists.Add(1f);
+        itemLists.Add(1f);
+        itemLists.Add(1f);
+        itemLists.Add(1f);
+        itemLists.Add(1f);
+        itemLists.Add(1f);
 
         CreateToolItems();
     }
@@ -148,5 +158,24 @@ public partial class ToolForm : UIForm
 		}
 		return false;
 	}
+
+	void SetToolItemTip(ToolItem item)
+	{
+		item.SetToolItemType(EToolItemType.Oxygen, 10);
+		float sum = 0;
+		for(int i=0;i< itemLists.Count;i++)
+		{
+			sum += itemLists[i];
+
+        }
+		int index = 0 ;
+		float tempval = Random.Range(0, sum);
+		float tempsum = 0;
+		for(int i=0;i< itemLists.Count; i++)
+		{
+			//if()
+		}
+
+    }
 }
 
