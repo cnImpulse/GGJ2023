@@ -25,7 +25,8 @@ public partial class ToolItem : UIItem
 
 	RectTransform rectTransform;
 
-	EToolItemType toolItemType;
+	public EToolItemType toolItemType;
+	public EFunctionType toolFuncitonType;
 	int toolItemVal;
     public override void Awake()
 	{
@@ -50,7 +51,6 @@ public partial class ToolItem : UIItem
 		ReleaseEvent();
 		this.gameObject.SetActive(false);
 		FuncToolItemVal();
-
     }
 
 	public override void Update()
