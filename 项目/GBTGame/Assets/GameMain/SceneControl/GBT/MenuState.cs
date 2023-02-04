@@ -56,7 +56,7 @@ namespace MyGameFrameWork
 
         public override void StateUpdate()
         {
-            FuncTime();
+            //FuncTime();
             //Time.deltaTime;
             //Debug.Log("MainState Update");
         }
@@ -66,30 +66,7 @@ namespace MyGameFrameWork
 
         }
 
-        void FuncTime()
-        {
-            if(GGJDataManager.Instance.currTime-Time.deltaTime <=0)
-            {
-                GGJDataManager.Instance.currTime = 0f;
-
-                if(GGJDataManager.Instance.TestSucceed())
-                {
-                    Debug.Log("Test1");
-                    EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameSucceed_str, new GameSucceedEventArgs(GGJDataManager.Instance.level, (int)ESucceedType.Normal));
-                    GGJDataManager.Instance.level++;
-                    GGJDataManager.Instance.InitTime();
-                }
-                else
-                {
-                    Debug.Log("Test2");
-                }
-            }
-            else
-            {
-                GGJDataManager.Instance.currTime -= Time.deltaTime;
-            }
-             //= Time.deltaTime;
-        }
+        
 
         void GameSucceed(IEventArgs eventArgs)
         {

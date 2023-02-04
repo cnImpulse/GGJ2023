@@ -37,7 +37,7 @@ public partial class HUDForm : UIForm
 		RegisterEvent();
         deadTime = 3f;
         deadTimeCurr = 0f;
-        subTime = 1f;
+        subTime = 2f;
         currSubTime = 0f;
         Attr4<string, string, string, string> paramTable1 = AttrSystem.Instance.GetData("ParamTable", "9") as Attr4<string, string, string, string>;
         Attr4<string, string, string, string> paramTable2 = AttrSystem.Instance.GetData("ParamTable", "10") as Attr4<string, string, string, string>;
@@ -101,8 +101,8 @@ public partial class HUDForm : UIForm
 		base.Update();
         
         currSubTime += Time.deltaTime;
-        if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] >= LimOxygen &&
-            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] >= LimMaxWater &&
+        if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] >= LimOxygen ||
+            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] >= LimMaxWater ||
             GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] >= LimMaxFertilizer)
         {
             deadTimeCurr += Time.deltaTime;
@@ -126,6 +126,8 @@ public partial class HUDForm : UIForm
         {
             EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameFail_str, new GameFailEventArgs());
         }
+
+        FuncTime();
 
 
             m_scrollbarOxygen.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] / MaxOxygen;
@@ -223,6 +225,31 @@ public partial class HUDForm : UIForm
         m_imgFerLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimMaxFertilizer / 100, 0, 0);
         m_imgOxyLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimMaxWater / 100, 0, 0);
         m_imgWaterLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimOxygen / 100, 0, 0);
+    }
+
+    void FuncTime()
+    {
+        if (GGJDataManager.Instance.currTime - Time.deltaTime <= 0)
+        {
+            GGJDataManager.Instance.currTime = 0f;
+
+            if (GGJDataManager.Instance.TestSucceed())
+            {
+                Debug.Log("Test1");
+                EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameSucceed_str, new GameSucceedEventArgs(GGJDataManager.Instance.level, (int)ESucceedType.Normal));
+                GGJDataManager.Instance.level++;
+                GGJDataManager.Instance.InitTime();
+            }
+            else
+            {
+                Debug.Log("Test2");
+            }
+        }
+        else
+        {
+            GGJDataManager.Instance.currTime -= Time.deltaTime;
+        }
+        //= Time.deltaTime;
     }
 }
 
