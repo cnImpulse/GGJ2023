@@ -130,6 +130,10 @@ namespace MyGameFrameWork
                     Other.StopTime = 5;
                     Other.Stop = true;
                 }
+                else
+                {
+                    EventManagerSystem.Instance.Invoke2(Data_EventName.OpenSkill_str, default);
+                }
 
                 GGJDataManager.Instance.functionType = EFunctionType.Null;
             }
