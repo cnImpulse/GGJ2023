@@ -43,11 +43,11 @@ namespace MyGameFrameWork
             //UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_1);
             //UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_1);
 
-            UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_2);
-            UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_2);
+            //UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_2);
+            //UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_2);
 
-            //UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_3);
-            //UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_3);
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_3);
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_3);
 
 
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);

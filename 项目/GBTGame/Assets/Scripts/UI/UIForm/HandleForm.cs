@@ -18,6 +18,9 @@ public partial class HandleForm : UIForm
 	public override void OnOpen(System.Object obj)
 	{
 		base.OnOpen(obj);
+
+		GGJDataManager.Instance.Rect = transform.Find("rect") as RectTransform;
+
 		RegisterEvent(); 
 	}
 

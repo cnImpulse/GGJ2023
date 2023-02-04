@@ -28,7 +28,7 @@ namespace MyGameFrameWork
         // Start is called before the first frame update
         void Start()
         {
-            GGJDataManager.Instance.Rect = transform.Find("rect") as RectTransform;
+
         }
 
         // Update is called once per frame
