@@ -24,7 +24,7 @@ public partial class GameSuccess : UIForm
 	{
 		base.Update();
 
-		if (Input.GetKeyDown(KeyCode.KeypadEnter))
+		if (Input.GetKeyDown(KeyCode.Return))
 		{
 			OnDestory();
 		}

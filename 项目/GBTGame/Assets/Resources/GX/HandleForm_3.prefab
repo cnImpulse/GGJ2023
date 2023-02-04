@@ -372,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 2904823752441585910}
     - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: SkillCode
-      value: 271
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: AngleOffset
