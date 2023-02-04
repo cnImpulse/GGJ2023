@@ -20,7 +20,7 @@ namespace MyGameFrameWork
             get { return instance; }
         }
 
-        public bool OpenUIForm(string UIFormName, System.Object obj = null)
+        public GameObject OpenUIForm(string UIFormName, System.Object obj = null)
         {
             int id = Data_UIFormID.Dic[UIFormName].ID;
             string path = Data_UIFormID.Dic[UIFormName].path;
@@ -30,7 +30,7 @@ namespace MyGameFrameWork
                 if (temp != null)
                 {
                     temp.OnOpen(obj);
-                    return true;
+                    return temp.gameObject;
                 }
             }
             else
@@ -41,12 +41,12 @@ namespace MyGameFrameWork
 
                     temp.transform.SetParent(Roots[Data_UIFormID.Dic[UIFormName].root - 1].transform, false);
                     temp.GetComponent<UIForm>().OnOpen(obj);
-                    return true;
+                    return temp;
                 }
                 Debug.LogError("层级参数有误！");
-                return false;
+                return null;
             }
-            return false;
+            return null;
         }
 
         public void CloseUIForm(string UIFormName, UIForm obj)

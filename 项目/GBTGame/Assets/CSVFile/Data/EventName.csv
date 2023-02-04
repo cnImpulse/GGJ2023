@@ -23,3 +23,5 @@ OpenSkill,OpenSkill
 DestoryTool,DestoryTool
 CrashTool,CrashTool
 AllItemStop,AllItemStop
+GameSucceed,GameSucceed
+GameFail,GameFail

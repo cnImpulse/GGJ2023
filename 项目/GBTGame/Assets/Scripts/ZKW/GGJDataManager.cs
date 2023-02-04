@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,11 @@ namespace MyGameFrameWork
         AddSpeed,
         Stop,
         Pause
+    }
+
+    public enum ESucceedType
+    {
+        Normal
     }
     public class GGJDataManager
     {
@@ -35,6 +41,31 @@ namespace MyGameFrameWork
             functionType = 0;
             currTime = 60;
             level = 1;
+        }
+        public bool TestSucceed()
+        {
+            
+            if(Oxygen<=0 && Oxygen>=100)
+            {
+                return false;
+            }
+
+            if (Fertilizer <= 0 && Fertilizer >= 100)
+            {
+                return false;
+            }
+
+            if (Water <= 0 && Water >= 100)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void InitTime()
+        {
+            currTime = 60f;
         }
 
         public int Oxygen;

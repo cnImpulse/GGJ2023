@@ -18,6 +18,7 @@ namespace MyGameFrameWork
 
         public override void StateBegin(System.Object obj)
         {
+            GGJDataManager.Instance.Init();
             //¿ªÊ¼Ê±
             if (!isFisrtStart)
             {

@@ -24,6 +24,12 @@ public class UIForm : MonoBehaviour
     {
 
     }
+
+    public virtual void OnDestory()
+    {
+        OnClose();
+        Destroy(gameObject);
+    }
 }
 
 

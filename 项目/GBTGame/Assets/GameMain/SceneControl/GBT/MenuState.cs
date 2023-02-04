@@ -13,8 +13,9 @@ namespace MyGameFrameWork
 
         bool isFisrt;
 
-        GameObject Enity1;
-        GameObject HpBarCanvas;
+        GameObject HandleForm;
+        GameObject ToolForm;
+        GameObject HUDForm;
         public MenuState(SceneStateC c) : base(c)
         {
             this.StateName = "MenuState";
@@ -26,11 +27,8 @@ namespace MyGameFrameWork
             if (isFisrt)
             {
                 isFisrt = false;
-                /*EventManagerSystem.Instance.Add2(DataCs.Data_EventName.OpenLevel1_str, OpenLevel1);
-                EventManagerSystem.Instance.Add2(DataCs.Data_EventName.OpenLevel2_str, OpenLevel2);
-                EventManagerSystem.Instance.Add2(DataCs.Data_EventName.OpenLevel3_str, OpenLevel3);
-                EventManagerSystem.Instance.Add2(Data_EventName.BackStartGame_str, OnBackStartGame);
-                EventManagerSystem.Instance.Add2(Data_EventName.OpenSkill_str, OnOpenSkillOpen);*/
+                EventManagerSystem.Instance.Add2(DataCs.Data_EventName.GameSucceed_str, GameSucceed);
+                EventManagerSystem.Instance.Add2(DataCs.Data_EventName.GameFail_str, GameFail);
             }
             /*SkillAdditionSystem.CreateInstance(0, 0, 0);
             
@@ -40,9 +38,9 @@ namespace MyGameFrameWork
 
             //HpBarCanvas = m_Contorller.GetData("HpBarCanvas") as GameObject;
 
-            UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_1);
-            UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_1);
-            UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
+            HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_1);
+            ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_1);
+            HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
 
             /*UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_2);
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_2);
@@ -51,12 +49,6 @@ namespace MyGameFrameWork
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_3);*/
 
             //UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameFailForm);
-
-
-            //
-
-
-            //CreateMainUI();
         }
 
         public override void StateUpdate()
@@ -68,13 +60,7 @@ namespace MyGameFrameWork
 
         public override void StateEnd()
         {
-            /*EventManagerSystem.Instance.Delete2(DataCs.Data_EventName.GameOver_str, GameOver);
-            EventManagerSystem.Instance.Delete2(DataCs.Data_EventName.KillMonster_str, KillMonster);*/
-            /*EventManagerSystem.Instance.Delete2(DataCs.Data_EventName.OpenLevel1_str, OpenLevel1);
-            EventManagerSystem.Instance.Delete2(DataCs.Data_EventName.OpenLevel2_str, OpenLevel2);
-            EventManagerSystem.Instance.Delete2(DataCs.Data_EventName.OpenLevel3_str, OpenLevel3);
-            EventManagerSystem.Instance.Delete2(Data_EventName.BackStartGame_str, OnBackStartGame);
-            EventManagerSystem.Instance.Delete2(Data_EventName.OpenSkill_str, OnOpenSkillOpen);*/
+
         }
 
         void FuncTime()
@@ -82,6 +68,18 @@ namespace MyGameFrameWork
             if(GGJDataManager.Instance.currTime-Time.deltaTime <=0)
             {
                 GGJDataManager.Instance.currTime = 0f;
+
+                if(GGJDataManager.Instance.TestSucceed())
+                {
+                    Debug.Log("Test1");
+                    EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameSucceed_str, new GameSucceedEventArgs(GGJDataManager.Instance.level, (int)ESucceedType.Normal));
+                    GGJDataManager.Instance.level++;
+                    GGJDataManager.Instance.InitTime();
+                }
+                else
+                {
+                    Debug.Log("Test2");
+                }
             }
             else
             {
@@ -90,36 +88,69 @@ namespace MyGameFrameWork
              //= Time.deltaTime;
         }
 
-        /*void CreateMainUI()
+        void GameSucceed(IEventArgs eventArgs)
         {
-            Debug.Log("asdas");
-            UISystem.Instance.OpenUIForm(Data_UIFormID.key_MenuForm);
+            GameSucceedEventArgs gameSucceedEventArgs = eventArgs as GameSucceedEventArgs;
+            if(gameSucceedEventArgs.level==1)
+            {
+                if(HandleForm!=null)
+                {
+                    HandleForm.GetComponent<UIForm>().OnDestory();
+                }
+                if (ToolForm != null)
+                {
+                    ToolForm.GetComponent<UIForm>().OnDestory();
+                }
+                if (HUDForm != null)
+                {
+                    HUDForm.GetComponent<UIForm>().OnDestory();
+                }
+                HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_2);
+                ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_2);
+                HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
+            }
+            else if(gameSucceedEventArgs.level==2)
+            {
+                if (HandleForm != null)
+                {
+                    HandleForm.GetComponent<UIForm>().OnDestory();
+                }
+                if (ToolForm != null)
+                {
+                    ToolForm.GetComponent<UIForm>().OnDestory();
+                }
+                if (HUDForm != null)
+                {
+                    HUDForm.GetComponent<UIForm>().OnDestory();
+                }
+                HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_3);
+                ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_3);
+                HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
+            }
+            else
+            {
+                if (HandleForm != null)
+                {
+                    HandleForm.GetComponent<UIForm>().OnDestory();
+                }
+                if (ToolForm != null)
+                {
+                    ToolForm.GetComponent<UIForm>().OnDestory();
+                }
+                if (HUDForm != null)
+                {
+                    HUDForm.GetComponent<UIForm>().OnDestory();
+                }
+                Debug.Log(gameSucceedEventArgs.index);
+                //UISystem.Instance.OpenUIForm(Data_UIFormID.key_);
+            }
         }
 
-        void OpenLevel1(IEventArgs eventArgs)
+        void GameFail(IEventArgs eventArgs)
         {
-            m_Contorller.SetState("MainState",0);
+            //GameFailEventArgs gameFailEventArgs = eventArgs as GameFailEventArgs;
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameFailForm);
         }
-
-        void OpenLevel2(IEventArgs eventArgs)
-        {
-            m_Contorller.SetState("MainState", 1);
-        }
-
-        void OpenLevel3(IEventArgs eventArgs)
-        {
-            m_Contorller.SetState("MainState", 2);
-        }
-
-        private void OnBackStartGame(IEventArgs eventArgs)
-        {
-            m_Contorller.SetState("StartState", null);
-        }
-
-        private void OnOpenSkillOpen(IEventArgs eventArgs)
-        {
-            m_Contorller.SetState("SkillState", null);
-        }*/
     }
 }
 
