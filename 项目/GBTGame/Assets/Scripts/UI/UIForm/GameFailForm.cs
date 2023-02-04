@@ -19,10 +19,22 @@ public partial class GameFailForm : UIForm
 		RegisterEvent(); 
 	}
 
-	public override void OnClose()
+    public override void Update()
+    {
+        base.Update();
+
+		if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+			OnDestory();
+		}
+    }
+
+    public override void OnClose()
 	{
 		base.OnClose();
-		ReleaseEvent(); 
+		ReleaseEvent();
+
+		EventManagerSystem.Instance.Invoke("ChangeSateToStart");
 	}
 
 	private void RegisterEvent()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyGameFrameWork;
 using UnityEngine.UI;
+using DataCs;
 
 //CreateTime��2/4/2023 4:42:12 PM
 public partial class GameSuccess : UIForm
@@ -19,11 +20,23 @@ public partial class GameSuccess : UIForm
 		RegisterEvent(); 
 	}
 
+	public override void Update()
+	{
+		base.Update();
+
+		if (Input.GetKeyDown(KeyCode.KeypadEnter))
+		{
+			OnDestory();
+		}
+	}
+
 	public override void OnClose()
 	{
 		base.OnClose();
-		ReleaseEvent(); 
-	}
+		ReleaseEvent();
+
+		EventManagerSystem.Instance.Invoke("ChangeSateToStart");
+    }
 
 	private void RegisterEvent()
 	{
