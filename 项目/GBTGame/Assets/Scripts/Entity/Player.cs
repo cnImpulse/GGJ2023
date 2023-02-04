@@ -38,7 +38,8 @@ namespace MyGameFrameWork
             m_rect_arrow.gameObject.SetActive(!m_IsHandleMoving);
             if (m_IsHandleMoving)
             {
-                if (Input.GetKeyDown(KeyCode))
+                Debug.Log(Camera.main.pixelRect.Contains(m_hook.transform.position));
+                if (Input.GetKeyDown(KeyCode) || !Camera.main.pixelRect.Contains(m_hook.transform.position)) 
                 {
                     m_IsHookReturn = true;
                 }
