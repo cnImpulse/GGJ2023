@@ -29,6 +29,8 @@ namespace MyGameFrameWork
                 isFisrt = false;
                 EventManagerSystem.Instance.Add2(DataCs.Data_EventName.GameSucceed_str, GameSucceed);
                 EventManagerSystem.Instance.Add2(DataCs.Data_EventName.GameFail_str, GameFail);
+                EventManagerSystem.Instance.Add2(DataCs.Data_EventName.GameFail_str, GameFail);
+                EventManagerSystem.Instance.Add("ChangeSateToStart", ChangeStateToStartState);
             }
             /*SkillAdditionSystem.CreateInstance(0, 0, 0);
             
@@ -142,7 +144,7 @@ namespace MyGameFrameWork
                     HUDForm.GetComponent<UIForm>().OnDestory();
                 }
                 Debug.Log(gameSucceedEventArgs.index);
-                //UISystem.Instance.OpenUIForm(Data_UIFormID.key_);
+                UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameSuccess);
             }
         }
 
@@ -150,6 +152,11 @@ namespace MyGameFrameWork
         {
             //GameFailEventArgs gameFailEventArgs = eventArgs as GameFailEventArgs;
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameFailForm);
+        }
+
+        void ChangeStateToStartState()
+        {
+            m_Contorller.SetState("StartState");
         }
     }
 }
