@@ -244,20 +244,23 @@ public partial class ToolForm : UIForm
     private void OnDestoryItem(IEventArgs eventArgs)//删除item;
     {
         DestoryToolEventArgs destoryToolEventArgs = eventArgs as DestoryToolEventArgs;
-		var toolItem = destoryToolEventArgs.obj.GetComponent<ToolItem>();
-        if(toolItem==null)
+        bool isUnder = destoryToolEventArgs.isUnder;
+        var toolItem = destoryToolEventArgs.obj.GetComponent<ToolItem>();
+        for (int i = 0; i < posList.Count; ++i)
+        {
+            if (posList[i] == toolItem.position)
+            {
+                posList.RemoveAt(i);
+                break;
+            }
+        }
+        if (toolItem == null)
         {
             return;
         }
-
-		for(int i=0;i< posList.Count;++i)
-		{
-			if(posList[i]== toolItem.position)
-			{
-				posList.RemoveAt(i);
-				break;
-			}
-
+        if (GGJDataManager.Instance.level==2)
+        {
+            toolItem.isUnder = isUnder;
         }
         if(toolItem.toolItemType==EToolItemType.Function)
         {
@@ -278,7 +281,6 @@ public partial class ToolForm : UIForm
         }
         if(toolItem.toolSetting.soundPath!="")
         {
-            //Debug.Log(toolItem.toolSetting.soundPath);
             float volume = 0.7f;
             if(toolItem.toolItemType == EToolItemType.Oxygen|| toolItem.toolItemType == EToolItemType.Fertilizer)
             {
@@ -287,6 +289,21 @@ public partial class ToolForm : UIForm
             SoundSystem.Instance.PlayEffect(toolItem.toolSetting.soundPath, volume);
         }
         UISystem.Instance.CloseUIItem(DataCs.Data_UIItemID.key_ToolItem, toolItem);
+        if(GGJDataManager.Instance.level == 2 && isUnder)
+        {
+            ToolSetting tempsetting = toolItem.toolSetting;
+            float radom = Random.Range(0, 1);
+            if (radom <= 0.6)
+            {
+                CreateItemBySetting2(tempsetting);
+                CreateItemBySetting2(tempsetting);
+            }
+            else
+            {
+                CreateItemBySetting2(tempsetting);
+            }
+        }
+        
     }
 
     private void OnCrashItem(IEventArgs eventArgs)//删除item;
@@ -307,6 +324,37 @@ public partial class ToolForm : UIForm
 		}
 		return false;
 	}
+
+    void CreateItemBySetting2(ToolSetting tempsetting)
+    {
+        float x = GGJDataManager.Instance.Rect2.sizeDelta.x;
+        float y = GGJDataManager.Instance.Rect2.sizeDelta.y;
+        float width = iconwidth;
+
+        var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this,false) as ToolItem;
+        Vector3 temp2 = Vector3.zero;// new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
+
+        for (int i = 0; i < 10; i++)
+        {
+            bool isrepeat = false;
+            temp2 = new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
+            for (int j = 0; j < posList.Count; ++j)
+            {
+                if (isArea(width * 2, temp2, posList[j]))
+                {
+                    isrepeat = true;
+                    break;
+                }
+            }
+            if (!isrepeat)
+            {
+                break;
+            }
+        }
+        temp.SetLocation(temp2);
+        posList.Add(temp2);
+        temp.SetToolItemSetting(tempsetting);
+    }
 
 	void CreateItemByTable()
 	{

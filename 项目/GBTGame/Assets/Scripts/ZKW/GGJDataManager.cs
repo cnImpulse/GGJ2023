@@ -43,7 +43,7 @@ namespace MyGameFrameWork
             ToolItemValMap[EToolItemType.Fertilizer] = 25;
             ToolItemValMap[EToolItemType.Water] = 30;
             functionType = 0;
-            currTime = 60;
+            InitTime();
             level = 1;
             specialNum = 0;
         }
@@ -70,7 +70,7 @@ namespace MyGameFrameWork
 
         public void InitTime()
         {
-            currTime = 60f;
+            currTime = 20f;
         }
 
         public EFunctionType functionType;

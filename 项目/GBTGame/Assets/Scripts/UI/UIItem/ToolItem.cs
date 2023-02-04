@@ -34,6 +34,8 @@ public partial class ToolItem : UIItem
 
 	public ToolSetting toolSetting;
 
+	public bool isUnder = false;
+
 	
     public override void Awake()
 	{
@@ -46,10 +48,24 @@ public partial class ToolItem : UIItem
 		base.OnOpen(obj);
 		RegisterEvent();
 
-		
+		bool isUnder = true;
+
+        if (obj!=null)
+		{
+            isUnder = (bool)obj;
+        }
 
         parent = uiForm as ToolForm;
-        this.GetComponent<RectTransform>().SetParent(GGJDataManager.Instance.Rect);
+		
+		if(GGJDataManager.Instance.level==2&& !isUnder)
+		{
+            this.GetComponent<RectTransform>().SetParent(GGJDataManager.Instance.Rect2);
+        }
+		else
+		{
+            this.GetComponent<RectTransform>().SetParent(GGJDataManager.Instance.Rect);
+        }
+        
         rectTransform = GetComponent<RectTransform>();
 		speed = 80;
         forward = new Vector3(0, 0, 0);
@@ -60,7 +76,11 @@ public partial class ToolItem : UIItem
 		base.OnClose();
 		ReleaseEvent();
 		this.gameObject.SetActive(false);
-		FuncToolItemVal();
+		if(GGJDataManager.Instance.level!=2 || isUnder == true)
+		{
+            FuncToolItemVal();
+        }
+		
     }
 
 	public override void Update()
