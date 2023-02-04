@@ -202,6 +202,7 @@ public partial class ToolForm : UIForm
         {
             destoryNum--;
             trigger--;
+            Debug.Log(trigger);
             CreateItemByTable();
             createCDTime = 0f;
         }
@@ -218,7 +219,8 @@ public partial class ToolForm : UIForm
 	{
 		EventManagerSystem.Instance.Add2(Data_EventName.DestoryTool_str, OnDestoryItem);
 		EventManagerSystem.Instance.Add2(Data_EventName.CrashTool_str, OnCrashItem);
-	}
+        
+    }
 
 	private void ReleaseEvent()
 	{
@@ -255,6 +257,18 @@ public partial class ToolForm : UIForm
             GGJDataManager.Instance.functionType = toolItem.toolFuncitonType;
         }
         destoryNum++;
+        if (toolItemTypeDic[toolItem.toolItemType]==1)
+        {
+            currgoods1--;
+        }
+        else if(toolItemTypeDic[toolItem.toolItemType] == 2)
+        {
+            currgoods2--;
+        }
+        else if(toolItemTypeDic[toolItem.toolItemType] == 3)
+        {
+            currgoods3--;
+        }
         UISystem.Instance.CloseUIItem(DataCs.Data_UIItemID.key_ToolItem, toolItem);
     }
 
@@ -306,6 +320,7 @@ public partial class ToolForm : UIForm
 
         if(sum==0)
         {
+            Debug.Log("NoItem");
             return;
         }
 

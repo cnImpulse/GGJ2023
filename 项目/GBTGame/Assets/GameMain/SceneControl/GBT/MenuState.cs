@@ -29,7 +29,7 @@ namespace MyGameFrameWork
                 isFisrt = false;
                 EventManagerSystem.Instance.Add2(DataCs.Data_EventName.GameSucceed_str, GameSucceed);
                 EventManagerSystem.Instance.Add2(DataCs.Data_EventName.GameFail_str, GameFail);
-                EventManagerSystem.Instance.Add2(DataCs.Data_EventName.GameFail_str, GameFail);
+                EventManagerSystem.Instance.Add2(Data_EventName.OpenSkill_str, OpenSkill);
                 EventManagerSystem.Instance.Add("ChangeSateToStart", ChangeStateToStartState);
             }
             /*SkillAdditionSystem.CreateInstance(0, 0, 0);
@@ -43,6 +43,7 @@ namespace MyGameFrameWork
             HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_1);
             ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_1);
             HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
+
 
             /*UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_2);
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_2);
@@ -163,6 +164,54 @@ namespace MyGameFrameWork
                 HUDForm.GetComponent<UIForm>().OnDestory();
             }
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameFailForm);
+        }
+
+        void OpenSkill(IEventArgs eventArgs)
+        {
+            if(GGJDataManager.Instance.functionType == EFunctionType.Pause)
+            {
+                if (GGJDataManager.Instance.Rect != null)
+                {
+                    foreach (var item in GGJDataManager.Instance.Rect.gameObject.GetComponentsInChildren<Transform>())
+                    {
+                        if (item != GGJDataManager.Instance.Rect)
+                        {
+                            item.gameObject.GetComponent<ToolItem>().Pause();
+                        }
+                            
+                    }
+                }
+            }
+            else
+            {
+                if (GGJDataManager.Instance.Rect != null)
+                {
+                    foreach (var item in GGJDataManager.Instance.Rect.gameObject.GetComponentsInChildren<Transform>())
+                    {
+                        if (item != GGJDataManager.Instance.Rect)
+                            GameObject.Destroy(item.gameObject);
+                    }
+                }
+
+                if (ToolForm != null)
+                {
+                    ToolForm.GetComponent<UIForm>().OnDestory();
+                }
+                if (GGJDataManager.Instance.level == 1)
+                {
+                    ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_1);
+                }
+                else if (GGJDataManager.Instance.level == 2)
+                {
+                    ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_2);
+                }
+                else if (GGJDataManager.Instance.level == 3)
+                {
+                    ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_3);
+                }
+            }
+            
+            
         }
 
         void ChangeStateToStartState()

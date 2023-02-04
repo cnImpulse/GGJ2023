@@ -54,9 +54,9 @@ public partial class HUDForm : UIForm
         GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] = Random.Range(int.Parse(paramTable14.c), int.Parse(paramTable15.c));
         GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] = Random.Range(int.Parse(paramTable16.c), int.Parse(paramTable17.c));
 
-        Debug.Log(GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen]);
+        /*Debug.Log(GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen]);
         Debug.Log(GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water]);
-        Debug.Log(GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer]);
+        Debug.Log(GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer]);*/
 
         OxygenSub = 3;// int.Parse(paramTable1.c);
         WaterSub = 3; //int.Parse(paramTable2.c);
@@ -110,9 +110,9 @@ public partial class HUDForm : UIForm
 
         if (currSubTime>=subTime)
         {
-            Debug.Log(OxygenSub);
+            /*Debug.Log(OxygenSub);
             Debug.Log(FertilizerSub);
-            Debug.Log(WaterSub);
+            Debug.Log(WaterSub);*/
             GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] -= OxygenSub;
             GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] -= FertilizerSub;
             GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] -= WaterSub;

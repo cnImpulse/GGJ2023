@@ -41,10 +41,10 @@ namespace MyGameFrameWork
         public override void StateEnd()
         {
             //����ʱ
-            SoundSystem.Instance.StopMusic(Data_AudioID.key_GameBgm);//��������
-            EventManagerSystem.Instance.Delete2(Data_EventName.StartGame_str, OnStartGame);
+            //SoundSystem.Instance.StopMusic(Data_AudioID.key_GameBgm);//��������
+            /*EventManagerSystem.Instance.Delete2(Data_EventName.StartGame_str, OnStartGame);
             EventManagerSystem.Instance.Delete2(Data_EventName.ExitGame_str, OnExitGame);
-            EventManagerSystem.Instance.Delete2(Data_EventName.Developer_str, OnDevelopers);
+            EventManagerSystem.Instance.Delete2(Data_EventName.Developer_str, OnDevelopers);*/
         }
 
         private void OnStartGame(IEventArgs eventArgs)//��Ϸ��ʼ

@@ -1,5 +1,5 @@
-ï»¿id,thresholdOxygen,thresholdMoisture,thresholdNutrient,totalResources,trigger,goodsMax1,goodsMax2,goodsMax3,status
-ID,æ°§æ°”é˜ˆå€¼,æ°´åˆ†é˜ˆå€¼,å…»æ–™é˜ˆå€¼,æ€»èµ„æºæ•°(ç¬¬äºŒå…³ä¸ºå•å±‚èµ„æºæ•°,è§¦å‘è¡¥å……æ•°,1ç±»é“å…·åŒå±æœ€å¤§æ•°é‡,2ç±»é“å…·åŒå±æœ€å¤§æ•°é‡,3ç±»é“å…·åŒå±æœ€å¤§æ•°é‡,çŠ¶æ€
+id,thresholdOxygen,thresholdMoisture,thresholdNutrient,totalResources,trigger,goodsMax1,goodsMax2,goodsMax3,status
+ID,ÑõÆøãĞÖµ,Ë®·ÖãĞÖµ,ÑøÁÏãĞÖµ,×Ü×ÊÔ´Êı(µÚ¶ş¹ØÎªµ¥²ã×ÊÔ´Êı,´¥·¢²¹³äÊı,1ÀàµÀ¾ßÍ¬ÆÁ×î´óÊıÁ¿,2ÀàµÀ¾ßÍ¬ÆÁ×î´óÊıÁ¿,3ÀàµÀ¾ßÍ¬ÆÁ×î´óÊıÁ¿,×´Ì¬
 int,int,int,int,int,int,int,int,int,int
 1,1,1,1,1,1,1,1,1,1
 10001,90,70,80,23,10,23,3,1,1

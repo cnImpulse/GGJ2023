@@ -19,6 +19,9 @@ public partial class ToolItem : UIItem
 	bool isStop = false;
 	float isStopTime = 0f;
 
+	bool isPause = false;
+	float isPauseTime = 3f;
+
 
     Vector3 forward;
 	float speed;
@@ -69,11 +72,17 @@ public partial class ToolItem : UIItem
 			if(isStopTime>1f)
 			{
 				isStop = false;
-
             }
-
         }
-		if(isMove&&!isStop)
+        if (isPause)
+        {
+            isPauseTime += Time.deltaTime;
+            if (isPauseTime > 3f)
+            {
+                isPause = false;
+            }
+        }
+        if (isMove&&!isStop&&!isPause)
 		{
             forward.x = Time.deltaTime* speed;
 
@@ -140,7 +149,22 @@ public partial class ToolItem : UIItem
         SetToolItemType((EToolItemType)toolSetting.effectType, toolSetting.effectNum);
         toolItemType = parent.toolItemDic[toolSetting.mainId];
 		m_txtDes.text = toolSetting.mainId.ToString();
-		if(toolItemType==EToolItemType.Function)
+
+		
+		this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/"+toolSetting.iconPath);
+		this.gameObject.GetComponent<Image>().SetNativeSize();
+        if (toolSetting.mainId == 1001 || toolSetting.mainId == 1003 || toolSetting.mainId == 1005)
+        {
+            this.gameObject.GetComponent<CircleCollider2D>().radius = 30;
+        }
+        else
+        {
+            this.gameObject.GetComponent<CircleCollider2D>().radius = 18;
+        }
+
+
+
+        if (toolItemType==EToolItemType.Function)
 		{
 			toolFuncitonType = parent.functionItemDic[toolSetting.mainId];
         }
@@ -153,5 +177,12 @@ public partial class ToolItem : UIItem
             GGJDataManager.Instance.ToolItemValMap[toolItemType] += toolItemVal;
         }
 	}
+
+	public void Pause()
+	{
+		isPauseTime = 0f;
+		isPause = true;
+
+    }
 }
 
