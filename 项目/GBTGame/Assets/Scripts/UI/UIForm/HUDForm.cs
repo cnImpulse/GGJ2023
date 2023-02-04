@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyGameFrameWork;
 using UnityEngine.UI;
+using ProtoBuf.Meta;
 
 //CreateTime：2023/2/4 0:00:46
 public partial class HUDForm : UIForm
@@ -15,6 +16,15 @@ public partial class HUDForm : UIForm
     float LimMaxFertilizer;
     float LimMaxWater;
 
+    float deadTime;
+    float deadTimeCurr;
+
+    int OxygenSub;
+    int FertilizerSub;
+    int WaterSub;
+
+    float subTime;
+    float currSubTime;
     public override void Awake()
 	{
 		base.Awake();
@@ -25,8 +35,34 @@ public partial class HUDForm : UIForm
 	{
 		base.OnOpen(obj);
 		RegisterEvent();
+        deadTime = 3f;
+        deadTimeCurr = 0f;
+        subTime = 1f;
+        currSubTime = 0f;
+        Attr4<string, string, string, string> paramTable1 = AttrSystem.Instance.GetData("ParamTable", "9") as Attr4<string, string, string, string>;
+        Attr4<string, string, string, string> paramTable2 = AttrSystem.Instance.GetData("ParamTable", "10") as Attr4<string, string, string, string>;
+        Attr4<string, string, string, string> paramTable3 = AttrSystem.Instance.GetData("ParamTable", "11") as Attr4<string, string, string, string>;
 
-        if(GGJDataManager.Instance.level==1)
+        Attr4<string, string, string, string> paramTable12 = AttrSystem.Instance.GetData("ParamTable", "12") as Attr4<string, string, string, string>;
+        Attr4<string, string, string, string> paramTable13 = AttrSystem.Instance.GetData("ParamTable", "13") as Attr4<string, string, string, string>;
+        Attr4<string, string, string, string> paramTable14 = AttrSystem.Instance.GetData("ParamTable", "14") as Attr4<string, string, string, string>;
+        Attr4<string, string, string, string> paramTable15 = AttrSystem.Instance.GetData("ParamTable", "15") as Attr4<string, string, string, string>;
+        Attr4<string, string, string, string> paramTable16 = AttrSystem.Instance.GetData("ParamTable", "16") as Attr4<string, string, string, string>;
+        Attr4<string, string, string, string> paramTable17 = AttrSystem.Instance.GetData("ParamTable", "17") as Attr4<string, string, string, string>;
+
+        GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] = Random.Range(int.Parse(paramTable12.c), int.Parse(paramTable13.c));
+        GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] = Random.Range(int.Parse(paramTable14.c), int.Parse(paramTable15.c));
+        GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] = Random.Range(int.Parse(paramTable16.c), int.Parse(paramTable17.c));
+
+        Debug.Log(GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen]);
+        Debug.Log(GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water]);
+        Debug.Log(GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer]);
+
+        OxygenSub = 3;// int.Parse(paramTable1.c);
+        WaterSub = 3; //int.Parse(paramTable2.c);
+        FertilizerSub = 3; //int.Parse(paramTable3.c);
+
+        if (GGJDataManager.Instance.level==1)
         {
             AttrList temp = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
             LimOxygen = int.Parse(temp.Attrs[1]);
@@ -63,7 +99,36 @@ public partial class HUDForm : UIForm
 	public override void Update()
 	{
 		base.Update();
-		m_scrollbarOxygen.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] / MaxOxygen;
+        
+        currSubTime += Time.deltaTime;
+        if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] >= LimOxygen &&
+            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] >= LimMaxWater &&
+            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] >= LimMaxFertilizer)
+        {
+            deadTimeCurr += Time.deltaTime;
+        }
+
+        if (currSubTime>=subTime)
+        {
+            Debug.Log(OxygenSub);
+            Debug.Log(FertilizerSub);
+            Debug.Log(WaterSub);
+            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] -= OxygenSub;
+            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] -= FertilizerSub;
+            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] -= WaterSub;
+            currSubTime = 0f;
+        }
+
+        if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] <=0 ||
+            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] <= 0 ||
+            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] <= 0|| 
+            deadTimeCurr>=deadTime)
+        {
+            EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameFail_str, new GameFailEventArgs());
+        }
+
+
+            m_scrollbarOxygen.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] / MaxOxygen;
 		m_scrollbarFertilizer.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] / MaxFertilizer;
 		m_scrollbarWater.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] / MaxWater;
         m_rectLevelDes.GetComponent<TMPro.TextMeshProUGUI>().text = GGJDataManager.Instance.level.ToString();

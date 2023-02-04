@@ -148,7 +148,18 @@ namespace MyGameFrameWork
 
         void GameFail(IEventArgs eventArgs)
         {
-            //GameFailEventArgs gameFailEventArgs = eventArgs as GameFailEventArgs;
+            if (HandleForm != null)
+            {
+                HandleForm.GetComponent<UIForm>().OnDestory();
+            }
+            if (ToolForm != null)
+            {
+                ToolForm.GetComponent<UIForm>().OnDestory();
+            }
+            if (HUDForm != null)
+            {
+                HUDForm.GetComponent<UIForm>().OnDestory();
+            }
             UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameFailForm);
         }
     }

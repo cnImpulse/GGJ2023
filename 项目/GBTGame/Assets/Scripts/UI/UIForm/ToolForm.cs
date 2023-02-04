@@ -56,6 +56,9 @@ public partial class ToolForm : UIForm
     int currgoods3;
 
     float createCD;
+    float createCDTime;
+
+    int destoryNum;
 
     public Dictionary<EToolItemType, int> toolItemTypeDic;
     public Dictionary<int, EToolItemType> toolItemDic;
@@ -179,11 +182,11 @@ public partial class ToolForm : UIForm
         goodsMax2 = int.Parse(temp2.Attrs[7]);
         goodsMax3 = int.Parse(temp2.Attrs[8]);
 
-        var paramTable = AttrSystem.Instance.GetData("ParanTable", "4") as AttrList;
+        Attr4<string, string, string, string> paramTable = AttrSystem.Instance.GetData("ParamTable", "4") as Attr4<string,string,string,string>;
 
-        createCD = float.Parse(paramTable.Attrs[2])/1000f;
-
-
+        createCD = float.Parse(paramTable.c)/1000f;
+        createCDTime = createCD;
+        destoryNum = 0;
 
         currgoods1 = 0;
         currgoods2 = 0;
@@ -195,6 +198,14 @@ public partial class ToolForm : UIForm
 	public override void Update()
 	{
 		base.Update();
+        if(destoryNum>0 && createCDTime>= createCD && trigger>0)
+        {
+            destoryNum--;
+            trigger--;
+            CreateItemByTable();
+            createCDTime = 0f;
+        }
+        createCDTime += Time.deltaTime;
     }
 
 	public override void OnClose()
@@ -243,7 +254,7 @@ public partial class ToolForm : UIForm
         {
             GGJDataManager.Instance.functionType = toolItem.toolFuncitonType;
         }
-        
+        destoryNum++;
         UISystem.Instance.CloseUIItem(DataCs.Data_UIItemID.key_ToolItem, toolItem);
     }
 
