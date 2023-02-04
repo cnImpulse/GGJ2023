@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//CreateTime：2023/2/4 23:54:02
+//CreateTime：2023/2/5 0:21:23
 namespace DataCs
 {
 	public struct Data_AudioID_Struct
@@ -49,6 +49,12 @@ namespace DataCs
 			{"Oxygen",new Data_AudioID_Struct("Oxygen",1024,"Audio/Effect/Oxygen")},
 			{"Water",new Data_AudioID_Struct("Water",1025,"Audio/Effect/Water")},
 			{"Fertilizer",new Data_AudioID_Struct("Fertilizer",1026,"Audio/Effect/Fertilizer")},
+			{"ReleaseSkill",new Data_AudioID_Struct("ReleaseSkill",1027,"Audio/Effect/ReleaseSkill")},
+			{"CatchBad",new Data_AudioID_Struct("CatchBad",1028,"Audio/Effect/CatchBad")},
+			{"CatchGood",new Data_AudioID_Struct("CatchGood",1029,"Audio/Effect/CatchGood")},
+			{"Boom",new Data_AudioID_Struct("Boom",1030,"Audio/Effect/Boom")},
+			{"LevelFail",new Data_AudioID_Struct("LevelFail",1031,"Audio/Effect/LevelFail")},
+			{"LevelSuccess",new Data_AudioID_Struct("LevelSuccess",1032,"Audio/Effect/LevelSuccess")},
 		};
 		public static string key_Bright_Beginning = "Bright_Beginning";
 		public static string key_Dark_Journey = "Dark_Journey";
@@ -77,6 +83,12 @@ namespace DataCs
 		public static string key_Oxygen = "Oxygen";
 		public static string key_Water = "Water";
 		public static string key_Fertilizer = "Fertilizer";
+		public static string key_ReleaseSkill = "ReleaseSkill";
+		public static string key_CatchBad = "CatchBad";
+		public static string key_CatchGood = "CatchGood";
+		public static string key_Boom = "Boom";
+		public static string key_LevelFail = "LevelFail";
+		public static string key_LevelSuccess = "LevelSuccess";
 	}
 }
 

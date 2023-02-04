@@ -120,7 +120,7 @@ namespace MyGameFrameWork
             }
         }
 
-        public void PlayEffect(string name)
+        public void PlayEffect(string name,float volume = 1f)
         {
             int id = Data_AudioID.Dic[name].ID;
             string path = Data_AudioID.Dic[name].path;
@@ -129,6 +129,7 @@ namespace MyGameFrameWork
             {
                 if (!effects[i].isPlaying && curr_effect_ids[i] == id)
                 {
+                    effects[i].volume = volume;
                     effects[i].Play();
                     return;
                 }
@@ -144,6 +145,7 @@ namespace MyGameFrameWork
                         if (temp != null)
                         {
                             effects[i].clip = temp;
+                            effects[i].volume = volume;
                             effects[i].Play();
                             curr_effect_ids[i] = id;
                         }
@@ -153,6 +155,7 @@ namespace MyGameFrameWork
 
                         AudioClip temp = Resources.Load<AudioClip>(path);
                         effects[i].clip = temp;
+                        effects[i].volume = volume;
                         effects[i].Play();
                         curr_effect_ids[i] = id;
                     }

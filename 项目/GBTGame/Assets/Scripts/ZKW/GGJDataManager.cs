@@ -45,7 +45,7 @@ namespace MyGameFrameWork
             functionType = 0;
             currTime = 60;
             level = 1;
-            
+            specialNum = 0;
         }
         public bool TestSucceed()
         {
@@ -80,5 +80,7 @@ namespace MyGameFrameWork
         public int level;
 
         public Dictionary<EToolItemType,int> ToolItemValMap;
+
+        public int specialNum;
     }
 }

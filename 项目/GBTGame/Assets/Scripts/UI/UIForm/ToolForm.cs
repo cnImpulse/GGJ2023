@@ -274,7 +274,12 @@ public partial class ToolForm : UIForm
         if(toolItem.toolSetting.soundPath!="")
         {
             Debug.Log(toolItem.toolSetting.soundPath);
-            SoundSystem.Instance.PlayEffect(toolItem.toolSetting.soundPath);
+            float volume = 0.7f;
+            if(toolItem.toolItemType == EToolItemType.Oxygen|| toolItem.toolItemType == EToolItemType.Fertilizer)
+            {
+                volume = 1F;
+            }
+            SoundSystem.Instance.PlayEffect(toolItem.toolSetting.soundPath, volume);
         }
         UISystem.Instance.CloseUIItem(DataCs.Data_UIItemID.key_ToolItem, toolItem);
     }
