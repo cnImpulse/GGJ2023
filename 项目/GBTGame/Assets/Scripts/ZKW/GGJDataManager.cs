@@ -42,5 +42,6 @@ namespace MyGameFrameWork
         public int Bird;
         public int DiamondsPig;
         public EFunctionType functionType;
+        public UnityEngine.RectTransform Rect;
     }
 }
