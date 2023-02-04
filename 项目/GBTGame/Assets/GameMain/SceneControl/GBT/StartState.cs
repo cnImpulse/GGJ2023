@@ -19,10 +19,10 @@ namespace MyGameFrameWork
         public override void StateBegin(System.Object obj)
         {
             GGJDataManager.Instance.Init();
-            //¿ªÊ¼Ê±
+            //ï¿½ï¿½Ê¼Ê±
             if (!isFisrtStart)
             {
-                SoundSystem.Instance.PlayMusic(Data_AudioID.key_GameBgm);//²¥·ÅÒôÀÖ
+                //SoundSystem.Instance.PlayMusic(Data_AudioID.key_GameBgm);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 
                 isFisrtStart = true;
 
@@ -30,7 +30,7 @@ namespace MyGameFrameWork
                 EventManagerSystem.Instance.Add2(Data_EventName.ExitGame_str, OnExitGame);
                 EventManagerSystem.Instance.Add2(Data_EventName.Developer_str, OnDevelopers);
             }
-            UISystem.Instance.OpenUIForm(Data_UIFormID.key_StartGameForm);//´ò¿ªUI
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_StartGameForm);//ï¿½ï¿½UI
         }
 
         public override void StateUpdate()
@@ -40,25 +40,25 @@ namespace MyGameFrameWork
 
         public override void StateEnd()
         {
-            //½áÊøÊ±
-            SoundSystem.Instance.StopMusic(Data_AudioID.key_GameBgm);//½áÊøÒôÀÖ
+            //ï¿½ï¿½ï¿½ï¿½Ê±
+            SoundSystem.Instance.StopMusic(Data_AudioID.key_GameBgm);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             EventManagerSystem.Instance.Delete2(Data_EventName.StartGame_str, OnStartGame);
             EventManagerSystem.Instance.Delete2(Data_EventName.ExitGame_str, OnExitGame);
             EventManagerSystem.Instance.Delete2(Data_EventName.Developer_str, OnDevelopers);
         }
 
-        private void OnStartGame(IEventArgs eventArgs)//ÓÎÏ·¿ªÊ¼
+        private void OnStartGame(IEventArgs eventArgs)//ï¿½ï¿½Ï·ï¿½ï¿½Ê¼
         {
             m_Contorller.SetState("MenuState", null);
 
         }
 
-        private void OnDevelopers(IEventArgs eventArgs)//¿ª·¢Õß½çÃæ
+        private void OnDevelopers(IEventArgs eventArgs)//ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½ï¿½
         {
             m_Contorller.SetState("EndGameState", null);
         }
 
-        private void OnExitGame(IEventArgs eventArgs)//ÓÎÏ·½áÊø
+        private void OnExitGame(IEventArgs eventArgs)//ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
         {
             #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;

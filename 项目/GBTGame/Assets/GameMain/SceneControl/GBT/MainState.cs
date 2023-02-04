@@ -114,7 +114,7 @@ namespace MyGameFrameWork
 
         public override void StateEnd()
         {
-            SoundSystem.Instance.PlayMusic(Data_AudioID.key_GameBgm);
+            //SoundSystem.Instance.PlayMusic(Data_AudioID.key_GameBgm);
             //EventManagerSystem.Instance.Delete2(DataCs.Data_EventName.GameOver_str, GameOver);
             ////EventManagerSystem.Instance.Delete2(DataCs.Data_EventName.KillMonster_str, KillMonster);
             //EventManagerSystem.Instance.Delete2(Data_EventName.BackMenu_str, OnBackMenu);
@@ -163,7 +163,7 @@ namespace MyGameFrameWork
         {
             GameOverEventArgs gameOverEventArgs = (GameOverEventArgs)eventArgs;
             Debug.Log("GameOver");
-            //UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameOverForm,new GameOverStruct("ÄúÊ§°ÜÁË",true,cuur_level));
+            //UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameOverForm,new GameOverStruct("ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ï¿½",true,cuur_level));
             Enity1.SetActive(false);
             if (cuur_level == 2)
             {
@@ -185,7 +185,7 @@ namespace MyGameFrameWork
                 Enity1.SetActive(false);
             });*/
             Enity1.SetActive(false);
-            UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameOverForm, new GameOverStruct("¹§Ï²Í¨¹ýµÚ" + (cuur_level + 1).ToString() + "¹Ø", false, cuur_level));
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_GameOverForm, new GameOverStruct("ï¿½ï¿½Ï²Í¨ï¿½ï¿½ï¿½ï¿½" + (cuur_level + 1).ToString() + "ï¿½ï¿½", false, cuur_level));
         }
 
         void OnNextLevel(IEventArgs eventArgs)

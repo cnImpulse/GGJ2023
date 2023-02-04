@@ -52,7 +52,7 @@ public class Tower : MonoBehaviour
         cam = Camera.main;
         isGameOver = false;
         isDead = false;
-        TOOLS.GetTurrutHps(eTurrutType, (uint)level, out MaxHP, out CurrHp);//»ñÈ¡ÑªÁ¿
+        TOOLS.GetTurrutHps(eTurrutType, (uint)level, out MaxHP, out CurrHp);//ï¿½ï¿½È¡Ñªï¿½ï¿½
 
 
 
@@ -63,7 +63,7 @@ public class Tower : MonoBehaviour
         }
         else
         {
-            SoundSystem.Instance.PlayMusic(Data_AudioID.key_FireBurning);
+            //SoundSystem.Instance.PlayMusic(Data_AudioID.key_FireBurning);
         }
     }
 
@@ -116,7 +116,7 @@ public class Tower : MonoBehaviour
             cam = Camera.main;
         }
         var playerScreenPos = cam.WorldToScreenPoint(this.transform.position);
-        //ÔÙ°ÑÈËÎï×ø±êY¼ÓÒ»¸ö¸ß¶È¸øµ½ÈËÎï
+        //ï¿½Ù°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß¶È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if(turrutType==ETurrutType.Normal)
             HpBar.gameObject.GetComponent<RectTransform>().position = new Vector3(playerScreenPos.x, playerScreenPos.y + 90f, playerScreenPos.z);
         else
