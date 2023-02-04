@@ -55,6 +55,8 @@ public partial class ToolForm : UIForm
     int currgoods2;
     int currgoods3;
 
+    float createCD;
+
     public Dictionary<EToolItemType, int> toolItemTypeDic;
     public Dictionary<int, EToolItemType> toolItemDic;
     public Dictionary<int, EFunctionType> functionItemDic;
@@ -161,12 +163,27 @@ public partial class ToolForm : UIForm
             }
         }
 
-        AttrList level1 = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
-        totalResources = int.Parse(level1.Attrs[4]);
-        trigger = int.Parse(level1.Attrs[5]);
-        goodsMax1 = int.Parse(level1.Attrs[6]);
-        goodsMax2 = int.Parse(level1.Attrs[7]);
-        goodsMax3 = int.Parse(level1.Attrs[8]);
+        AttrList temp2 = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
+        if(level == 2)
+        {
+            temp2 = AttrSystem.Instance.GetData("LevelTable", "10002") as AttrList;
+        }
+        else if(level == 3)
+        {
+            temp2 = AttrSystem.Instance.GetData("LevelTable", "10003") as AttrList;
+        }
+
+        totalResources = int.Parse(temp2.Attrs[4]);
+        trigger = int.Parse(temp2.Attrs[5]);
+        goodsMax1 = int.Parse(temp2.Attrs[6]);
+        goodsMax2 = int.Parse(temp2.Attrs[7]);
+        goodsMax3 = int.Parse(temp2.Attrs[8]);
+
+        var paramTable = AttrSystem.Instance.GetData("ParanTable", "4") as AttrList;
+
+        createCD = float.Parse(paramTable.Attrs[2])/1000f;
+
+
 
         currgoods1 = 0;
         currgoods2 = 0;
@@ -200,7 +217,9 @@ public partial class ToolForm : UIForm
 
 	void CreateToolItems()
 	{
-;       for (int i = 0; i < 20; i++)
+        
+        AttrList level1 = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
+;       for (int i = 0; i < totalResources; i++)
         {
             CreateItemByTable();
         }
