@@ -32,6 +32,7 @@ public struct ToolSetting
     public float speed;
     public float area;
     public float retract;
+    public string soundPath;
 }
 //CreateTime：2023/2/3 20:58:45
 public partial class ToolForm : UIForm
@@ -149,6 +150,7 @@ public partial class ToolForm : UIForm
 						toolSetting.speed = float.Parse(temp.Attrs[3]);
 						toolSetting.area = float.Parse(temp.Attrs[4]);
                         toolSetting.retract = float.Parse(temp.Attrs[5]);
+                        toolSetting.soundPath = temp.Attrs[14];
                         if (toolItemTypeDic[toolItemDic[j * 1000 + i]] == 1)
                         {
                             ToolSettings1.Add(toolSetting);
@@ -202,7 +204,7 @@ public partial class ToolForm : UIForm
         {
             destoryNum--;
             trigger--;
-            Debug.Log(trigger);
+            //Debug.Log(trigger);
             CreateItemByTable();
             createCDTime = 0f;
         }
@@ -268,6 +270,11 @@ public partial class ToolForm : UIForm
         else if(toolItemTypeDic[toolItem.toolItemType] == 3)
         {
             currgoods3--;
+        }
+        if(toolItem.toolSetting.soundPath!="")
+        {
+            Debug.Log(toolItem.toolSetting.soundPath);
+            SoundSystem.Instance.PlayEffect(toolItem.toolSetting.soundPath);
         }
         UISystem.Instance.CloseUIItem(DataCs.Data_UIItemID.key_ToolItem, toolItem);
     }

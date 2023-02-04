@@ -73,7 +73,10 @@ namespace MyGameFrameWork
                     var speed = HookReturnSpeed;
                     if (m_CurTool != null)
                     {
-                        speed *= m_CurTool.GetComponent<ToolItem>().toolSetting.retract;
+                        if(m_CurTool.GetComponent<ToolItem>()!=null)
+                        {
+                            speed *= m_CurTool.GetComponent<ToolItem>().toolSetting.retract;
+                        } 
                     }
                     
                     length -= Time.deltaTime * (speed + m_AddSpped);

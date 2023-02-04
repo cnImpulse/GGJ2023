@@ -159,7 +159,7 @@ namespace MyGameFrameWork
                     }
                 }
             }
-            else
+            else if(GGJDataManager.Instance.functionType == EFunctionType.Refresh)
             {
                 if (GGJDataManager.Instance.Rect != null)
                 {

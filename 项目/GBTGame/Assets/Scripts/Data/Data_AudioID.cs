@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//CreateTime：2023/2/4 19:42:14
+//CreateTime：2023/2/4 23:54:02
 namespace DataCs
 {
 	public struct Data_AudioID_Struct
@@ -43,6 +43,12 @@ namespace DataCs
 			{"Level2",new Data_AudioID_Struct("Level2",1018,"Audio/BGM/Level2")},
 			{"Level3",new Data_AudioID_Struct("Level3",1019,"Audio/BGM/Level3")},
 			{"Main",new Data_AudioID_Struct("Main",1020,"Audio/BGM/Main")},
+			{"Fail",new Data_AudioID_Struct("Fail",1021,"Audio/Effect/Fail")},
+			{"Success",new Data_AudioID_Struct("Success",1022,"Audio/Effect/Success")},
+			{"Warning",new Data_AudioID_Struct("Warning",1023,"Audio/Effect/Warning")},
+			{"Oxygen",new Data_AudioID_Struct("Oxygen",1024,"Audio/Effect/Oxygen")},
+			{"Water",new Data_AudioID_Struct("Water",1025,"Audio/Effect/Water")},
+			{"Fertilizer",new Data_AudioID_Struct("Fertilizer",1026,"Audio/Effect/Fertilizer")},
 		};
 		public static string key_Bright_Beginning = "Bright_Beginning";
 		public static string key_Dark_Journey = "Dark_Journey";
@@ -65,6 +71,12 @@ namespace DataCs
 		public static string key_Level2 = "Level2";
 		public static string key_Level3 = "Level3";
 		public static string key_Main = "Main";
+		public static string key_Fail = "Fail";
+		public static string key_Success = "Success";
+		public static string key_Warning = "Warning";
+		public static string key_Oxygen = "Oxygen";
+		public static string key_Water = "Water";
+		public static string key_Fertilizer = "Fertilizer";
 	}
 }
 
