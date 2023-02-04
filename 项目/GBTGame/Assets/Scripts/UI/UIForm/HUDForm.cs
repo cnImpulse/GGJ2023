@@ -39,6 +39,7 @@ public partial class HUDForm : UIForm
 		m_scrollbarFertilizer.size = GGJDataManager.Instance.Fertilizer / MaxFertilizer;
 		m_scrollbarWater.size = GGJDataManager.Instance.Water / MaxWater;
         FuncFunctionType();
+        FunctionTime();
     }
 
 	private void RegisterEvent()
@@ -112,5 +113,15 @@ public partial class HUDForm : UIForm
                 }
         }
 	}
+
+    public void FunctionTime()
+    {
+        float xiaoshu = GGJDataManager.Instance.currTime - Mathf.Floor(GGJDataManager.Instance.currTime);
+        float zhengshu = (int)GGJDataManager.Instance.currTime;
+
+        m_txtFen.text = zhengshu >= 10 ? zhengshu.ToString() : "0" + zhengshu.ToString();
+        var temp = ((int)(xiaoshu * 100));
+        m_txtSec.text = temp >= 10 ? temp.ToString() : "0" + temp.ToString();
+    }
 }
 

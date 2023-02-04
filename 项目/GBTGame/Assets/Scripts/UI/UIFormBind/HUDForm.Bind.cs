@@ -4,7 +4,7 @@ using UnityEngine;
 using MyGameFrameWork;
 using UnityEngine.UI;
 
-//CreateTime：2023/2/4 11:39:37
+//CreateTime：2023/2/4 15:16:05
 public partial class HUDForm
 {
 	private AutoBind autoBind;
@@ -20,6 +20,8 @@ public partial class HUDForm
 	private Image m_imgFunciStop;
 	private Image m_imgFuncAddSpeed;
 	private Image m_imgFuncPause;
+	private Text m_txtFen;
+	private Text m_txtSec;
 
 	private void InitComponent()
 	{
@@ -36,6 +38,8 @@ public partial class HUDForm
 		m_imgFunciStop = autoBind.itemList[9].obj.GetComponent<Image>();
 		m_imgFuncAddSpeed = autoBind.itemList[10].obj.GetComponent<Image>();
 		m_imgFuncPause = autoBind.itemList[11].obj.GetComponent<Image>();
+		m_txtFen = autoBind.itemList[12].obj.GetComponent<Text>();
+		m_txtSec = autoBind.itemList[13].obj.GetComponent<Text>();
 	}
 }
 

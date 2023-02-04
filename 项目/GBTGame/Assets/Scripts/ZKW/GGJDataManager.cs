@@ -33,6 +33,8 @@ namespace MyGameFrameWork
             Bird = 0;
             DiamondsPig = 0;
             functionType = 0;
+            currTime = 60;
+            level = 1;
         }
 
         public int Oxygen;
@@ -43,5 +45,8 @@ namespace MyGameFrameWork
         public int DiamondsPig;
         public EFunctionType functionType;
         public UnityEngine.RectTransform Rect;
+
+        public float currTime;
+        public int level;
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//CreateTime：2023/2/4 12:51:14
+//CreateTime：2023/2/4 14:55:09
 namespace DataCs
 {
 	public struct Data_UIFormID_Struct
@@ -37,10 +37,11 @@ namespace DataCs
 			{"HandleForm_1",new Data_UIFormID_Struct("HandleForm_1",2001,"GX/HandleForm_1",1)},
 			{"ToolForm_1",new Data_UIFormID_Struct("ToolForm_1",1010,"ZKW/ToolForm_1",3)},
 			{"HUDForm",new Data_UIFormID_Struct("HUDForm",1011,"ZKW/HUDForm",3)},
-			{"ToolForm_2",new Data_UIFormID_Struct("ToolForm_2",1010,"ZKW/ToolForm_2",3)},
-			{"ToolForm_3",new Data_UIFormID_Struct("ToolForm_3",1010,"ZKW/ToolForm_3",3)},
-			{"HandleForm_2",new Data_UIFormID_Struct("HandleForm_2",2001,"GX/HandleForm_2",1)},
-			{"HandleForm_3",new Data_UIFormID_Struct("HandleForm_3",2001,"GX/HandleForm_3",1)},
+			{"ToolForm_2",new Data_UIFormID_Struct("ToolForm_2",1012,"ZKW/ToolForm_2",3)},
+			{"ToolForm_3",new Data_UIFormID_Struct("ToolForm_3",1013,"ZKW/ToolForm_3",3)},
+			{"HandleForm_2",new Data_UIFormID_Struct("HandleForm_2",2002,"GX/HandleForm_2",1)},
+			{"HandleForm_3",new Data_UIFormID_Struct("HandleForm_3",2003,"GX/HandleForm_3",1)},
+			{"GameFailForm",new Data_UIFormID_Struct("GameFailForm",1014,"ZKW/GameFailForm",1)},
 		};
 		public static string key_StartGameForm = "StartGameForm";
 		public static string key_MainForm = "MainForm";
@@ -59,6 +60,7 @@ namespace DataCs
 		public static string key_ToolForm_3 = "ToolForm_3";
 		public static string key_HandleForm_2 = "HandleForm_2";
 		public static string key_HandleForm_3 = "HandleForm_3";
+		public static string key_GameFailForm = "GameFailForm";
 	}
 }
 
