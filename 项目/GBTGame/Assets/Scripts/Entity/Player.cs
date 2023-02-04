@@ -112,6 +112,8 @@ namespace MyGameFrameWork
                 EventManagerSystem.Instance.Invoke2(Data_EventName.CrashTool_str, new CrashToolEventArgs(go));
                 m_CurTool = go;
                 go.transform.SetParent(m_hook.transform);
+
+                m_IsHookReturn = true;
             }
         }
     }
