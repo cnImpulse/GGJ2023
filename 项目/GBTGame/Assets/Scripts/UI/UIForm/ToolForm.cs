@@ -21,6 +21,7 @@ public partial class ToolForm : UIForm
     List<Vector3> posList;
     bool isCreate = false;
 	List<float> itemLists;
+	float iconwidth = 60;
 
 	public override void Awake()
 	{
@@ -73,7 +74,7 @@ public partial class ToolForm : UIForm
 
 	void CreateToolItems()
 	{
-;       for (int i = 0; i < 10; i++)
+;       for (int i = 0; i < 20; i++)
         {
 			CreateToolItem();
         }
@@ -88,7 +89,7 @@ public partial class ToolForm : UIForm
 	{
 		float x = GGJDataManager.Instance.Rect.sizeDelta.x;
         float y = GGJDataManager.Instance.Rect.sizeDelta.y;
-        float width = 100;
+        float width = iconwidth;
 
         var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this) as ToolItem;
 		Vector3 temp2 = Vector3.zero;// new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
@@ -118,7 +119,7 @@ public partial class ToolForm : UIForm
 	{
         float x = GGJDataManager.Instance.Rect.sizeDelta.x;
         float y = GGJDataManager.Instance.Rect.sizeDelta.y;
-        float width = 100;
+        float width = iconwidth;
 
         var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this) as ToolItem;
         var temp2 = new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);

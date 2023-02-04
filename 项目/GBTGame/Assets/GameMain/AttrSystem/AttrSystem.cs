@@ -13,6 +13,7 @@ namespace MyGameFrameWork
             list4 = new List<AttrModel4<string, string, string, string>>(AttrSystemModel.table_init_length);
             list5 = new List<AttrModel5<string, string, string, string, string>>(AttrSystemModel.table_init_length);
             list6 = new List<AttrModel6<string, string, string, string, string, string>>(AttrSystemModel.table_init_length);
+            lists = new List<AttrModelList>(AttrSystemModel.table_init_length);
             table_attr_num = new Dictionary<string, int>(AttrSystemModel.table_init_length);
             table_attr_index = new Dictionary<string, int>(AttrSystemModel.table_init_length);
         }
@@ -31,6 +32,7 @@ namespace MyGameFrameWork
         List<AttrModel4<string, string, string, string>> list4;
         List<AttrModel5<string, string, string, string, string>> list5;
         List<AttrModel6<string, string, string, string, string, string>> list6;
+        List<AttrModelList> lists;
 
         /// <summary>
         /// 加载Json文件
@@ -75,7 +77,7 @@ namespace MyGameFrameWork
                         }
                     default:
                         {
-                            return null;
+                            return lists[table_attr_index[table_name]].FindMain(main_id);
                         }
                 }
             }
@@ -167,6 +169,13 @@ namespace MyGameFrameWork
             table_attr_index.Add(name, list6.Count);
             list6.Add(attr6);
             //Debug.Log(attr6);
+        }
+
+        public void SetData(string name,AttrModelList list)
+        {
+            table_attr_num.Add(name, list.AttrModels.Count);
+            table_attr_index.Add(name, lists.Count);
+            lists.Add(list);
         }
     }
 }

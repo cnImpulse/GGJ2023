@@ -38,6 +38,7 @@ namespace MyGameFrameWork
         public void SetGoOn(bool flag)
         {
             isgoon = flag;
+            //EventManagerSystem.Instance.Add("时钟",)
         }
         /// <summary>
         /// 时钟计时器

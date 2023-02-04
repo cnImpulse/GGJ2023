@@ -570,6 +570,7 @@ namespace MyGameFrameWork
 
         public AttrModelList(string name,int listNum)
         {
+            AttrModels = new List<List<string>>();
             table_name = name;
             for(int i=0;i< listNum;i++)
             {
@@ -596,30 +597,20 @@ namespace MyGameFrameWork
             }
             return null;
         }
-        /// <summary>
-        /// 添加值
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <param name="c"></param>
-        /// <param name="d"></param>
-        /// <param name="e"></param>
-        /// <param name="f"></param>
         public void Add(List<string> list)
         {
             if (list.Count==0)
             {
                 return;
             }
-            if (!main_id_index_dic.ContainsKey(list[0]))
+            if (list[0] != ""&&!main_id_index_dic.ContainsKey(list[0]))
             {
-                main_id_index_dic.Add(list[0], list.Count);
-                for(int i=0;i< AttrModels.Count;i++)
+                
+
+                main_id_index_dic.Add(list[0], AttrModels[0].Count);
+                for(int i=0;i< list.Count;i++)
                 {
-                    for(int j=0;j< list.Count;j++)
-                    {
-                        AttrModels[i].Add(list[j]);
-                    }
+                    AttrModels[i].Add(list[i]);
                 }
                 for (int j = 0; j < list.Count; j++)
                 {
@@ -628,7 +619,7 @@ namespace MyGameFrameWork
                 }
                 sb.Append("\n");
             }
-            else
+            else if(list[0]!="")
             {
                 Debug.Log(list[0] + "主键重复");
             }

@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 123123123123123123
+  m_Text: 1
 --- !u!1 &6451818785183890034
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8334357138708604525
 CanvasRenderer:
@@ -189,6 +189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
+  isMove: 0
+  toolItemType: 0
+  toolFuncitonType: 0
 --- !u!61 &5053215518904025564
 BoxCollider2D:
   m_ObjectHideFlags: 0
