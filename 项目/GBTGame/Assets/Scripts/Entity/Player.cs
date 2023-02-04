@@ -8,6 +8,7 @@ namespace MyGameFrameWork
 {
     public class Player : MonoBehaviour
     {
+        public RectTransform HookRect;
         public Player Other;
         public GameObject m_hook;
         public RectTransform m_rect_qianzi, m_rect_arrow;
@@ -60,7 +61,7 @@ namespace MyGameFrameWork
             m_rect_arrow.gameObject.SetActive(!m_IsHandleMoving);
             if (m_IsHandleMoving)
             {
-                if ((Input.GetKeyDown(KeyCode) && !Stop) || !Camera.main.pixelRect.Contains(m_hook.transform.position)) 
+                if ((Input.GetKeyDown(KeyCode) && !Stop) || !HookRect.rect.Contains((m_hook.transform.position))) 
                 {
                     m_IsHookReturn = true;
                 }
@@ -75,7 +76,7 @@ namespace MyGameFrameWork
                 {
                     length += Time.deltaTime * (HookMoveSpeed + m_AddSpped);
                 }
-
+                
                 if (length < 0)
                 {
                     length = 0;
