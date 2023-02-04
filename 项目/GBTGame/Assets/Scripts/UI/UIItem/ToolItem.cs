@@ -31,8 +31,7 @@ public partial class ToolItem : UIItem
 
 	public ToolSetting toolSetting;
 
-	public Dictionary<int, EToolItemType> toolItemDic;
-    public Dictionary<int, EFunctionType> functionItemDic;
+	
     public override void Awake()
 	{
 		base.Awake();
@@ -44,37 +43,7 @@ public partial class ToolItem : UIItem
 		base.OnOpen(obj);
 		RegisterEvent();
 
-		toolItemDic = new Dictionary<int, EToolItemType>();
-		functionItemDic = new Dictionary<int, EFunctionType>();
-
-        toolItemDic.Add(1001, EToolItemType.Oxygen);
-        toolItemDic.Add(1002, EToolItemType.Oxygen);
-        toolItemDic.Add(1003, EToolItemType.Water);
-        toolItemDic.Add(1004, EToolItemType.Water);
-        toolItemDic.Add(1005, EToolItemType.Fertilizer);
-        toolItemDic.Add(1006, EToolItemType.Fertilizer);
-
-        toolItemDic.Add(2001, EToolItemType.GinsengPeople);
-        toolItemDic.Add(2002, EToolItemType.Frog);
-        toolItemDic.Add(2003, EToolItemType.Meteor);
-        toolItemDic.Add(2004, EToolItemType.DiamondsPig);
-        toolItemDic.Add(2005, EToolItemType.DiamondsPig);
-        toolItemDic.Add(2006, EToolItemType.Bird);
-        toolItemDic.Add(2007, EToolItemType.Diamonds);
-        toolItemDic.Add(2008, EToolItemType.Mushroom);
-        toolItemDic.Add(2009, EToolItemType.Coconut);
-
-        toolItemDic.Add(3001, EToolItemType.Function);
-        toolItemDic.Add(3002, EToolItemType.Function);
-        toolItemDic.Add(3003, EToolItemType.Function);
-        toolItemDic.Add(3004, EToolItemType.Function);
-        toolItemDic.Add(3005, EToolItemType.Function);
-
-        functionItemDic.Add(3001, EFunctionType.Boomer);
-        functionItemDic.Add(3002, EFunctionType.AddSpeed);
-        functionItemDic.Add(3003, EFunctionType.Pause);
-        functionItemDic.Add(3004, EFunctionType.Stop);
-        functionItemDic.Add(3005, EFunctionType.Refresh);
+		
 
         parent = uiForm as ToolForm;
         this.GetComponent<RectTransform>().SetParent(GGJDataManager.Instance.Rect);
@@ -169,11 +138,11 @@ public partial class ToolItem : UIItem
 			Move(rectTransform.localPosition.x - toolSetting.area / 2, rectTransform.localPosition.x + toolSetting.area / 2, toolSetting.speed);
         }
         SetToolItemType((EToolItemType)toolSetting.effectType, toolSetting.effectNum);
-        toolItemType = toolItemDic[toolSetting.mainId];
+        toolItemType = parent.toolItemDic[toolSetting.mainId];
 		m_txtDes.text = toolSetting.mainId.ToString();
 		if(toolItemType==EToolItemType.Function)
 		{
-			toolFuncitonType = functionItemDic[toolSetting.mainId];
+			toolFuncitonType = parent.functionItemDic[toolSetting.mainId];
 			GGJDataManager.Instance.functionType = toolFuncitonType;
         }
     }

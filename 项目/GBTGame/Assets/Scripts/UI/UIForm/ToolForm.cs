@@ -41,7 +41,9 @@ public partial class ToolForm : UIForm
 	float iconwidth = 60;
 
 	int level;
-	List<ToolSetting> ToolSettings;
+	List<ToolSetting> ToolSettings1;
+    List<ToolSetting> ToolSettings2;
+    List<ToolSetting> ToolSettings3;
 
     int totalResources;
     int trigger;
@@ -53,7 +55,9 @@ public partial class ToolForm : UIForm
     int currgoods2;
     int currgoods3;
 
-    public Dictionary<EToolItemType, int> toolItemDic;
+    public Dictionary<EToolItemType, int> toolItemTypeDic;
+    public Dictionary<int, EToolItemType> toolItemDic;
+    public Dictionary<int, EFunctionType> functionItemDic;
 
     public override void Awake()
 	{
@@ -66,24 +70,60 @@ public partial class ToolForm : UIForm
 		base.OnOpen(obj);
 		RegisterEvent();
 
-        toolItemDic.Add(EToolItemType.Oxygen,1);
-        toolItemDic.Add(EToolItemType.Water,1);
-        toolItemDic.Add(EToolItemType.Fertilizer,1);
+        toolItemDic = new Dictionary<int, EToolItemType>();
+        functionItemDic = new Dictionary<int, EFunctionType>();
 
-        toolItemDic.Add(EToolItemType.GinsengPeople,2);
-        toolItemDic.Add(EToolItemType.Frog,2);
-        toolItemDic.Add(EToolItemType.Meteor,2);
-        toolItemDic.Add(EToolItemType.DiamondsPig,2);
-        toolItemDic.Add(EToolItemType.Bird,2);
-        toolItemDic.Add(EToolItemType.Diamonds,2);
-        toolItemDic.Add(EToolItemType.Mushroom,2);
-        toolItemDic.Add(EToolItemType.Coconut,2);
+        toolItemTypeDic.Add(EToolItemType.Oxygen,1);
+        toolItemTypeDic.Add(EToolItemType.Water,1);
+        toolItemTypeDic.Add(EToolItemType.Fertilizer,1);
 
-        toolItemDic.Add(EToolItemType.Function,3);
+        toolItemTypeDic.Add(EToolItemType.GinsengPeople,2);
+        toolItemTypeDic.Add(EToolItemType.Frog,2);
+        toolItemTypeDic.Add(EToolItemType.Meteor,2);
+        toolItemTypeDic.Add(EToolItemType.DiamondsPig,2);
+        toolItemTypeDic.Add(EToolItemType.Bird,2);
+        toolItemTypeDic.Add(EToolItemType.Diamonds,2);
+        toolItemTypeDic.Add(EToolItemType.Mushroom,2);
+        toolItemTypeDic.Add(EToolItemType.Coconut,2);
+
+        toolItemTypeDic.Add(EToolItemType.Function,3);
+
+        
+
+        toolItemDic.Add(1001, EToolItemType.Oxygen);
+        toolItemDic.Add(1002, EToolItemType.Oxygen);
+        toolItemDic.Add(1003, EToolItemType.Water);
+        toolItemDic.Add(1004, EToolItemType.Water);
+        toolItemDic.Add(1005, EToolItemType.Fertilizer);
+        toolItemDic.Add(1006, EToolItemType.Fertilizer);
+
+        toolItemDic.Add(2001, EToolItemType.GinsengPeople);
+        toolItemDic.Add(2002, EToolItemType.Frog);
+        toolItemDic.Add(2003, EToolItemType.Meteor);
+        toolItemDic.Add(2004, EToolItemType.DiamondsPig);
+        toolItemDic.Add(2005, EToolItemType.DiamondsPig);
+        toolItemDic.Add(2006, EToolItemType.Bird);
+        toolItemDic.Add(2007, EToolItemType.Diamonds);
+        toolItemDic.Add(2008, EToolItemType.Mushroom);
+        toolItemDic.Add(2009, EToolItemType.Coconut);
+
+        toolItemDic.Add(3001, EToolItemType.Function);
+        toolItemDic.Add(3002, EToolItemType.Function);
+        toolItemDic.Add(3003, EToolItemType.Function);
+        toolItemDic.Add(3004, EToolItemType.Function);
+        toolItemDic.Add(3005, EToolItemType.Function);
+
+        functionItemDic.Add(3001, EFunctionType.Boomer);
+        functionItemDic.Add(3002, EFunctionType.AddSpeed);
+        functionItemDic.Add(3003, EFunctionType.Pause);
+        functionItemDic.Add(3004, EFunctionType.Stop);
+        functionItemDic.Add(3005, EFunctionType.Refresh);
 
         level = 1;
         posList = new List<Vector3>();
-		ToolSettings = new List<ToolSetting>();
+		ToolSettings1 = new List<ToolSetting>();
+        ToolSettings2= new List<ToolSetting>();
+        ToolSettings3 = new List<ToolSetting>();
 
         for (int j = 1; j < 4; j++)
         {
@@ -103,7 +143,18 @@ public partial class ToolForm : UIForm
 						toolSetting.speed = float.Parse(temp.Attrs[3]);
 						toolSetting.area = float.Parse(temp.Attrs[4]);
                         toolSetting.retract = float.Parse(temp.Attrs[5]);
-                        ToolSettings.Add(toolSetting);
+                        if (toolItemTypeDic[toolItemDic[j * 1000 + i]] == 1)
+                        {
+                            ToolSettings1.Add(toolSetting);
+                        }
+                        else if (toolItemTypeDic[toolItemDic[j * 1000 + i]] == 2)
+                        {
+                            ToolSettings2.Add(toolSetting);
+                        }
+                        else if (toolItemTypeDic[toolItemDic[j * 1000 + i]] == 3)
+                        {
+                            ToolSettings3.Add(toolSetting);
+                        }
                     }
                 }
             }
@@ -242,28 +293,92 @@ public partial class ToolForm : UIForm
 
 	void CreateItemByTable()
 	{
-		float sum = 0;
-		for(int i=0;i< ToolSettings.Count;i++)
-		{
-			sum += ToolSettings[i].weight;
-
+        float sum = 0;
+        float subsum = 0;
+        int index = 0;
+        bool isOk = false;
+        ToolSetting settings = ToolSettings1[0];
+        
+        
+        if (currgoods1<goodsMax1)
+        {
+            for (int i = 0; i < ToolSettings1.Count; i++)
+            {
+                sum += ToolSettings1[i].weight;
+            }
+        }
+        else if(currgoods2 >= goodsMax2)
+        {
+            for (int i = 0; i < ToolSettings2.Count; i++)
+            {
+                sum += ToolSettings2[i].weight;
+            }
+        }
+        else if(currgoods3 >= goodsMax3)
+        {
+            for (int i = 0; i < ToolSettings3.Count; i++)
+            {
+                sum += ToolSettings3[i].weight;
+            }
         }
 
-		float subsum = 0;
-		int index = 0;
-
-		float random = Random.Range(0, sum);
-        for (int i = 0; i < ToolSettings.Count; i++)
+        if(sum==0)
         {
-            subsum += ToolSettings[i].weight;
-			if(random>subsum)
-			{
-                index++;
+            return;
+        }
+
+        float random = Random.Range(0, sum);
+
+        if (currgoods1 < goodsMax1)
+        {
+            for (int i = 0; i < ToolSettings1.Count; i++)
+            {
+                subsum += ToolSettings1[i].weight;
+                if (random > subsum)
+                {
+                    index++;
+                }
+                else
+                {
+                    settings = ToolSettings1[i];
+                    isOk = true;
+                    break;
+                }
             }
-			else
-			{
-				break;
-			}
+        }
+        else if (!isOk&&currgoods2 >= goodsMax2)
+        {
+            for (int i = 0; i < ToolSettings2.Count; i++)
+            {
+                subsum += ToolSettings2[i].weight;
+                if (random > subsum)
+                {
+                    index++;
+                }
+                else
+                {
+                    settings = ToolSettings2[i];
+                    isOk = true;
+                    break;
+                }
+            }
+        }
+        else if (!isOk && currgoods3 >= goodsMax3)
+        {
+            for (int i = 0; i < ToolSettings3.Count; i++)
+            {
+                subsum += ToolSettings3[i].weight;
+                if (random > subsum)
+                {
+                    index++;
+                }
+                else
+                {
+                    settings = ToolSettings3[i];
+                    isOk = true;
+                    break;
+                }
+            }
         }
 
         float x = GGJDataManager.Instance.Rect.sizeDelta.x;
@@ -292,8 +407,20 @@ public partial class ToolForm : UIForm
         }
         temp.SetLocation(temp2);
         posList.Add(temp2);
-        temp.SetToolItemSetting(ToolSettings[index]);
-        //if()
+        temp.SetToolItemSetting(settings);
+
+        if (toolItemTypeDic[temp.toolItemType] == 1)
+        {
+            currgoods1++;
+        }
+        else if(toolItemTypeDic[temp.toolItemType] == 2)
+        {
+            currgoods2++;
+        }
+        else if (toolItemTypeDic[temp.toolItemType] == 3)
+        {
+            currgoods3++;
+        }
     }
 }
 
