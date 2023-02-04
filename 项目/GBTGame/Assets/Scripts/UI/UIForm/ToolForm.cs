@@ -220,8 +220,12 @@ public partial class ToolForm : UIForm
 			}
 
         }
-
-		UISystem.Instance.CloseUIItem(DataCs.Data_UIItemID.key_ToolItem, toolItem);
+        if(toolItem.toolItemType==EToolItemType.Function)
+        {
+            GGJDataManager.Instance.functionType = toolItem.toolFuncitonType;
+        }
+        
+        UISystem.Instance.CloseUIItem(DataCs.Data_UIItemID.key_ToolItem, toolItem);
     }
 
     private void OnCrashItem(IEventArgs eventArgs)//删除item;
@@ -248,12 +252,8 @@ public partial class ToolForm : UIForm
         bool isOk = false;
         ToolSetting settings = ToolSettings1[0];
 
-        Debug.Log(goodsMax1);
-        Debug.Log(goodsMax1);
-        Debug.Log(goodsMax1);
         if (currgoods1<goodsMax1)
         {
-            Debug.Log("goodsMax1");
             for (int i = 0; i < ToolSettings1.Count; i++)
             {
                 sum += ToolSettings1[i].weight;
@@ -261,7 +261,6 @@ public partial class ToolForm : UIForm
         }
         if(currgoods2 < goodsMax2)
         {
-            Debug.Log("goodsMax2");
             for (int i = 0; i < ToolSettings2.Count; i++)
             {
                 sum += ToolSettings2[i].weight;
@@ -269,7 +268,6 @@ public partial class ToolForm : UIForm
         }
         if(currgoods3 < goodsMax3)
         {
-            Debug.Log("goodsMax3");
             for (int i = 0; i < ToolSettings3.Count; i++)
             {
                 sum += ToolSettings3[i].weight;
