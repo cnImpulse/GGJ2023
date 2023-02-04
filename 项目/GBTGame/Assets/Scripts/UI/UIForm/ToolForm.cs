@@ -276,7 +276,10 @@ public partial class ToolForm : UIForm
     {
         CrashToolEventArgs crashToolEventArgs = eventArgs as CrashToolEventArgs;
 		var temp = crashToolEventArgs.obj.GetComponent<ToolItem>();
-        temp.isMove = false;
+        if(temp)
+        {
+            temp.isMove = false;
+        }
     }
 
     bool isArea(float width,Vector3 a,Vector3 b)
