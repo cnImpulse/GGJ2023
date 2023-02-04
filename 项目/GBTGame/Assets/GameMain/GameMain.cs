@@ -31,6 +31,13 @@ namespace MyGameFrameWork
         }
         void Start()
         {
+            JsonSystem.Instance.ReadAllJsonToAttr();
+            Attr4<string, string, string, string> temp =  AttrSystem.Instance.GetData("JsonExample","0") as Attr4<string, string, string, string>;
+            Attr4<string, string, string, string> temp2 = AttrSystem.Instance.GetData("JsonExample", "1") as Attr4<string, string, string, string>;
+            Debug.Log(temp);
+            Debug.Log(temp2);
+
+
             Debug.Log("GameMainStart");
 
             StateInit();//状态初始化
