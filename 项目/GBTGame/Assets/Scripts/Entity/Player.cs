@@ -93,7 +93,7 @@ namespace MyGameFrameWork
 
                     if (m_CurTool != null)
                     {
-                        EventManagerSystem.Instance.Invoke2(Data_EventName.DestoryTool_str, new DestoryToolEventArgs(m_CurTool));
+                        EventManagerSystem.Instance.Invoke2(Data_EventName.DestoryTool_str, new DestoryToolEventArgs(m_CurTool, this.name == "player1"));
                     }
 
                     m_CurTool = null;
