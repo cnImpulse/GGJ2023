@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3870776010762335635}
   - component: {fileID: 1448373307986887071}
   m_Layer: 5
-  m_Name: ToolForm
+  m_Name: ToolForm_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

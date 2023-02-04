@@ -13,6 +13,10 @@ HelperForm,1006,ZKW/HelperForm,1
 AllGameStartForm,1007,ZKW/AllGameStartForm,1
 AllGameOverForm,1008,ZKW/AllGameOverForm,1
 TestPanel,1009,ZKW/TestPanel/TestPanel,1
-HandleForm,2001,GX/HandleForm,1
-ToolForm,1010,ZKW/ToolForm,3
+HandleForm_1,2001,GX/HandleForm_1,1
+ToolForm_1,1010,ZKW/ToolForm_1,3
 HUDForm,1011,ZKW/HUDForm,3
+ToolForm_2,1010,ZKW/ToolForm_2,3
+ToolForm_3,1010,ZKW/ToolForm_3,3
+HandleForm_2,2001,GX/HandleForm_2,1
+HandleForm_3,2001,GX/HandleForm_3,1
