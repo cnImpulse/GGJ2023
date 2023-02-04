@@ -174,7 +174,7 @@ public partial class ToolItem : UIItem
 		if(toolItemType==EToolItemType.Function)
 		{
 			toolFuncitonType = functionItemDic[toolSetting.mainId];
-
+			GGJDataManager.Instance.functionType = toolFuncitonType;
         }
     }
 

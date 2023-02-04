@@ -43,7 +43,17 @@ public partial class ToolForm : UIForm
 	int level;
 	List<ToolSetting> ToolSettings;
 
+    int totalResources;
+    int trigger;
+    int goodsMax1;
+    int goodsMax2;
+    int goodsMax3;
 
+    int currgoods1;
+    int currgoods2;
+    int currgoods3;
+
+    public Dictionary<EToolItemType, int> toolItemDic;
 
     public override void Awake()
 	{
@@ -55,9 +65,23 @@ public partial class ToolForm : UIForm
 	{
 		base.OnOpen(obj);
 		RegisterEvent();
-		/*GGJDataManager.Instance.Rect.localPosition = GGJDataManager.Instance.Rect.localPosition;
-		GGJDataManager.Instance.Rect.sizeDelta = GGJDataManager.Instance.Rect.sizeDelta;*/
-		level = 1;
+
+        toolItemDic.Add(EToolItemType.Oxygen,1);
+        toolItemDic.Add(EToolItemType.Water,1);
+        toolItemDic.Add(EToolItemType.Fertilizer,1);
+
+        toolItemDic.Add(EToolItemType.GinsengPeople,2);
+        toolItemDic.Add(EToolItemType.Frog,2);
+        toolItemDic.Add(EToolItemType.Meteor,2);
+        toolItemDic.Add(EToolItemType.DiamondsPig,2);
+        toolItemDic.Add(EToolItemType.Bird,2);
+        toolItemDic.Add(EToolItemType.Diamonds,2);
+        toolItemDic.Add(EToolItemType.Mushroom,2);
+        toolItemDic.Add(EToolItemType.Coconut,2);
+
+        toolItemDic.Add(EToolItemType.Function,3);
+
+        level = 1;
         posList = new List<Vector3>();
 		ToolSettings = new List<ToolSetting>();
 
@@ -84,6 +108,17 @@ public partial class ToolForm : UIForm
                 }
             }
         }
+
+        AttrList level1 = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
+        totalResources = int.Parse(level1.Attrs[4]);
+        trigger = int.Parse(level1.Attrs[5]);
+        goodsMax1 = int.Parse(level1.Attrs[6]);
+        goodsMax2 = int.Parse(level1.Attrs[7]);
+        goodsMax3 = int.Parse(level1.Attrs[8]);
+
+        currgoods1 = 0;
+        currgoods2 = 0;
+        currgoods3 = 0;
 
         CreateToolItems();
     }
@@ -258,6 +293,7 @@ public partial class ToolForm : UIForm
         temp.SetLocation(temp2);
         posList.Add(temp2);
         temp.SetToolItemSetting(ToolSettings[index]);
+        //if()
     }
 }
 
