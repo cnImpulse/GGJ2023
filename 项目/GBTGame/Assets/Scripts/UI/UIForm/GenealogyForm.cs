@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public partial class GenealogyForm : UIForm
 {
 	public GameObject Story, Item;
-	private List<int> m_EndList = new List<int>();
+	private List<int> m_EndList = new List<int>() { 2001, 2003, 2003, 2006};
+	private List<string> m_NameList = new List<string>() { "苏格拉底", "苏格拉底二世", "苏格拉底三世", "苏格拉底四世", };
 
     public override void Awake()
 	{
@@ -57,7 +58,16 @@ public partial class GenealogyForm : UIForm
 				cg.gameObject.SetActive(false);
 			}
 
-			item.transform.Find("name/name/m_txtName").GetComponent<Text>().text = PlayerPrefs.GetString(id.ToString() + "name");
+			string name;
+			if (i <= 3)
+            {
+				name = m_NameList[i];
+            }
+            else
+            {
+				name = PlayerPrefs.GetString(id.ToString() + "name");
+			}
+			item.transform.Find("name/name/m_txtName").GetComponent<Text>().text = name;
 			var img = item.transform.Find("name/name/m_imgBg").GetComponent<Image>();
 			img.sprite = Resources.Load<Sprite>(path);
 
