@@ -66,7 +66,17 @@ public partial class GenealogyForm : UIForm
 		}
 	}
 
-	public override void OnClose()
+    public override void Update()
+    {
+        base.Update();
+
+		if (Input.GetKeyDown(KeyCode.Escape))
+        {
+			OnDestory();
+        }
+    }
+
+    public override void OnClose()
 	{
 		base.OnClose();
 		ReleaseEvent(); 
