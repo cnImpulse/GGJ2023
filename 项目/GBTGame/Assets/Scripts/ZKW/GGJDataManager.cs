@@ -41,7 +41,7 @@ namespace MyGameFrameWork
             GameSucceedMap = new Dictionary<int, string>();
             for(int i=0;i<10;++i)
             {
-                GameSucceedMap.Add(2000+i, "UI/GameOver/game_seccess_bg_0" + i.ToString());
+                GameSucceedMap.Add(2000+i, "UI/tujianicon/game_seccess_bg_0" + i.ToString());
             }
             GameSucceedItemValMap = new Dictionary<int, int>();
             for (int i = 0; i < 10; ++i)
@@ -51,7 +51,7 @@ namespace MyGameFrameWork
             GameSucceedIcoMap = new Dictionary<int, string>();
             for (int i = 0; i < 10; ++i)
             {
-                GameSucceedIcoMap.Add(2000 + i, "UI/GameOver/game_success_ico_0" + i.ToString());
+                GameSucceedIcoMap.Add(2000 + i, "UI/tujianicon/game_success_ico_0" + i.ToString());
             }
 
             ToolItemValMap[EToolItemType.Oxygen] = 50;

@@ -111,6 +111,7 @@ public partial class HUDForm : UIForm
 
         GGJDataManager.Instance.isPause = true;
         m_txtCutDown.gameObject.SetActive(true);
+        FunctionLevelUI();
     }
 
 	public override void OnClose()
@@ -129,6 +130,7 @@ public partial class HUDForm : UIForm
         m_rectLevelDes.GetComponent<TMPro.TextMeshProUGUI>().text = GGJDataManager.Instance.level.ToString();
         FuncFunctionType();
         FunctionTime();
+        FunctionLevelUI();
 
         if (GGJDataManager.Instance.isPause)
         {
@@ -209,7 +211,30 @@ public partial class HUDForm : UIForm
 		
 	}
 
-	public void FuncFunctionType()
+    public void FunctionLevelUI()
+    {
+        if(GGJDataManager.Instance.level==1)
+        {
+            m_imgLevel1.gameObject.SetActive(true);
+            m_imgLevel2.gameObject.SetActive(false);
+            m_imgLevel3.gameObject.SetActive(false);
+        }
+        else if(GGJDataManager.Instance.level==2)
+        {
+            m_imgLevel1.gameObject.SetActive(false);
+            m_imgLevel2.gameObject.SetActive(true);
+            m_imgLevel3.gameObject.SetActive(false);
+        }
+        else
+        {
+            m_imgLevel1.gameObject.SetActive(false);
+            m_imgLevel2.gameObject.SetActive(false);
+            m_imgLevel3.gameObject.SetActive(true);
+        }
+    }
+
+
+    public void FuncFunctionType()
 	{
 		switch(GGJDataManager.Instance.functionType)
 		{
@@ -220,7 +245,9 @@ public partial class HUDForm : UIForm
                     m_imgFuncimg.gameObject.SetActive(true);
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(false);
+                    m_imgFuncRefresh.gameObject.SetActive(false);
                     m_txtFuncDes.text = "无";
+                    m_txtToolName.text = "无道具";
                     break;
 				}
             case EFunctionType.Boomer:
@@ -230,7 +257,9 @@ public partial class HUDForm : UIForm
                     m_imgFuncimg.gameObject.SetActive(false);
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(false);
-                    m_txtFuncDes.text = "Boomer";
+                    m_imgFuncRefresh.gameObject.SetActive(false);
+                    m_txtFuncDes.text = "炸掉爪子上的东西";
+                    m_txtToolName.text = "炸弹";
                     break;
                 }
             case EFunctionType.Stop:
@@ -240,7 +269,9 @@ public partial class HUDForm : UIForm
                     m_imgFuncimg.gameObject.SetActive(false);
                     m_imgFunciStop.gameObject.SetActive(true);
                     m_imgFuncPause.gameObject.SetActive(false);
-                    m_txtFuncDes.text = "Stop";
+                    m_imgFuncRefresh.gameObject.SetActive(false);
+                    m_txtFuncDes.text = "痛击我方队友";
+                    m_txtToolName.text = "击晕队友";
                     break;
                 }
             case EFunctionType.AddSpeed:
@@ -250,7 +281,9 @@ public partial class HUDForm : UIForm
                     m_imgFuncimg.gameObject.SetActive(false);
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(false);
-                    m_txtFuncDes.text = "AddSpeed";
+                    m_imgFuncRefresh.gameObject.SetActive(false);
+                    m_txtFuncDes.text = "令爪子速度增加";
+                    m_txtToolName.text = "加速";
                     break;
                 }
             case EFunctionType.Pause:
@@ -260,9 +293,23 @@ public partial class HUDForm : UIForm
                     m_imgFuncimg.gameObject.SetActive(false);
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(true);
-                    m_txtFuncDes.text = "Pause";
+                    m_imgFuncRefresh.gameObject.SetActive(false);
+                    m_txtFuncDes.text = "暂停";
+                    m_txtToolName.text = "令移动的东西停下来";
                     break;
                 }
+            case EFunctionType.Refresh:
+            {
+                    m_imgFuncAddSpeed.gameObject.SetActive(false);
+                    m_imgFuncBoom.gameObject.SetActive(false);
+                    m_imgFuncimg.gameObject.SetActive(false);
+                    m_imgFunciStop.gameObject.SetActive(false);
+                    m_imgFuncPause.gameObject.SetActive(false);
+                    m_imgFuncRefresh.gameObject.SetActive(true);
+                    m_txtFuncDes.text = "清空场地";
+                    m_txtToolName.text = "清空全场，令资源重置";
+                    break;
+            }
         }
 	}
 
@@ -284,10 +331,13 @@ public partial class HUDForm : UIForm
     public void SetLimImg()
     {
 
-        m_imgOxyLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 140 * LimOxygen / 100f, 0, 0);
-        m_imgWaterLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 140 * LimMaxWater / 100f, 0, 0);
-        m_imgFerLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 140 * LimMaxFertilizer / 100f, 0, 0);
-        
+        m_imgOxyLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 240 * LimOxygen / 100f, 0, 0);
+        m_imgWaterLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 240 * LimMaxWater / 100f, 0, 0);
+        m_imgFerLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 240 * LimMaxFertilizer / 100f, 0, 0);
+
+        m_imgOxyRed.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2((140 - (-100 + 240 * LimOxygen / 100f)), 12);
+        m_imgWaterRed.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2((140 - (-100 + 240 * LimMaxWater / 100f)), 12);
+        m_imgFerRed.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2((140 - (-100 + 240 * LimMaxFertilizer / 100f)), 12);
     }
 
     void FuncTime()
