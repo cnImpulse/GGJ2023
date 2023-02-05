@@ -9,6 +9,8 @@ using DataCs;
 public partial class GameSuccess : UIForm
 {
 	public string name;
+	private int m_curIndex = 0;
+
 	public override void Awake()
 	{
 		base.Awake();
@@ -20,15 +22,18 @@ public partial class GameSuccess : UIForm
 		base.OnOpen(obj);
 		RegisterEvent();
 
-		int curIndex = 0;
+		m_curIndex = 0;
 		if (PlayerPrefs.HasKey("curIndex"))
         {
-			curIndex = PlayerPrefs.GetInt("curIndex");
-			curIndex++;
+			m_curIndex = PlayerPrefs.GetInt("curIndex");
+			m_curIndex++;
 		}
 
-		PlayerPrefs.SetInt(curIndex.ToString(), GGJDataManager.Instance.SucceedId);
-		PlayerPrefs.SetInt("curIndex", curIndex);
+		PlayerPrefs.SetInt(m_curIndex.ToString(), GGJDataManager.Instance.SucceedId);
+		PlayerPrefs.SetInt("curIndex", m_curIndex);
+
+		var p = "UI/cg/game_seccess_bg_0" + (GGJDataManager.Instance.SucceedId - 2000).ToString();
+		//cg.sprite = Resources.Load<Sprite>(p);
 	}
 
 	public override void Update()
@@ -38,8 +43,9 @@ public partial class GameSuccess : UIForm
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
 			name = m_inputLable.text;
-            
-            OnDestory();
+			PlayerPrefs.SetString(m_curIndex.ToString() + "name", name);
+
+			OnDestory();
 		}
 	}
 
@@ -60,7 +66,5 @@ public partial class GameSuccess : UIForm
 	{
 		
 	}
-
-
 }
 

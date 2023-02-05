@@ -29,7 +29,6 @@ public partial class GenealogyForm : UIForm
             {
 				m_EndList.Add(PlayerPrefs.GetInt(curIndex.ToString()));
 			}
-
 		}
         else
         {
@@ -58,7 +57,8 @@ public partial class GenealogyForm : UIForm
             {
 				cg.gameObject.SetActive(false);
 			}
-			item.transform.Find("name/name/m_txtName").GetComponent<Text>().text = "树";
+
+			item.transform.Find("name/name/m_txtName").GetComponent<Text>().text = PlayerPrefs.GetString(id.ToString() + "name");
 			var img = item.transform.Find("name/name/m_imgBg").GetComponent<Image>();
 			img.sprite = Resources.Load<Sprite>(path);
 
