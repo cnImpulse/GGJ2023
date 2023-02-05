@@ -21,7 +21,6 @@ public partial class GenealogyForm : UIForm
 		base.OnOpen(obj);
 		RegisterEvent();
 
-		m_EndList.Clear();
 		if (PlayerPrefs.HasKey("curIndex"))
 		{
 			var curIndex = PlayerPrefs.GetInt("curIndex");
