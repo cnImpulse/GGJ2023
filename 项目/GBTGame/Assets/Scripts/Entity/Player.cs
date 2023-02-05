@@ -129,7 +129,7 @@ namespace MyGameFrameWork
                 else if (GGJDataManager.Instance.functionType == EFunctionType.AddSpeed)
                 {
                     m_CountDown = 5;
-                    m_AddSpped = 100;
+                    m_AddSpped = 300;
                 }
                 else if (GGJDataManager.Instance.functionType == EFunctionType.Stop)
                 {

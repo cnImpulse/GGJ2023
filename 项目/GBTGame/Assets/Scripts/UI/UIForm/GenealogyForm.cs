@@ -37,6 +37,7 @@ public partial class GenealogyForm : UIForm
         }
 
 		GameObject story = null;
+		HashSet<int> set = new HashSet<int>();
 		for (int i = 0; i < m_EndList.Count; ++i)
 		{
 			if (i % 3 == 1 || i == 0)
@@ -46,13 +47,22 @@ public partial class GenealogyForm : UIForm
 
 			var id = m_EndList[i];
 			var item = Instantiate(Item, story.transform);
-			if (true)
+			var path = GGJDataManager.Instance.GameSucceedIcoMap[id];
+			var cg = item.transform.Find("m_cgBg").GetComponent<Image>();
+			if (!set.Contains(id))
 			{
-				var path = GGJDataManager.Instance.GameSucceedIcoMap[id];
-				var img = item.transform.Find("nameBg/name/m_imgBg").GetComponent<Image>();
-				img.sprite = Resources.Load<Sprite>(path);
+				var p = "UI/cg/game_seccess_bg_0" + (id -2000).ToString();
+				cg.sprite = Resources.Load<Sprite>(p);
 			}
-			item.transform.Find("nameBg/name/m_txtName").GetComponent<Text>().text = "name";
+            else
+            {
+				cg.gameObject.SetActive(false);
+			}
+			item.transform.Find("name/name/m_txtName").GetComponent<Text>().text = "树";
+			var img = item.transform.Find("name/name/m_imgBg").GetComponent<Image>();
+			img.sprite = Resources.Load<Sprite>(path);
+
+			set.Add(id);
 		}
 	}
 
