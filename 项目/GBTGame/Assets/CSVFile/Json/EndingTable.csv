@@ -1,0 +1,14 @@
+id,type,name,photoId1,photoId2,icon,status
+ID,对应道具id,名称,结局CG,图鉴CG,对应icon,状态
+int,int,string,string,string,string,int
+1,1,1,1,1,1,1
+800,0,失败,game_lose_bg_01,game_lose_bg2_01,game_lose_ico_01,1
+801,2001,人参人,game_seccess_bg_01,game_seccess_bg2_01,game_success_ico_01,1
+802,2002,旅行青蛙,game_seccess_bg_02,game_seccess_bg2_02,game_success_ico_02,1
+803,2003,流星,game_seccess_bg_03,game_seccess_bg2_03,game_success_ico_03,1
+804,2004,钻石猪·移动,game_seccess_bg_04,game_seccess_bg2_04,game_success_ico_04,1
+805,2005,钻石猪·不动,game_seccess_bg_05,game_seccess_bg2_05,game_success_ico_05,1
+806,2006,鸟,game_seccess_bg_06,game_seccess_bg2_06,game_success_ico_06,1
+807,2007,钻石,game_seccess_bg_07,game_seccess_bg2_07,game_success_ico_07,1
+808,2008,蘑菇,game_seccess_bg_08,game_seccess_bg2_08,game_success_ico_08,1
+809,2009,椰子,game_seccess_bg_09,game_seccess_bg2_09,game_success_ico_09,1

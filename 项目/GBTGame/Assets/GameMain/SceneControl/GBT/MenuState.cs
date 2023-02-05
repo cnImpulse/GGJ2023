@@ -114,6 +114,7 @@ namespace MyGameFrameWork
                 int maxId = 2001;
                 int maxVal = 0;
                 string path = "";
+                string icon = "";
                 foreach(var item in GGJDataManager.Instance.GameSucceedItemValMap)
                 {
                     //Debug.Log(item.ToString());
@@ -121,11 +122,14 @@ namespace MyGameFrameWork
                     {
                         maxId = item.Key;
                         path = GGJDataManager.Instance.GameSucceedMap[maxId];
+                        icon = GGJDataManager.Instance.GameSucceedIcoMap[maxId];
                     }
                 }
                 Debug.Log(path);
+                Debug.Log(icon);
                 GGJDataManager.Instance.SucceedId = maxId;
                 GGJDataManager.Instance.SucceedPath = path;
+                GGJDataManager.Instance.SucceedIco = icon;
 
                 if (HandleForm != null)
                 {
