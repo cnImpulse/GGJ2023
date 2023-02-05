@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//CreateTime：2023/2/5 11:00:54
+//CreateTime：2023/2/5 12:08:20
 namespace DataCs
 {
 	public struct Data_UIFormID_Struct
@@ -43,6 +43,7 @@ namespace DataCs
 			{"HandleForm_3",new Data_UIFormID_Struct("HandleForm_3",2003,"GX/HandleForm_3",1)},
 			{"GameFailForm",new Data_UIFormID_Struct("GameFailForm",1014,"ZKW/GameFailForm",1)},
 			{"GameSuccess",new Data_UIFormID_Struct("GameSuccess",1015,"GX/GameSuccess",1)},
+			{"GenealogyForm",new Data_UIFormID_Struct("GenealogyForm",1016,"GX/GenealogyForm",1)},
 		};
 		public static string key_StartGameForm = "StartGameForm";
 		public static string key_MainForm = "MainForm";
@@ -63,6 +64,7 @@ namespace DataCs
 		public static string key_HandleForm_3 = "HandleForm_3";
 		public static string key_GameFailForm = "GameFailForm";
 		public static string key_GameSuccess = "GameSuccess";
+		public static string key_GenealogyForm = "GenealogyForm";
 	}
 }
 
