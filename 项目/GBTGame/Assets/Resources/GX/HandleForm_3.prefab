@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2c56c606261f748bb919bd3268e970a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5580d3f17e35a4b309c6d311a0a2bb0b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -340,11 +340,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4712943893671450194, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 159
+      value: 281
       objectReference: {fileID: 0}
     - target: {fileID: 4712943893671450194, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -451
+      value: -439
       objectReference: {fileID: 0}
     - target: {fileID: 4712943893671450194, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -505,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4712943893671450194, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -458
+      value: -438
       objectReference: {fileID: 0}
     - target: {fileID: 4712943893671450194, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
