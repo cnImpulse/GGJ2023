@@ -71,7 +71,8 @@ namespace MyGameFrameWork
         void GameSucceed(IEventArgs eventArgs)
         {
             GameSucceedEventArgs gameSucceedEventArgs = eventArgs as GameSucceedEventArgs;
-            if(gameSucceedEventArgs.level==1)
+            SoundSystem.Instance.PlayEffect("Switch");
+            if (gameSucceedEventArgs.level==1)
             {
                 if(HandleForm!=null)
                 {

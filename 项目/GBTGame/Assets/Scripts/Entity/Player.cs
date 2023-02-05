@@ -135,6 +135,7 @@ namespace MyGameFrameWork
                 {
                     Other.StopTime = 5;
                     Other.Stop = true;
+                    SoundSystem.Instance.PlayEffect("Hit");
                 }
                 else
                 {
