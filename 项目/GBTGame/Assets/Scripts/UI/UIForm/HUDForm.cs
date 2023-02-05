@@ -37,7 +37,7 @@ public partial class HUDForm : UIForm
 		RegisterEvent();
         deadTime = 3f;
         deadTimeCurr = 0f;
-        subTime = 2f;
+        subTime = 1.5f;
         currSubTime = 0f;
         Attr4<string, string, string, string> paramTable1 = AttrSystem.Instance.GetData("ParamTable", "9") as Attr4<string, string, string, string>;
         Attr4<string, string, string, string> paramTable2 = AttrSystem.Instance.GetData("ParamTable", "10") as Attr4<string, string, string, string>;
@@ -64,6 +64,7 @@ public partial class HUDForm : UIForm
 
         if (GGJDataManager.Instance.level==1)
         {
+            m_txtLevel.text = "第一关";
             AttrList temp = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
             LimOxygen = int.Parse(temp.Attrs[1]);
             LimMaxWater = int.Parse(temp.Attrs[2]);
@@ -71,6 +72,7 @@ public partial class HUDForm : UIForm
         }
         else if(GGJDataManager.Instance.level==2)
         {
+            m_txtLevel.text = "第二关";
             AttrList temp = AttrSystem.Instance.GetData("LevelTable", "10002") as AttrList;
             LimOxygen = int.Parse(temp.Attrs[1]);
             LimMaxWater = int.Parse(temp.Attrs[2]);
@@ -78,6 +80,7 @@ public partial class HUDForm : UIForm
         }
         else if(GGJDataManager.Instance.level==3)
         {
+            m_txtLevel.text = "第三关";
             AttrList temp = AttrSystem.Instance.GetData("LevelTable", "10003") as AttrList;
             LimOxygen = int.Parse(temp.Attrs[1]);
             LimMaxWater = int.Parse(temp.Attrs[2]);
