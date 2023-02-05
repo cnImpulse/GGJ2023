@@ -85,6 +85,8 @@ public partial class HUDForm : UIForm
         }
         SetLimImg();
 
+        
+
         MaxOxygen = 100;
 		MaxFertilizer = 100;
 		MaxWater = 100;
@@ -107,6 +109,10 @@ public partial class HUDForm : UIForm
         {
             deadTimeCurr += Time.deltaTime;
         }
+        else
+        {
+            deadTimeCurr = 0;
+        }
 
         if (currSubTime>=subTime)
         {
@@ -124,6 +130,7 @@ public partial class HUDForm : UIForm
             GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] <= 0|| 
             deadTimeCurr>=deadTime)
         {
+            deadTimeCurr = 0f;
             EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameFail_str, new GameFailEventArgs());
         }
 
@@ -164,7 +171,7 @@ public partial class HUDForm : UIForm
                     m_imgFuncimg.gameObject.SetActive(true);
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(false);
-                    m_txtFuncDes.text = "Null";
+                    m_txtFuncDes.text = "无";
                     break;
 				}
             case EFunctionType.Boomer:
@@ -222,9 +229,11 @@ public partial class HUDForm : UIForm
 
     public void SetLimImg()
     {
-        m_imgFerLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimMaxFertilizer / 100, 0, 0);
-        m_imgOxyLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimMaxWater / 100, 0, 0);
-        m_imgWaterLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimOxygen / 100, 0, 0);
+
+        m_imgOxyLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimOxygen / 100f, 0, 0);
+        m_imgWaterLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimMaxWater / 100f, 0, 0);
+        m_imgFerLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimMaxFertilizer / 100f, 0, 0);
+        
     }
 
     void FuncTime()
@@ -235,14 +244,11 @@ public partial class HUDForm : UIForm
 
             if (GGJDataManager.Instance.TestSucceed())
             {
-                Debug.Log("Test1");
-                EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameSucceed_str, new GameSucceedEventArgs(GGJDataManager.Instance.level, (int)ESucceedType.Normal));
+                int temp = GGJDataManager.Instance.level;
                 GGJDataManager.Instance.level++;
+                EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameSucceed_str, new GameSucceedEventArgs(temp, (int)ESucceedType.Normal));
+                
                 GGJDataManager.Instance.InitTime();
-            }
-            else
-            {
-                Debug.Log("Test2");
             }
         }
         else

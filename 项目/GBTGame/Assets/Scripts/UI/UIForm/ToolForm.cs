@@ -38,8 +38,9 @@ public struct ToolSetting
 public partial class ToolForm : UIForm
 {
     List<Vector3> posList;
+    List<Vector3> posList2;
     bool isCreate = false;
-	float iconwidth = 60;
+	float iconwidth = 90;
 
 	int level;
 	List<ToolSetting> ToolSettings1;
@@ -126,9 +127,10 @@ public partial class ToolForm : UIForm
         functionItemDic.Add(3004, EFunctionType.Stop);
         functionItemDic.Add(3005, EFunctionType.Refresh);
 
-        level = 1;
+        level = GGJDataManager.Instance.level;
         posList = new List<Vector3>();
-		ToolSettings1 = new List<ToolSetting>();
+        posList2 = new List<Vector3>();
+        ToolSettings1 = new List<ToolSetting>();
         ToolSettings2= new List<ToolSetting>();
         ToolSettings3 = new List<ToolSetting>();
 
@@ -171,10 +173,12 @@ public partial class ToolForm : UIForm
         AttrList temp2 = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
         if(level == 2)
         {
+            Debug.Log("isLevel2");
             temp2 = AttrSystem.Instance.GetData("LevelTable", "10002") as AttrList;
         }
         else if(level == 3)
         {
+            Debug.Log("isLevel3");
             temp2 = AttrSystem.Instance.GetData("LevelTable", "10003") as AttrList;
         }
 
@@ -183,6 +187,8 @@ public partial class ToolForm : UIForm
         goodsMax1 = int.Parse(temp2.Attrs[6]);
         goodsMax2 = int.Parse(temp2.Attrs[7]);
         goodsMax3 = int.Parse(temp2.Attrs[8]);
+
+        Debug.Log("totalResources    "+totalResources.ToString());
 
         Attr4<string, string, string, string> paramTable = AttrSystem.Instance.GetData("ParamTable", "4") as Attr4<string,string,string,string>;
 
@@ -200,12 +206,16 @@ public partial class ToolForm : UIForm
 	public override void Update()
 	{
 		base.Update();
-        if(destoryNum>0 && createCDTime>= createCD && trigger>0)
+        if(destoryNum>1 && createCDTime>= createCD)
         {
-            destoryNum--;
-            trigger--;
-            //Debug.Log(trigger);
-            CreateItemByTable();
+            int max = (totalResources - trigger) / 2;
+            int res = (int)Mathf.Lerp(0, max, (float)destoryNum / (float)(totalResources - trigger));
+            for(int i=0;i< res;i++)
+            {
+                destoryNum--;
+                CreateItemBySetting(GetSetting());
+            }
+            
             createCDTime = 0f;
         }
         createCDTime += Time.deltaTime;
@@ -233,12 +243,29 @@ public partial class ToolForm : UIForm
 	void CreateToolItems()
 	{
         
-        AttrList level1 = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
-
-;       for (int i = 0; i < totalResources; i++)
+        //AttrList level1 = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
+        if(GGJDataManager.Instance.level==2)
         {
-            CreateItemByTable();
+            goodsMax1 *= 2;
+            goodsMax2 *= 2;
+            goodsMax3 *= 2;
+            for (int i = 0; i < totalResources; i++)
+            {
+                CreateItemBySetting(GetSetting());
+            }
+            for (int i = 0; i < totalResources; i++)
+            {
+                CreateItemBySetting2(GetSetting());
+            }
         }
+        else
+        {
+            for (int i = 0; i < totalResources; i++)
+            {
+                CreateItemBySetting(GetSetting());
+            }
+        }
+;       
     }
 
     private void OnDestoryItem(IEventArgs eventArgs)//删除item;
@@ -266,7 +293,10 @@ public partial class ToolForm : UIForm
         {
             GGJDataManager.Instance.functionType = toolItem.toolFuncitonType;
         }
-        destoryNum++;
+        if(GGJDataManager.Instance.level != 2)
+        {
+            destoryNum++;
+        }
         if (toolItemTypeDic[toolItem.toolItemType]==1)
         {
             currgoods1--;
@@ -325,16 +355,16 @@ public partial class ToolForm : UIForm
 		return false;
 	}
 
-    void CreateItemBySetting2(ToolSetting tempsetting)
+    void CreateItemBySetting(ToolSetting tempsetting)
     {
-        float x = GGJDataManager.Instance.Rect2.sizeDelta.x;
-        float y = GGJDataManager.Instance.Rect2.sizeDelta.y;
+        float x = GGJDataManager.Instance.Rect.sizeDelta.x;
+        float y = GGJDataManager.Instance.Rect.sizeDelta.y;
         float width = iconwidth;
 
-        var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this,false) as ToolItem;
+        var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this, true) as ToolItem;
         Vector3 temp2 = Vector3.zero;// new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 25; i++)
         {
             bool isrepeat = false;
             temp2 = new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
@@ -356,6 +386,176 @@ public partial class ToolForm : UIForm
         temp.SetToolItemSetting(tempsetting);
     }
 
+    void CreateItemBySetting2(ToolSetting tempsetting)
+    {
+        float x = GGJDataManager.Instance.Rect2.sizeDelta.x;
+        float y = GGJDataManager.Instance.Rect2.sizeDelta.y;
+        float width = iconwidth;
+
+        var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this,false) as ToolItem;
+        Vector3 temp2 = Vector3.zero;// new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
+
+        bool isrepeat = false;
+        for (int i = 0; i < 25; i++)
+        {
+            isrepeat = false;
+            temp2 = new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
+            for (int j = 0; j < posList2.Count; ++j)
+            {
+                if (isArea(width * 2, temp2, posList2[j]))
+                {
+                    isrepeat = true;
+                    break;
+                }
+            }
+            if (!isrepeat)
+            {
+                break;
+            }
+        }
+        if (GGJDataManager.Instance.level == 2)
+        {
+            Debug.Log(isrepeat ? "repeat" : "NoRepect");
+            Debug.Log(temp2);
+        }
+        temp.SetLocation(temp2);
+        posList2.Add(temp2);
+        temp.SetToolItemSetting(tempsetting);
+    }
+
+    ToolSetting GetSetting()
+    {
+        float sum = 0;
+        float subsum = 0;
+        int index = 0;
+        bool isOk = false;
+        ToolSetting settings = ToolSettings1[0];
+
+        if (GGJDataManager.Instance.level == 3 && GGJDataManager.Instance.specialNum < 3)
+        {
+            if (currgoods2 < goodsMax2)
+            {
+                for (int i = 0; i < ToolSettings2.Count; i++)
+                {
+                    sum += ToolSettings2[i].weight;
+                }
+            }
+        }
+        else
+        {
+            if (currgoods1 < goodsMax1)
+            {
+                for (int i = 0; i < ToolSettings1.Count; i++)
+                {
+                    sum += ToolSettings1[i].weight;
+                }
+            }
+            if (currgoods2 < goodsMax2)
+            {
+                for (int i = 0; i < ToolSettings2.Count; i++)
+                {
+                    sum += ToolSettings2[i].weight;
+                }
+            }
+            if (currgoods3 < goodsMax3)
+            {
+                for (int i = 0; i < ToolSettings3.Count; i++)
+                {
+                    sum += ToolSettings3[i].weight;
+                }
+            }
+        }
+
+
+
+        if (sum == 0)
+        {
+            Debug.Log("NoItem");
+            return default;
+        }
+
+        float random = Random.Range(0, sum);
+
+        if (GGJDataManager.Instance.level == 3 && GGJDataManager.Instance.specialNum < 3)
+        {
+            if (currgoods2 < goodsMax2)
+            {
+                for (int i = 0; i < ToolSettings2.Count; i++)
+                {
+                    subsum += ToolSettings2[i].weight;
+                    if (random > subsum)
+                    {
+                        index++;
+                    }
+                    else
+                    {
+                        currgoods2++;
+                        settings = ToolSettings2[i];
+                        isOk = true;
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (currgoods1 < goodsMax1)
+            {
+                for (int i = 0; i < ToolSettings1.Count; i++)
+                {
+                    subsum += ToolSettings1[i].weight;
+                    if (random > subsum)
+                    {
+                        index++;
+                    }
+                    else
+                    {
+                        currgoods1++;
+                        settings = ToolSettings1[i];
+                        isOk = true;
+                        break;
+                    }
+                }
+            }
+            if (!isOk && currgoods2 < goodsMax2)
+            {
+                for (int i = 0; i < ToolSettings2.Count; i++)
+                {
+                    subsum += ToolSettings2[i].weight;
+                    if (random > subsum)
+                    {
+                        index++;
+                    }
+                    else
+                    {
+                        currgoods2++;
+                        settings = ToolSettings2[i];
+                        isOk = true;
+                        break;
+                    }
+                }
+            }
+            if (!isOk && currgoods3 < goodsMax3)
+            {
+                for (int i = 0; i < ToolSettings3.Count; i++)
+                {
+                    subsum += ToolSettings3[i].weight;
+                    if (random > subsum)
+                    {
+                        index++;
+                    }
+                    else
+                    {
+                        currgoods3++;
+                        settings = ToolSettings3[i];
+                        isOk = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return settings;
+    }
 	void CreateItemByTable()
 	{
         float sum = 0;
@@ -496,10 +696,10 @@ public partial class ToolForm : UIForm
 
         var temp = UISystem.Instance.OpenUIItem(DataCs.Data_UIItemID.key_ToolItem, this) as ToolItem;
         Vector3 temp2 = Vector3.zero;// new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
-
-        for (int i = 0; i < 10; i++)
+        bool isrepeat = false;
+        for (int i = 0; i < 25; i++)
         {
-            bool isrepeat = false;
+            isrepeat = false;
             temp2 = new Vector3(Random.Range(-(x - width) / 2, (x - width) / 2), Random.Range(-(y - width) / 2, (y - width) / 2), 0);
             for (int j = 0; j < posList.Count; ++j)
             {
@@ -513,6 +713,11 @@ public partial class ToolForm : UIForm
             {
                 break;
             }
+        }
+        if(GGJDataManager.Instance.level==2)
+        {
+            Debug.Log(isrepeat?"repeat":"NoRepect");
+            Debug.Log(temp2);
         }
         temp.SetLocation(temp2);
         posList.Add(temp2);

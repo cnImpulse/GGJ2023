@@ -158,6 +158,17 @@ namespace MyGameFrameWork
                             
                     }
                 }
+                if (GGJDataManager.Instance.Rect2 != null)
+                {
+                    foreach (var item in GGJDataManager.Instance.Rect2.gameObject.GetComponentsInChildren<Transform>())
+                    {
+                        if (item != GGJDataManager.Instance.Rect)
+                        {
+                            item.gameObject.GetComponent<ToolItem>().Pause();
+                        }
+
+                    }
+                }
             }
             else if(GGJDataManager.Instance.functionType == EFunctionType.Refresh)
             {
@@ -167,6 +178,17 @@ namespace MyGameFrameWork
                     {
                         if (item != GGJDataManager.Instance.Rect)
                             GameObject.Destroy(item.gameObject);
+                    }
+                }
+                if (GGJDataManager.Instance.Rect2 != null)
+                {
+                    foreach (var item in GGJDataManager.Instance.Rect2.gameObject.GetComponentsInChildren<Transform>())
+                    {
+                        if (item != GGJDataManager.Instance.Rect)
+                        {
+                            item.gameObject.GetComponent<ToolItem>().Pause();
+                        }
+
                     }
                 }
 

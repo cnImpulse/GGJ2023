@@ -76,7 +76,7 @@ public partial class ToolItem : UIItem
 		base.OnClose();
 		ReleaseEvent();
 		this.gameObject.SetActive(false);
-		if(GGJDataManager.Instance.level!=2 || isUnder == true)
+		if(GGJDataManager.Instance.level!=2 || isUnder == false)
 		{
             FuncToolItemVal();
         }
