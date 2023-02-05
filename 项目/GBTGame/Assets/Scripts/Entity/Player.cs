@@ -61,7 +61,7 @@ namespace MyGameFrameWork
             m_rect_arrow.gameObject.SetActive(!m_IsHandleMoving);
             if (m_IsHandleMoving)
             {
-                if ((Input.GetKeyDown(KeyCode) && !Stop) || !HookRect.rect.Contains((m_hook.transform.position))) 
+                if ((Input.GetKeyDown(KeyCode) && !Stop && !GGJDataManager.Instance.isPause) || !HookRect.rect.Contains((m_hook.transform.position))) 
                 {
                     m_IsHookReturn = true;
                 }
@@ -103,7 +103,7 @@ namespace MyGameFrameWork
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode) && !Stop)
+                if (Input.GetKeyDown(KeyCode) && !Stop && !GGJDataManager.Instance.isPause)
                 {
                     m_IsHandleMoving = true;
                     m_IsHookReturn = false;
@@ -112,7 +112,7 @@ namespace MyGameFrameWork
                 UpdateHandleAngle();
             }
 
-            if (Input.GetKeyDown(SkillCode) && !Stop && GGJDataManager.Instance.functionType != EFunctionType.Null)
+            if (Input.GetKeyDown(SkillCode) && !Stop && !GGJDataManager.Instance.isPause && GGJDataManager.Instance.functionType != EFunctionType.Null)
             {
                 SoundSystem.Instance.PlayEffect("ReleaseSkill");
 
