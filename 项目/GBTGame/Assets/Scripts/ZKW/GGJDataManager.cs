@@ -86,7 +86,7 @@ namespace MyGameFrameWork
 
         public void InitTime()
         {
-            currTime = 1f;
+            currTime = 60f;
         }
 
         public EFunctionType functionType;

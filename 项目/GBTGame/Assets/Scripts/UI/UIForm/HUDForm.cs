@@ -286,8 +286,8 @@ public partial class HUDForm : UIForm
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(false);
                     m_imgFuncRefresh.gameObject.SetActive(false);
-                    m_txtFuncDes.text = "加速";
-                    m_txtToolName.text = "令爪子速度增加";
+                    m_txtFuncDes.text = "令爪子速度增加";
+                    m_txtToolName.text = "加速";
                     break;
                 }
             case EFunctionType.Pause:
@@ -299,8 +299,8 @@ public partial class HUDForm : UIForm
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(true);
                     m_imgFuncRefresh.gameObject.SetActive(false);
-                    m_txtFuncDes.text = "暂停";
-                    m_txtToolName.text = "令移动的东西停下来";
+                    m_txtFuncDes.text = "令移动的东西停下来";
+                    m_txtToolName.text = "暂停";
                     break;
                 }
             case EFunctionType.Refresh:
@@ -312,8 +312,8 @@ public partial class HUDForm : UIForm
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(false);
                     m_imgFuncRefresh.gameObject.SetActive(true);
-                    m_txtFuncDes.text = "清空场地";
-                    m_txtToolName.text = "清空全场，令资源重置";
+                    m_txtFuncDes.text = "清空全场，令资源重置";
+                    m_txtToolName.text = "清空场地";
                     break;
             }
         }

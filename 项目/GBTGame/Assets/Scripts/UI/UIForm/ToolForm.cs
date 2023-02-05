@@ -206,7 +206,7 @@ public partial class ToolForm : UIForm
 	public override void Update()
 	{
 		base.Update();
-        if(destoryNum>1 && createCDTime>= createCD && currgoods1+currgoods2+currgoods3 <= (trigger + totalResources)/2)
+        if(destoryNum>1 && createCDTime>= createCD && currgoods1+currgoods2+currgoods3 < (trigger + totalResources)/3)
         {
             destoryNum--;
             CreateItemBySetting(GetSetting());
@@ -288,10 +288,11 @@ public partial class ToolForm : UIForm
         {
             GGJDataManager.Instance.functionType = toolItem.toolFuncitonType;
         }
-        if(GGJDataManager.Instance.level != 2)
+        destoryNum++;
+        /*if(GGJDataManager.Instance.level != 2)
         {
             destoryNum++;
-        }
+        }*/
         if (toolItemTypeDic[toolItem.toolItemType]==1)
         {
             currgoods1--;

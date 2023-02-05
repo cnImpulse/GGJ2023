@@ -178,7 +178,7 @@ namespace MyGameFrameWork
                     {
                         if (item != GGJDataManager.Instance.Rect)
                         {
-                            item.gameObject.GetComponent<ToolItem>().Pause();
+                            item.gameObject.GetComponent<ToolItem>()?.Pause();
                         }
                             
                     }
@@ -189,7 +189,7 @@ namespace MyGameFrameWork
                     {
                         if (item != GGJDataManager.Instance.Rect)
                         {
-                            item.gameObject.GetComponent<ToolItem>().Pause();
+                            item.gameObject.GetComponent<ToolItem>()?.Pause();
                         }
 
                     }
@@ -211,7 +211,7 @@ namespace MyGameFrameWork
                     {
                         if (item != GGJDataManager.Instance.Rect)
                         {
-                            item.gameObject.GetComponent<ToolItem>().Pause();
+                            item.gameObject.GetComponent<ToolItem>()?.Pause();
                         }
 
                     }
