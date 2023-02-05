@@ -284,9 +284,9 @@ public partial class HUDForm : UIForm
     public void SetLimImg()
     {
 
-        m_imgOxyLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimOxygen / 100f, 0, 0);
-        m_imgWaterLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimMaxWater / 100f, 0, 0);
-        m_imgFerLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160 + 320 * LimMaxFertilizer / 100f, 0, 0);
+        m_imgOxyLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 140 * LimOxygen / 100f, 0, 0);
+        m_imgWaterLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 140 * LimMaxWater / 100f, 0, 0);
+        m_imgFerLim.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100 + 140 * LimMaxFertilizer / 100f, 0, 0);
         
     }
 
