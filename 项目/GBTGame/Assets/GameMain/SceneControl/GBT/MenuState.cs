@@ -16,6 +16,7 @@ namespace MyGameFrameWork
         GameObject HandleForm;
         GameObject ToolForm;
         GameObject HUDForm;
+        GameObject DebugForm;
         public MenuState(SceneStateC c) : base(c)
         {
             this.StateName = "MenuState";
@@ -40,9 +41,14 @@ namespace MyGameFrameWork
 
             //HpBarCanvas = m_Contorller.GetData("HpBarCanvas") as GameObject;
 
+            DebugForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_DebugPanel);
+            GGJDataManager.Instance.debugPanel = DebugForm.GetComponent<DebugPanel>();
+
+            GGJDataManager.Instance.debugPanel.Log("MenuState");
+            HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
             HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_1);
             ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_1);
-            HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
+
 
 
             /*UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_2);

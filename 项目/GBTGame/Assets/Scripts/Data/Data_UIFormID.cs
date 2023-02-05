@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//CreateTime：2023/2/5 13:00:31
+//CreateTime：2023/2/5 13:30:11
 namespace DataCs
 {
 	public struct Data_UIFormID_Struct
@@ -35,15 +35,16 @@ namespace DataCs
 			{"AllGameOverForm",new Data_UIFormID_Struct("AllGameOverForm",1008,"ZKW/AllGameOverForm",1)},
 			{"TestPanel",new Data_UIFormID_Struct("TestPanel",1009,"ZKW/TestPanel/TestPanel",1)},
 			{"HandleForm_1",new Data_UIFormID_Struct("HandleForm_1",2001,"GX/HandleForm_1",1)},
-			{"ToolForm_1",new Data_UIFormID_Struct("ToolForm_1",1010,"ZKW/ToolForm_1",1)},
-			{"HUDForm",new Data_UIFormID_Struct("HUDForm",1011,"ZKW/HUDForm",1)},
-			{"ToolForm_2",new Data_UIFormID_Struct("ToolForm_2",1012,"ZKW/ToolForm_2",1)},
-			{"ToolForm_3",new Data_UIFormID_Struct("ToolForm_3",1013,"ZKW/ToolForm_3",1)},
+			{"ToolForm_1",new Data_UIFormID_Struct("ToolForm_1",1010,"ZKW/ToolForm_1",3)},
+			{"HUDForm",new Data_UIFormID_Struct("HUDForm",1011,"ZKW/HUDForm",3)},
+			{"ToolForm_2",new Data_UIFormID_Struct("ToolForm_2",1012,"ZKW/ToolForm_2",3)},
+			{"ToolForm_3",new Data_UIFormID_Struct("ToolForm_3",1013,"ZKW/ToolForm_3",3)},
 			{"HandleForm_2",new Data_UIFormID_Struct("HandleForm_2",2002,"GX/HandleForm_2",1)},
 			{"HandleForm_3",new Data_UIFormID_Struct("HandleForm_3",2003,"GX/HandleForm_3",1)},
 			{"GameFailForm",new Data_UIFormID_Struct("GameFailForm",1014,"ZKW/GameFailForm",1)},
 			{"GameSuccess",new Data_UIFormID_Struct("GameSuccess",1015,"GX/GameSuccess",1)},
 			{"GenealogyForm",new Data_UIFormID_Struct("GenealogyForm",1016,"GX/GenealogyForm",1)},
+			{"DebugPanel",new Data_UIFormID_Struct("DebugPanel",3003,"ZKW/DebugPanel",3)},
 		};
 		public static string key_StartGameForm = "StartGameForm";
 		public static string key_MainForm = "MainForm";
@@ -65,6 +66,7 @@ namespace DataCs
 		public static string key_GameFailForm = "GameFailForm";
 		public static string key_GameSuccess = "GameSuccess";
 		public static string key_GenealogyForm = "GenealogyForm";
+		public static string key_DebugPanel = "DebugPanel";
 	}
 }
 

@@ -45,8 +45,9 @@ public partial class StartGameUIForm : UIForm
 	private void OnBtnStart()
 	{
         SoundSystem.Instance.PlayEffect(Data_AudioID.key_Click);
-        EventManagerSystem.Instance.Invoke2(Data_EventName.StartGame_str, StartGameEventArgs.Create());//触发开始游戏
 		UISystem.Instance.CloseUIForm(Data_UIFormID.key_StartGameForm, this);
+        EventManagerSystem.Instance.Invoke2(Data_EventName.StartGame_str, StartGameEventArgs.Create());//触发开始游戏
+		
     }
 	private void OnBtnExit()
 	{

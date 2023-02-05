@@ -8,7 +8,7 @@ AnimationClip:
   m_PrefabAsset: {fileID: 0}
   m_Name: good_2004
   serializedVersion: 7
-  m_Legacy: 0
+  m_Legacy: 1
   m_Compressed: 0
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
@@ -17,8 +17,23 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
-  m_SampleRate: 60
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: aba96d2f2840e7b4dac99ddad1702777, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: 41c6d390368fa344fb6a1b3846f14973, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: af4705457cb9ee14c8e4edbb4b573263, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 2d6aadaec6ac75646af6881c3e36487b, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 8ca4f3704b6314de9b7bd97ea0a15b12, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -31,7 +46,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.4166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

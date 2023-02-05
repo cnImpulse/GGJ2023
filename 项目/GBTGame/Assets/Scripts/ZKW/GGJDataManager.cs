@@ -109,5 +109,7 @@ namespace MyGameFrameWork
         public int SucceedId;
         public string SucceedPath;
         public string SucceedIco;
+
+        public DebugPanel debugPanel;
     }
 }
