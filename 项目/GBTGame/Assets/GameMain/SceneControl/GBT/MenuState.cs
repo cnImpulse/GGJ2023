@@ -111,6 +111,22 @@ namespace MyGameFrameWork
             }
             else
             {
+                int maxId = 2001;
+                int maxVal = 0;
+                string path = "";
+                foreach(var item in GGJDataManager.Instance.GameSucceedItemValMap)
+                {
+                    //Debug.Log(item.ToString());
+                    if(item.Value>= maxVal)
+                    {
+                        maxId = item.Key;
+                        path = GGJDataManager.Instance.GameSucceedMap[maxId];
+                    }
+                }
+                Debug.Log(path);
+                GGJDataManager.Instance.SucceedId = maxId;
+                GGJDataManager.Instance.SucceedPath = path;
+
                 if (HandleForm != null)
                 {
                     HandleForm.GetComponent<UIForm>().OnDestory();

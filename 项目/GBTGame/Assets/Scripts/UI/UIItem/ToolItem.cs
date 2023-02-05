@@ -164,14 +164,16 @@ public partial class ToolItem : UIItem
 		toolSetting = _toolSetting;
 		if (toolSetting.speed != 0)
 		{
-			Move(rectTransform.localPosition.x - toolSetting.area / 2, rectTransform.localPosition.x + toolSetting.area / 2, toolSetting.speed);
+			Move(rectTransform.localPosition.x - toolSetting.area, rectTransform.localPosition.x + toolSetting.area, toolSetting.speed);
 		}
 		SetToolItemType((EToolItemType)toolSetting.effectType, toolSetting.effectNum);
 		toolItemType = parent.toolItemDic[toolSetting.mainId];
 		m_txtDes.text = toolSetting.mainId.ToString();
 
+		
 
-		this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/" + toolSetting.iconPath);
+
+        this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/" + toolSetting.iconPath);
 		this.gameObject.GetComponent<Image>().SetNativeSize();
 		if (toolSetting.mainId == 1001 || toolSetting.mainId == 1003 || toolSetting.mainId == 1005)
 		{
@@ -198,6 +200,10 @@ public partial class ToolItem : UIItem
 	{
 		if(toolItemType!=EToolItemType.Function)
 		{
+			if (toolSetting.mainId > 2000 && toolSetting.mainId < 3000)
+			{
+                GGJDataManager.Instance.GameSucceedItemValMap[toolSetting.mainId] += toolItemVal;
+            }
             GGJDataManager.Instance.ToolItemValMap[toolItemType] += toolItemVal;
         }
 	}

@@ -375,8 +375,16 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
+      propertyPath: AngleOffset
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: HookMoveSpeed
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
+      propertyPath: HandleAngleArea
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: HookReturnSpeed
@@ -512,8 +520,16 @@ PrefabInstance:
       value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
+      propertyPath: AngleOffset
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: HookMoveSpeed
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
+      propertyPath: HandleAngleArea
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 7942061527783638468, guid: 93d9c7364fdef49cb97011c0ecaf2813, type: 3}
       propertyPath: HookReturnSpeed

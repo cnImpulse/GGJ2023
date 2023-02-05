@@ -253,10 +253,10 @@ public partial class ToolForm : UIForm
             {
                 CreateItemBySetting(GetSetting());
             }
-            for (int i = 0; i < totalResources; i++)
+            /*for (int i = 0; i < totalResources; i++)
             {
                 CreateItemBySetting2(GetSetting());
-            }
+            }*/
         }
         else
         {

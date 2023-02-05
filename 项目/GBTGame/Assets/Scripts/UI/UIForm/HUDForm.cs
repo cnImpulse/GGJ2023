@@ -32,6 +32,10 @@ public partial class HUDForm : UIForm
     float CurrWarningTime = 4f;
 
     bool isTimeOver = false;
+
+    float pauseTime = 3f;
+    float pauseTimeCurr = 0f;
+
     public override void Awake()
 	{
 		base.Awake();
@@ -104,6 +108,9 @@ public partial class HUDForm : UIForm
         MaxOxygen = 100;
 		MaxFertilizer = 100;
 		MaxWater = 100;
+
+        GGJDataManager.Instance.isPause = true;
+        m_txtCutDown.gameObject.SetActive(true);
     }
 
 	public override void OnClose()
@@ -115,59 +122,76 @@ public partial class HUDForm : UIForm
 	public override void Update()
 	{
 		base.Update();
-        
-        currSubTime += Time.deltaTime;
-        CurrWarningTime += Time.deltaTime;
-        if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] >= LimOxygen ||
-            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] >= LimMaxWater ||
-            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] >= LimMaxFertilizer)
-        {
-            deadTimeCurr += Time.deltaTime;
-            isWarning = true;
-            //CurrWarningTime = WarningTime;
-            
-        }
-        else
-        {
-            isWarning = false;
-            deadTimeCurr = 0;
-        }
-        //Debug.Log(CurrWarningTime);
-        if(isWarning&& CurrWarningTime>=WarningTime)
-        {
-            SoundSystem.Instance.PlayEffect(Data_AudioID.key_Warning);
-            CurrWarningTime = 0f;
-        }
 
-        if (currSubTime>=subTime)
-        {
-            /*Debug.Log(OxygenSub);
-            Debug.Log(FertilizerSub);
-            Debug.Log(WaterSub);*/
-            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] -= OxygenSub;
-            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] -= FertilizerSub;
-            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] -= WaterSub;
-            currSubTime = 0f;
-        }
-
-        if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] <=0 ||
-            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] <= 0 ||
-            GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] <= 0|| 
-            deadTimeCurr>=deadTime)
-        {
-            deadTimeCurr = 0f;
-            EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameFail_str, new GameFailEventArgs());
-        }
-
-        FuncTime();
-
-
-            m_scrollbarOxygen.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] / MaxOxygen;
-		m_scrollbarFertilizer.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] / MaxFertilizer;
-		m_scrollbarWater.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] / MaxWater;
+        m_scrollbarOxygen.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] / MaxOxygen;
+        m_scrollbarFertilizer.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] / MaxFertilizer;
+        m_scrollbarWater.size = GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] / MaxWater;
         m_rectLevelDes.GetComponent<TMPro.TextMeshProUGUI>().text = GGJDataManager.Instance.level.ToString();
         FuncFunctionType();
         FunctionTime();
+
+        if (GGJDataManager.Instance.isPause)
+        {
+            pauseTimeCurr += Time.deltaTime;
+            m_txtCutDown.text = ((int)(3.9f - pauseTimeCurr)).ToString();
+            if (pauseTimeCurr>=pauseTime)
+            {
+                m_txtCutDown.gameObject.SetActive(false);
+                pauseTimeCurr = 0f;
+                GGJDataManager.Instance.isPause = false;
+            }
+        }
+        else
+        {
+            currSubTime += Time.deltaTime;
+            CurrWarningTime += Time.deltaTime;
+            if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] >= LimOxygen ||
+                GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] >= LimMaxWater ||
+                GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] >= LimMaxFertilizer)
+            {
+                deadTimeCurr += Time.deltaTime;
+                isWarning = true;
+                //CurrWarningTime = WarningTime;
+
+            }
+            else
+            {
+                isWarning = false;
+                deadTimeCurr = 0;
+            }
+            //Debug.Log(CurrWarningTime);
+            if (isWarning && CurrWarningTime >= WarningTime)
+            {
+                SoundSystem.Instance.PlayEffect(Data_AudioID.key_Warning);
+                CurrWarningTime = 0f;
+            }
+
+            if (currSubTime >= subTime)
+            {
+                /*Debug.Log(OxygenSub);
+                Debug.Log(FertilizerSub);
+                Debug.Log(WaterSub);*/
+                GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] -= OxygenSub;
+                GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] -= FertilizerSub;
+                GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] -= WaterSub;
+                currSubTime = 0f;
+            }
+
+            if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] <= 0 ||
+                GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] <= 0 ||
+                GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] <= 0 ||
+                deadTimeCurr >= deadTime)
+            {
+                deadTimeCurr = 0f;
+                EventManagerSystem.Instance.Invoke2(DataCs.Data_EventName.GameFail_str, new GameFailEventArgs());
+            }
+
+            FuncTime();
+
+
+            
+            
+        }
     }
 
 	private void RegisterEvent()

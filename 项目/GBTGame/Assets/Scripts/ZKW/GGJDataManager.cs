@@ -38,6 +38,17 @@ namespace MyGameFrameWork
             {
                 ToolItemValMap.Add((EToolItemType)i, 0);
             }
+            GameSucceedMap = new Dictionary<int, string>();
+            for(int i=0;i<10;++i)
+            {
+                GameSucceedMap.Add(2000+i, "UI / GameOver / game_seccess_bg_0" + i.ToString());
+            }
+            GameSucceedItemValMap = new Dictionary<int, int>();
+            for (int i = 0; i < 10; ++i)
+            {
+                GameSucceedItemValMap.Add(2000 + i, 0);
+            }
+
 
             ToolItemValMap[EToolItemType.Oxygen] = 50;
             ToolItemValMap[EToolItemType.Fertilizer] = 25;
@@ -71,7 +82,7 @@ namespace MyGameFrameWork
 
         public void InitTime()
         {
-            currTime = 20f;
+            currTime = 1f;
         }
 
         public EFunctionType functionType;
@@ -86,5 +97,11 @@ namespace MyGameFrameWork
         public int specialNum;
 
         public bool isPause;
+
+        public Dictionary<int, string> GameSucceedMap;
+        public Dictionary<int, int> GameSucceedItemValMap;
+
+        public int SucceedId;
+        public string SucceedPath;
     }
 }

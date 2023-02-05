@@ -4,7 +4,7 @@ using UnityEngine;
 using MyGameFrameWork;
 using UnityEngine.UI;
 
-//CreateTime：2023/2/5 8:32:40
+//CreateTime：2023/2/5 10:20:22
 public partial class HUDForm
 {
 	private AutoBind autoBind;
@@ -26,6 +26,7 @@ public partial class HUDForm
 	private Text m_txtFen;
 	private Text m_txtSec;
 	private Text m_txtLevel;
+	private Text m_txtCutDown;
 
 	private void InitComponent()
 	{
@@ -48,6 +49,7 @@ public partial class HUDForm
 		m_txtFen = autoBind.itemList[15].obj.GetComponent<Text>();
 		m_txtSec = autoBind.itemList[16].obj.GetComponent<Text>();
 		m_txtLevel = autoBind.itemList[17].obj.GetComponent<Text>();
+		m_txtCutDown = autoBind.itemList[18].obj.GetComponent<Text>();
 	}
 }
 
