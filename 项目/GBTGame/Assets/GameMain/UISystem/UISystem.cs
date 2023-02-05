@@ -60,7 +60,7 @@ namespace MyGameFrameWork
         {
             int id = Data_UIItemID.Dic[UIItemName].ID;
             string path = Data_UIItemID.Dic[UIItemName].path;
-            if (ObjectPoolSystem.Instance.TestUIItemPool(id))
+            if (ObjectPoolSystem.Instance.TestUIItemPool(id)&&false)
             {
                 UIItem temp = ObjectPoolSystem.Instance.GetUIItemFormPool(id);
                 if (temp != null)

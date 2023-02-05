@@ -240,6 +240,7 @@ public partial class HUDForm : UIForm
 		{
 			case EFunctionType.Null:
 				{
+                    m_rectToolPanel.gameObject.SetActive(false);
 					m_imgFuncAddSpeed.gameObject.SetActive(false) ;
                     m_imgFuncBoom.gameObject.SetActive(false);
                     m_imgFuncimg.gameObject.SetActive(true);
@@ -252,6 +253,7 @@ public partial class HUDForm : UIForm
 				}
             case EFunctionType.Boomer:
                 {
+                    m_rectToolPanel.gameObject.SetActive(true);
                     m_imgFuncAddSpeed.gameObject.SetActive(false);
                     m_imgFuncBoom.gameObject.SetActive(true);
                     m_imgFuncimg.gameObject.SetActive(false);
@@ -264,6 +266,7 @@ public partial class HUDForm : UIForm
                 }
             case EFunctionType.Stop:
                 {
+                    m_rectToolPanel.gameObject.SetActive(true);
                     m_imgFuncAddSpeed.gameObject.SetActive(false);
                     m_imgFuncBoom.gameObject.SetActive(false);
                     m_imgFuncimg.gameObject.SetActive(false);
@@ -276,18 +279,20 @@ public partial class HUDForm : UIForm
                 }
             case EFunctionType.AddSpeed:
                 {
+                    m_rectToolPanel.gameObject.SetActive(true);
                     m_imgFuncAddSpeed.gameObject.SetActive(true);
                     m_imgFuncBoom.gameObject.SetActive(false);
                     m_imgFuncimg.gameObject.SetActive(false);
                     m_imgFunciStop.gameObject.SetActive(false);
                     m_imgFuncPause.gameObject.SetActive(false);
                     m_imgFuncRefresh.gameObject.SetActive(false);
-                    m_txtFuncDes.text = "令爪子速度增加";
-                    m_txtToolName.text = "加速";
+                    m_txtFuncDes.text = "加速";
+                    m_txtToolName.text = "令爪子速度增加";
                     break;
                 }
             case EFunctionType.Pause:
                 {
+                    m_rectToolPanel.gameObject.SetActive(true);
                     m_imgFuncAddSpeed.gameObject.SetActive(false);
                     m_imgFuncBoom.gameObject.SetActive(false);
                     m_imgFuncimg.gameObject.SetActive(false);
@@ -300,6 +305,7 @@ public partial class HUDForm : UIForm
                 }
             case EFunctionType.Refresh:
             {
+                    m_rectToolPanel.gameObject.SetActive(true);
                     m_imgFuncAddSpeed.gameObject.SetActive(false);
                     m_imgFuncBoom.gameObject.SetActive(false);
                     m_imgFuncimg.gameObject.SetActive(false);

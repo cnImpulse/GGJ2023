@@ -54,7 +54,8 @@ namespace MyGameFrameWork
 
         private void OnDevelopers(IEventArgs eventArgs)//�����߽���
         {
-            m_Contorller.SetState("EndGameState", null);
+            //m_Contorller.SetState("EndGameState", null);
+            UISystem.Instance.OpenUIForm(Data_UIFormID.key_TipPanel);//��UI
         }
 
         private void OnExitGame(IEventArgs eventArgs)//��Ϸ����

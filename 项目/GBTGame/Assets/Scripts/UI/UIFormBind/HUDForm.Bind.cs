@@ -4,10 +4,11 @@ using UnityEngine;
 using MyGameFrameWork;
 using UnityEngine.UI;
 
-//CreateTime：2023/2/5 12:28:24
+//CreateTime：2023/2/5 14:16:44
 public partial class HUDForm
 {
 	private AutoBind autoBind;
+	private RectTransform m_rectToolPanel;
 	private Button m_btnFunc;
 	private Text m_txtToolName;
 	private Text m_txtFuncDes;
@@ -38,32 +39,33 @@ public partial class HUDForm
 	private void InitComponent()
 	{
 		autoBind = GetComponent<AutoBind>();
-		m_btnFunc = autoBind.itemList[0].obj.GetComponent<Button>();
-		m_txtToolName = autoBind.itemList[1].obj.GetComponent<Text>();
-		m_txtFuncDes = autoBind.itemList[2].obj.GetComponent<Text>();
-		m_imgFuncimg = autoBind.itemList[3].obj.GetComponent<Image>();
-		m_imgFuncBoom = autoBind.itemList[4].obj.GetComponent<Image>();
-		m_imgFunciStop = autoBind.itemList[5].obj.GetComponent<Image>();
-		m_imgFuncAddSpeed = autoBind.itemList[6].obj.GetComponent<Image>();
-		m_imgFuncPause = autoBind.itemList[7].obj.GetComponent<Image>();
-		m_imgFuncRefresh = autoBind.itemList[8].obj.GetComponent<Image>();
-		m_imgLevel1 = autoBind.itemList[9].obj.GetComponent<Image>();
-		m_imgLevel2 = autoBind.itemList[10].obj.GetComponent<Image>();
-		m_imgLevel3 = autoBind.itemList[11].obj.GetComponent<Image>();
-		m_txtFen = autoBind.itemList[12].obj.GetComponent<Text>();
-		m_txtSec = autoBind.itemList[13].obj.GetComponent<Text>();
-		m_rectLevelDes = autoBind.itemList[14].obj.GetComponent<RectTransform>();
-		m_scrollbarOxygen = autoBind.itemList[15].obj.GetComponent<Scrollbar>();
-		m_imgOxyLim = autoBind.itemList[16].obj.GetComponent<Image>();
-		m_imgOxyRed = autoBind.itemList[17].obj.GetComponent<Image>();
-		m_scrollbarWater = autoBind.itemList[18].obj.GetComponent<Scrollbar>();
-		m_imgWaterLim = autoBind.itemList[19].obj.GetComponent<Image>();
-		m_imgWaterRed = autoBind.itemList[20].obj.GetComponent<Image>();
-		m_scrollbarFertilizer = autoBind.itemList[21].obj.GetComponent<Scrollbar>();
-		m_imgFerLim = autoBind.itemList[22].obj.GetComponent<Image>();
-		m_imgFerRed = autoBind.itemList[23].obj.GetComponent<Image>();
-		m_txtLevel = autoBind.itemList[24].obj.GetComponent<Text>();
-		m_txtCutDown = autoBind.itemList[25].obj.GetComponent<Text>();
+		m_rectToolPanel = autoBind.itemList[0].obj.GetComponent<RectTransform>();
+		m_btnFunc = autoBind.itemList[1].obj.GetComponent<Button>();
+		m_txtToolName = autoBind.itemList[2].obj.GetComponent<Text>();
+		m_txtFuncDes = autoBind.itemList[3].obj.GetComponent<Text>();
+		m_imgFuncimg = autoBind.itemList[4].obj.GetComponent<Image>();
+		m_imgFuncBoom = autoBind.itemList[5].obj.GetComponent<Image>();
+		m_imgFunciStop = autoBind.itemList[6].obj.GetComponent<Image>();
+		m_imgFuncAddSpeed = autoBind.itemList[7].obj.GetComponent<Image>();
+		m_imgFuncPause = autoBind.itemList[8].obj.GetComponent<Image>();
+		m_imgFuncRefresh = autoBind.itemList[9].obj.GetComponent<Image>();
+		m_imgLevel1 = autoBind.itemList[10].obj.GetComponent<Image>();
+		m_imgLevel2 = autoBind.itemList[11].obj.GetComponent<Image>();
+		m_imgLevel3 = autoBind.itemList[12].obj.GetComponent<Image>();
+		m_txtFen = autoBind.itemList[13].obj.GetComponent<Text>();
+		m_txtSec = autoBind.itemList[14].obj.GetComponent<Text>();
+		m_rectLevelDes = autoBind.itemList[15].obj.GetComponent<RectTransform>();
+		m_scrollbarOxygen = autoBind.itemList[16].obj.GetComponent<Scrollbar>();
+		m_imgOxyLim = autoBind.itemList[17].obj.GetComponent<Image>();
+		m_imgOxyRed = autoBind.itemList[18].obj.GetComponent<Image>();
+		m_scrollbarWater = autoBind.itemList[19].obj.GetComponent<Scrollbar>();
+		m_imgWaterLim = autoBind.itemList[20].obj.GetComponent<Image>();
+		m_imgWaterRed = autoBind.itemList[21].obj.GetComponent<Image>();
+		m_scrollbarFertilizer = autoBind.itemList[22].obj.GetComponent<Scrollbar>();
+		m_imgFerLim = autoBind.itemList[23].obj.GetComponent<Image>();
+		m_imgFerRed = autoBind.itemList[24].obj.GetComponent<Image>();
+		m_txtLevel = autoBind.itemList[25].obj.GetComponent<Text>();
+		m_txtCutDown = autoBind.itemList[26].obj.GetComponent<Text>();
 	}
 }
 

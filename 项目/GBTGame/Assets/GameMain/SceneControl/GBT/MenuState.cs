@@ -41,10 +41,6 @@ namespace MyGameFrameWork
 
             //HpBarCanvas = m_Contorller.GetData("HpBarCanvas") as GameObject;
 
-            DebugForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_DebugPanel);
-            GGJDataManager.Instance.debugPanel = DebugForm.GetComponent<DebugPanel>();
-
-            GGJDataManager.Instance.debugPanel.Log("MenuState");
             HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
             HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_1);
             ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_1);
