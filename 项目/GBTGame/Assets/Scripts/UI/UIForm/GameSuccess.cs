@@ -8,6 +8,7 @@ using DataCs;
 //CreateTime��2/4/2023 4:42:12 PM
 public partial class GameSuccess : UIForm
 {
+	public string name;
 	public override void Awake()
 	{
 		base.Awake();
@@ -36,7 +37,9 @@ public partial class GameSuccess : UIForm
 
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
-			OnDestory();
+			name = m_inputLable.text;
+            
+            OnDestory();
 		}
 	}
 
