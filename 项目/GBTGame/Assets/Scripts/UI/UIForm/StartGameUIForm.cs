@@ -64,7 +64,7 @@ public partial class StartGameUIForm : UIForm
 	private void OnHelper()
 	{
         SoundSystem.Instance.PlayEffect(Data_AudioID.key_Click);
-        UISystem.Instance.OpenUIForm(Data_UIFormID.key_HelperForm);
+        //UISystem.Instance.OpenUIForm(Data_UIFormID.key_HelperForm);
 	}
 }
 

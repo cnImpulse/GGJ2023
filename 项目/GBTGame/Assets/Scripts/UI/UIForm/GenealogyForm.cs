@@ -7,16 +7,53 @@ using UnityEngine.UI;
 //CreateTime��2/4/2023 5:28:57 PM
 public partial class GenealogyForm : UIForm
 {
-	public override void Awake()
+	public GameObject Story, Item;
+	private List<int> m_EndList = new List<int>();
+
+    public override void Awake()
 	{
 		base.Awake();
-		//InitComponent(); 
+		InitComponent();
 	}
 
 	public override void OnOpen(System.Object obj)
 	{
 		base.OnOpen(obj);
-		RegisterEvent(); 
+		RegisterEvent();
+
+		m_EndList.Clear();
+		if (PlayerPrefs.HasKey("curIndex"))
+		{
+			var curIndex = PlayerPrefs.GetInt("curIndex");
+			for (int i=0; i<= curIndex; ++i)
+            {
+				m_EndList.Add(PlayerPrefs.GetInt(curIndex.ToString()));
+			}
+
+		}
+        else
+        {
+			return;
+        }
+
+		GameObject story = null;
+		for (int i = 0; i < m_EndList.Count; ++i)
+		{
+			if (i % 3 == 1 || i == 0)
+			{
+				story = Instantiate(Story, m_rectContent);
+			}
+
+			var id = m_EndList[i];
+			var item = Instantiate(Item, story.transform);
+			if (true)
+			{
+				var path = GGJDataManager.Instance.GameSucceedIcoMap[id];
+				var img = item.transform.Find("nameBg/name/m_imgBg").GetComponent<Image>();
+				img.sprite = Resources.Load<Sprite>(path);
+			}
+			item.transform.Find("nameBg/name/m_txtName").GetComponent<Text>().text = "name";
+		}
 	}
 
 	public override void OnClose()

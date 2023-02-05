@@ -17,7 +17,17 @@ public partial class GameSuccess : UIForm
 	public override void OnOpen(System.Object obj)
 	{
 		base.OnOpen(obj);
-		RegisterEvent(); 
+		RegisterEvent();
+
+		int curIndex = 0;
+		if (PlayerPrefs.HasKey("curIndex"))
+        {
+			curIndex = PlayerPrefs.GetInt("curIndex");
+			curIndex++;
+		}
+
+		PlayerPrefs.SetInt(curIndex.ToString(), GGJDataManager.Instance.SucceedId);
+		PlayerPrefs.SetInt("curIndex", curIndex);
 	}
 
 	public override void Update()
