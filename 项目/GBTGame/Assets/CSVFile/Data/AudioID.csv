@@ -36,3 +36,8 @@ CatchGood,1029,Audio/Effect/CatchGood
 Boom,1030,Audio/Effect/Boom
 LevelFail,1031,Audio/Effect/LevelFail
 LevelSuccess,1032,Audio/Effect/LevelSuccess
+CutDown,1033,Audio/Effect/CutDown
+Hit,1034,Audio/Effect/Hit
+Click,1035,Audio/Effect/Click
+Switch,1036,Audio/Effect/Switch
+Clear,1037,Audio/Effect/Clear
