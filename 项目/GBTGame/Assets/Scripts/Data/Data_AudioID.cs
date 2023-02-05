@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//CreateTime：2023/2/5 0:21:23
+//CreateTime：2023/2/5 9:18:44
 namespace DataCs
 {
 	public struct Data_AudioID_Struct
@@ -55,6 +55,11 @@ namespace DataCs
 			{"Boom",new Data_AudioID_Struct("Boom",1030,"Audio/Effect/Boom")},
 			{"LevelFail",new Data_AudioID_Struct("LevelFail",1031,"Audio/Effect/LevelFail")},
 			{"LevelSuccess",new Data_AudioID_Struct("LevelSuccess",1032,"Audio/Effect/LevelSuccess")},
+			{"CutDown",new Data_AudioID_Struct("CutDown",1033,"Audio/Effect/CutDown")},
+			{"Hit",new Data_AudioID_Struct("Hit",1034,"Audio/Effect/Hit")},
+			{"Click",new Data_AudioID_Struct("Click",1035,"Audio/Effect/Click")},
+			{"Switch",new Data_AudioID_Struct("Switch",1036,"Audio/Effect/Switch")},
+			{"Clear",new Data_AudioID_Struct("Clear",1037,"Audio/Effect/Clear")},
 		};
 		public static string key_Bright_Beginning = "Bright_Beginning";
 		public static string key_Dark_Journey = "Dark_Journey";
@@ -89,6 +94,11 @@ namespace DataCs
 		public static string key_Boom = "Boom";
 		public static string key_LevelFail = "LevelFail";
 		public static string key_LevelSuccess = "LevelSuccess";
+		public static string key_CutDown = "CutDown";
+		public static string key_Hit = "Hit";
+		public static string key_Click = "Click";
+		public static string key_Switch = "Switch";
+		public static string key_Clear = "Clear";
 	}
 }
 
