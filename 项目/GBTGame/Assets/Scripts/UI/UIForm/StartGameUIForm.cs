@@ -44,23 +44,27 @@ public partial class StartGameUIForm : UIForm
 
 	private void OnBtnStart()
 	{
-		EventManagerSystem.Instance.Invoke2(Data_EventName.StartGame_str, StartGameEventArgs.Create());//触发开始游戏
+        SoundSystem.Instance.PlayEffect(Data_AudioID.key_Click);
+        EventManagerSystem.Instance.Invoke2(Data_EventName.StartGame_str, StartGameEventArgs.Create());//触发开始游戏
 		UISystem.Instance.CloseUIForm(Data_UIFormID.key_StartGameForm, this);
     }
 	private void OnBtnExit()
 	{
+        SoundSystem.Instance.PlayEffect(Data_AudioID.key_Click);
         EventManagerSystem.Instance.Invoke2(Data_EventName.ExitGame_str, ExitGameEventArgs.Create());//触发结束游戏
     }
 
 	private void OnBtnDeveloper()
 	{
+        SoundSystem.Instance.PlayEffect(Data_AudioID.key_Click);
         EventManagerSystem.Instance.Invoke2(Data_EventName.Developer_str, DeveloperEventArgs.Create());//打开开发者界面
         UISystem.Instance.CloseUIForm(Data_UIFormID.key_StartGameForm, this);
     }
 
 	private void OnHelper()
 	{
-		UISystem.Instance.OpenUIForm(Data_UIFormID.key_HelperForm);
+        SoundSystem.Instance.PlayEffect(Data_AudioID.key_Click);
+        UISystem.Instance.OpenUIForm(Data_UIFormID.key_HelperForm);
 	}
 }
 

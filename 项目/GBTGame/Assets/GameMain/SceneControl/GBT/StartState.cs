@@ -50,7 +50,6 @@ namespace MyGameFrameWork
         private void OnStartGame(IEventArgs eventArgs)//��Ϸ��ʼ
         {
             m_Contorller.SetState("MenuState", null);
-
         }
 
         private void OnDevelopers(IEventArgs eventArgs)//�����߽���

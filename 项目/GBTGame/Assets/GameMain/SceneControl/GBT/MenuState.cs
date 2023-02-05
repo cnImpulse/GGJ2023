@@ -70,6 +70,7 @@ namespace MyGameFrameWork
 
         void GameSucceed(IEventArgs eventArgs)
         {
+            SoundSystem.Instance.StopAllEffect();
             GameSucceedEventArgs gameSucceedEventArgs = eventArgs as GameSucceedEventArgs;
             SoundSystem.Instance.PlayEffect("Switch");
             if (gameSucceedEventArgs.level==1)
@@ -129,6 +130,7 @@ namespace MyGameFrameWork
 
         void GameFail(IEventArgs eventArgs)
         {
+            SoundSystem.Instance.StopAllEffect();
             if (HandleForm != null)
             {
                 HandleForm.GetComponent<UIForm>().OnDestory();

@@ -46,6 +46,7 @@ namespace MyGameFrameWork
             InitTime();
             level = 1;
             specialNum = 0;
+            isPause = false;
         }
         public bool TestSucceed()
         {
@@ -83,5 +84,7 @@ namespace MyGameFrameWork
         public Dictionary<EToolItemType,int> ToolItemValMap;
 
         public int specialNum;
+
+        public bool isPause;
     }
 }

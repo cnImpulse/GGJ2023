@@ -4,6 +4,7 @@ using UnityEngine;
 using MyGameFrameWork;
 using UnityEngine.UI;
 using ProtoBuf.Meta;
+using DataCs;
 
 //CreateTime：2023/2/4 0:00:46
 public partial class HUDForm : UIForm
@@ -25,6 +26,12 @@ public partial class HUDForm : UIForm
 
     float subTime;
     float currSubTime;
+
+    bool isWarning = false;
+    float WarningTime = 4f;
+    float CurrWarningTime = 4f;
+
+    bool isTimeOver = false;
     public override void Awake()
 	{
 		base.Awake();
@@ -37,8 +44,11 @@ public partial class HUDForm : UIForm
 		RegisterEvent();
         deadTime = 3f;
         deadTimeCurr = 0f;
-        subTime = 1.5f;
+        subTime = 2f;
         currSubTime = 0f;
+
+        
+
         Attr4<string, string, string, string> paramTable1 = AttrSystem.Instance.GetData("ParamTable", "9") as Attr4<string, string, string, string>;
         Attr4<string, string, string, string> paramTable2 = AttrSystem.Instance.GetData("ParamTable", "10") as Attr4<string, string, string, string>;
         Attr4<string, string, string, string> paramTable3 = AttrSystem.Instance.GetData("ParamTable", "11") as Attr4<string, string, string, string>;
@@ -88,7 +98,8 @@ public partial class HUDForm : UIForm
         }
         SetLimImg();
 
-        
+
+        isWarning = false;
 
         MaxOxygen = 100;
 		MaxFertilizer = 100;
@@ -106,15 +117,26 @@ public partial class HUDForm : UIForm
 		base.Update();
         
         currSubTime += Time.deltaTime;
+        CurrWarningTime += Time.deltaTime;
         if (GGJDataManager.Instance.ToolItemValMap[EToolItemType.Oxygen] >= LimOxygen ||
             GGJDataManager.Instance.ToolItemValMap[EToolItemType.Water] >= LimMaxWater ||
             GGJDataManager.Instance.ToolItemValMap[EToolItemType.Fertilizer] >= LimMaxFertilizer)
         {
             deadTimeCurr += Time.deltaTime;
+            isWarning = true;
+            //CurrWarningTime = WarningTime;
+            
         }
         else
         {
+            isWarning = false;
             deadTimeCurr = 0;
+        }
+        //Debug.Log(CurrWarningTime);
+        if(isWarning&& CurrWarningTime>=WarningTime)
+        {
+            SoundSystem.Instance.PlayEffect(Data_AudioID.key_Warning);
+            CurrWarningTime = 0f;
         }
 
         if (currSubTime>=subTime)
@@ -226,6 +248,11 @@ public partial class HUDForm : UIForm
         float zhengshu = (int)GGJDataManager.Instance.currTime;
 
         m_txtFen.text = zhengshu >= 10 ? zhengshu.ToString() : "0" + zhengshu.ToString();
+        if(zhengshu==2&& !isTimeOver)
+        {
+            SoundSystem.Instance.PlayEffect(Data_AudioID.key_CutDown);
+            isTimeOver = true;
+        }
         var temp = ((int)(xiaoshu * 100));
         m_txtSec.text = temp >= 10 ? temp.ToString() : "0" + temp.ToString();
     }
