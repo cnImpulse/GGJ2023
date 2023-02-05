@@ -33,7 +33,7 @@ public partial class GameSuccess : UIForm
 		PlayerPrefs.SetInt("curIndex", m_curIndex);
 
 		var p = "UI/cg/game_seccess_bg_0" + (GGJDataManager.Instance.SucceedId - 2000).ToString();
-		//cg.sprite = Resources.Load<Sprite>(p);
+		m_imgBg.sprite = Resources.Load<Sprite>(p);
 	}
 
 	public override void Update()
