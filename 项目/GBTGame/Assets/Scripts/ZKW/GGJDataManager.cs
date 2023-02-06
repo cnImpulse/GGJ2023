@@ -111,5 +111,7 @@ namespace MyGameFrameWork
         public string SucceedIco;
 
         public DebugPanel debugPanel;
+
+        public HUDForm HUDForm;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using MyGameFrameWork;
 using UnityEngine.UI;
 
-//CreateTime：2023/2/5 14:16:44
+//CreateTime：2023/2/5 15:38:37
 public partial class HUDForm
 {
 	private AutoBind autoBind;
@@ -33,6 +33,7 @@ public partial class HUDForm
 	private Scrollbar m_scrollbarFertilizer;
 	private Image m_imgFerLim;
 	private Image m_imgFerRed;
+	private RectTransform m_recttipbg;
 	private Text m_txtLevel;
 	private Text m_txtCutDown;
 
@@ -64,8 +65,9 @@ public partial class HUDForm
 		m_scrollbarFertilizer = autoBind.itemList[22].obj.GetComponent<Scrollbar>();
 		m_imgFerLim = autoBind.itemList[23].obj.GetComponent<Image>();
 		m_imgFerRed = autoBind.itemList[24].obj.GetComponent<Image>();
-		m_txtLevel = autoBind.itemList[25].obj.GetComponent<Text>();
-		m_txtCutDown = autoBind.itemList[26].obj.GetComponent<Text>();
+		m_recttipbg = autoBind.itemList[25].obj.GetComponent<RectTransform>();
+		m_txtLevel = autoBind.itemList[26].obj.GetComponent<Text>();
+		m_txtCutDown = autoBind.itemList[27].obj.GetComponent<Text>();
 	}
 }
 

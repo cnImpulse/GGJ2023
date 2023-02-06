@@ -42,6 +42,7 @@ namespace MyGameFrameWork
             //HpBarCanvas = m_Contorller.GetData("HpBarCanvas") as GameObject;
 
             HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
+            GGJDataManager.Instance.HUDForm = HUDForm.GetComponent<HUDForm>();
             HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_1);
             ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_1);
 
@@ -92,6 +93,7 @@ namespace MyGameFrameWork
                 HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_2);
                 ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_2);
                 HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
+                GGJDataManager.Instance.HUDForm = HUDForm.GetComponent<HUDForm>();
             }
             else if(gameSucceedEventArgs.level==2)
             {
@@ -110,6 +112,7 @@ namespace MyGameFrameWork
                 HandleForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HandleForm_3);
                 ToolForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_ToolForm_3);
                 HUDForm = UISystem.Instance.OpenUIForm(Data_UIFormID.key_HUDForm);
+                GGJDataManager.Instance.HUDForm = HUDForm.GetComponent<HUDForm>();
             }
             else
             {

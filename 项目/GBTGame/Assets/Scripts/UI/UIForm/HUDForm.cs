@@ -36,6 +36,10 @@ public partial class HUDForm : UIForm
     float pauseTime = 3f;
     float pauseTimeCurr = 0f;
 
+    float animaTime;
+    bool isAnima = false;
+    
+
     public override void Awake()
 	{
 		base.Awake();
@@ -78,7 +82,7 @@ public partial class HUDForm : UIForm
 
         if (GGJDataManager.Instance.level==1)
         {
-            m_txtLevel.text = "第一关";
+            m_txtLevel.text = "树的基因出现了一些变化";
             AttrList temp = AttrSystem.Instance.GetData("LevelTable", "10001") as AttrList;
             LimOxygen = int.Parse(temp.Attrs[1]);
             LimMaxWater = int.Parse(temp.Attrs[2]);
@@ -86,7 +90,7 @@ public partial class HUDForm : UIForm
         }
         else if(GGJDataManager.Instance.level==2)
         {
-            m_txtLevel.text = "第二关";
+            m_txtLevel.text = "树的基因出现了一些变化";
             AttrList temp = AttrSystem.Instance.GetData("LevelTable", "10002") as AttrList;
             LimOxygen = int.Parse(temp.Attrs[1]);
             LimMaxWater = int.Parse(temp.Attrs[2]);
@@ -94,7 +98,7 @@ public partial class HUDForm : UIForm
         }
         else if(GGJDataManager.Instance.level==3)
         {
-            m_txtLevel.text = "第三关";
+            m_txtLevel.text = "树的基因出现了一些变化";
             AttrList temp = AttrSystem.Instance.GetData("LevelTable", "10003") as AttrList;
             LimOxygen = int.Parse(temp.Attrs[1]);
             LimMaxWater = int.Parse(temp.Attrs[2]);
@@ -134,6 +138,14 @@ public partial class HUDForm : UIForm
 
         if (GGJDataManager.Instance.isPause)
         {
+            animaTime += Time.deltaTime;
+
+            if (animaTime >= 1f && isAnima)
+            {
+                animaTime = 0f;
+                m_recttipbg.gameObject.SetActive(false);
+            }
+
             pauseTimeCurr += Time.deltaTime;
             m_txtCutDown.text = ((int)(3.9f - pauseTimeCurr)).ToString();
             if (pauseTimeCurr>=pauseTime)
@@ -366,6 +378,13 @@ public partial class HUDForm : UIForm
             GGJDataManager.Instance.currTime -= Time.deltaTime;
         }
         //= Time.deltaTime;
+    }
+
+    public void Get2()
+    {
+        isAnima = true;
+        m_recttipbg.gameObject.SetActive(true);
+        animaTime = 0f;
     }
 }
 

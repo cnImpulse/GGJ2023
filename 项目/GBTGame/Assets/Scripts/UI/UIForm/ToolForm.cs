@@ -299,6 +299,11 @@ public partial class ToolForm : UIForm
         }
         else if(toolItemTypeDic[toolItem.toolItemType] == 2)
         {
+            //
+            if(GGJDataManager.Instance.HUDForm!=null)
+            {
+                GGJDataManager.Instance.HUDForm.Get2();
+            }
             currgoods2--;
         }
         else if(toolItemTypeDic[toolItem.toolItemType] == 3)

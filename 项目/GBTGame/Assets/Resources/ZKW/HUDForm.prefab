@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 7016775785616828351}
   - component: {fileID: 9219515413385266945}
   m_Layer: 5
-  m_Name: tipbg
+  m_Name: m_recttipbg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2949,8 +2949,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -89.9, y: -94.19995}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: -169, y: -94.19995}
+  m_SizeDelta: {x: 320, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1239529927239772339
 CanvasRenderer:
@@ -3247,6 +3247,9 @@ MonoBehaviour:
   - name: m_imgFerRed
     typename: Image
     obj: {fileID: 4157496345050901480}
+  - name: m_recttipbg
+    typename: RectTransform
+    obj: {fileID: 1195473546283356334}
   - name: m_txtLevel
     typename: Text
     obj: {fileID: 177593378704071594}
